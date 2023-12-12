@@ -967,7 +967,7 @@ footer {
   margin-left: 0.625rem;
 }
 .footer-social__item:hover {
-  background: #383838;
+  background: #E5252D;
 }
 @media (max-width: 47.99875em) {
   .footer-social__item {
