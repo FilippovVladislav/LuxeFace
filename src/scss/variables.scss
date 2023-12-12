@@ -1,0 +1,39 @@
+$black: #333333;
+$black-2: #2F3133;
+$black-3: #383838;
+$black-4: #383B3D;
+$gray: #F2EFED;
+$gray-2: #FAF7F5;
+$gray-3: #999999;
+$gray-4: #989898;
+$white: #FFFFFF;
+$red: #E5252D;
+$red-2: #CC2128;
+
+
+:root {
+  --color-black: $black;
+  --color-black2: $black-2;
+  --color-black3: $black-3;
+  --color-black4: $black-4;
+  --color-gray: $gray;
+  --color-gray2: $gray-2;
+  --color-gray3: $gray-3;
+  --color-gray4: $gray-4;
+  --color-white: $white;
+  --color-red: $red;
+  --color-red2: $red-2;
+}
+
+.icon{
+  &::before {
+    content: "";
+    mask: var(--icon) center center/contain no-repeat;
+    -webkit-mask: var(--icon) center center/contain no-repeat;
+    width: rem(24);
+    height: rem(24);
+    display: block;
+    background: $white;
+    transition: .25s;
+  }
+}
