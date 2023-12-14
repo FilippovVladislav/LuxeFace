@@ -20,3 +20,11 @@
 		height: 44px;
 	}
 }
+
+.button-white{
+	background: $white;
+	color: $black;
+	&:hover{
+		background: rgba(255, 255, 255, 0.7);
+	}
+}

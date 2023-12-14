@@ -30,8 +30,8 @@ import "../../scss/base/swiper.scss";
 let swiperReviews = new Swiper('.swiper-reviews', {
     modules: [Navigation, A11y],
     navigation: {
-        nextEl: ".arrow-right",
-        prevEl: ".arrow-left",
+        nextEl: ".swiper-reviews .arrow-right",
+        prevEl: ".swiper-reviews .arrow-left",
     },
     loop: true,
     slidesPerView: 1,
@@ -44,6 +44,58 @@ let swiperReviews = new Swiper('.swiper-reviews', {
         },
         1441: {
             spaceBetween: 100,
+        },
+    },
+})
+
+let swiperResult = new Swiper('.swiper-result', {
+    modules: [Navigation, A11y],
+    navigation: {
+        nextEl: ".swiper-result .arrow-right",
+        prevEl: ".swiper-result .arrow-left",
+    },
+    loop: true,
+
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 30,
+        },
+        991: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1441: {
+            slidesPerView: 3,
+            spaceBetween: 60,
+        },
+    },
+})
+
+let swiperNews = new Swiper('.swiper-news', {
+    modules: [Navigation, A11y],
+    navigation: {
+        nextEl: ".news-head .arrow-right",
+        prevEl: ".news-head .arrow-left",
+    },
+    loop: true,
+
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        991: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1441: {
+            slidesPerView: 3,
+            spaceBetween: 60,
         },
     },
 })
