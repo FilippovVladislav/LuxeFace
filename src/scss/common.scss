@@ -1724,3 +1724,40 @@
     margin-top: 14px;
   }
 }
+
+.model{
+  position: fixed;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: .25s;
+  background: $red;
+  top: calc(50% - rem(122));
+  &:hover{
+    background: $red-2;
+  }
+  @media(max-width: $tablet) {
+    display: none;
+  }
+}
+
+.model-title{
+  transform: rotate(180deg);
+  writing-mode: tb;
+  display: flex;
+  align-items: center;
+  padding: rem(40) 0;
+
+  color: $white;
+  font-family: Montserrat;
+  font-weight: 400;
+  font-size: rem(13);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.model-pic{
+  width: rem(60);
+  height: rem(90);
+}

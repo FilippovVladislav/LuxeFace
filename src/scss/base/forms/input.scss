@@ -21,6 +21,8 @@ textarea {
 	font-size: rem(14);
 	outline: none;
 	color: white;
+	font-family: Montserrat;
+	font-weight: 500;
 	&::placeholder{
 		color: rgba(255, 255, 255, 0.3);
 		transition: .25s;
@@ -44,7 +46,16 @@ textarea {
 		margin-bottom: rem(24);
 	}
 }
-textarea.input {
+textarea.form-input {
 	resize: none;
 	padding: 0px 0px;
+	height: rem(120);
+	color: $black;
+	text-align: left !important;
+	&::placeholder{
+		color: $black !important;
+	}
+	@media(max-width: $tablet) {
+		height: 50px;
+	}
 }

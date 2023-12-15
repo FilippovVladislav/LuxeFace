@@ -1,11 +1,123 @@
-<!-- 
-<div id="popup" aria-hidden="true" class="popup">
-	<div class="popup__wrapper">
-		<div class="popup__content">
-			<button data-close type="button" class="popup__close">Закрыть</button>
-			<div class="popup__text">
-			</div>
-		</div>
-	</div>
+<div id="modal-model" aria-hidden="true" class="popup">
+    <div class="popup__wrapper">
+        <div class="popup__content">
+            <button data-close type="button" class="popup__close icon"
+                    style="--icon: url('../img/icon/icon-close.svg');"></button>
+            <div class="popup-model">
+                <div class="popup-title">
+                    Мы ищем <br> <b>моделей!</b>
+                </div>
+                <div class="popup-content">
+                    Для моделей действуют специальные предложения и приятные подарки. <span class="fw-600">Оставляй заявку или узнай все подробности по телефону <span
+                        class="red">+7 968 867-65-31</span></span>
+                </div>
+                <form action="#">
+                    <fieldset class="form-item">
+                        <input type="text" placeholder="ФИО" class="form-input">
+                    </fieldset>
+                    <fieldset class="form-item">
+                        <input type="text" placeholder="e-mail" class="form-input">
+                    </fieldset>
+                    <button type="submit" class="button button-model">отправить заявку</button>
+                    <div class="agreed-message">
+                        Нажимая отпраить заявку я даю согласие на <a
+                            href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
+                        <br> персональных данных</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
- -->
+<div id="modal-callback" aria-hidden="true" class="popup">
+    <div class="popup__wrapper">
+        <div class="popup__content">
+            <button data-close type="button" class="popup__close icon"
+                    style="--icon: url('../img/icon/icon-close.svg');"></button>
+
+            <div class="popup-title">
+                <b>Связаться</b> <br>
+                с нами
+            </div>
+            <form action="#">
+                <div class="form-radio">
+                    <div class="form-radio__item">
+                        <input type="radio" checked name="radio-1" value="radio" id="radio-1">
+                        <label for="radio-1">
+                            стать специалистом
+                        </label>
+                    </div>
+                    <div class="form-radio__item">
+                        <input type="radio" name="radio-1" value="radio" id="radio-2">
+                        <label for="radio-2">
+                            найти специалиста
+                        </label>
+                    </div>
+                </div>
+                <fieldset class="form-item">
+                    <input type="text" placeholder="ФИО" class="form-input">
+                </fieldset>
+                <fieldset class="form-item">
+                    <input type="text" placeholder="e-mail" class="form-input">
+                </fieldset>
+                <fieldset class="form-item">
+                    <textarea class="form-input" placeholder="Как начать обучение технологии luxeface & luxebody?"></textarea>
+                </fieldset>
+                <button type="submit" class="button button-model">отправить заявку</button>
+                <div class="agreed-message">
+                    Нажимая отпраить заявку я даю согласие на <a
+                        href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
+                    персональных данных</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="header-modal-contact">
+	<div class="header-block__close icon" style="--icon: url('../img/icon/icon-close.svg');"></div>
+	<a href="tel:89688676531" class="header-contact-tel-m"><span class="red">8 (968)</span> 867-65-31</a>
+	<a href="https://wa.me/84953230567" class="header-contact-wh-m">
+		<span class="icon" style="--icon: url('../img/icon/icon-whats.svg');"></span>
+		Написать в whats App
+	</a>
+	<a href="mailto:manager@a-swiss.org" class="header-mail">
+		manager@a-swiss.org
+	</a>
+    <div class="form-header-block">
+        <div class="popup-title">
+            <b>Связаться</b> <br>
+            с нами
+        </div>
+        <form action="#">
+            <div class="form-radio">
+                <div class="form-radio__item">
+                    <input type="radio" checked name="radio-1" value="radio" id="radio-1">
+                    <label for="radio-1">
+                        стать специалистом
+                    </label>
+                </div>
+                <div class="form-radio__item">
+                    <input type="radio" name="radio-1" value="radio" id="radio-2">
+                    <label for="radio-2">
+                        найти специалиста
+                    </label>
+                </div>
+            </div>
+            <fieldset class="form-item">
+                <input type="text" placeholder="ФИО" class="form-input">
+            </fieldset>
+            <fieldset class="form-item">
+                <input type="text" placeholder="e-mail" class="form-input">
+            </fieldset>
+            <fieldset class="form-item">
+                <textarea class="form-input" placeholder="Как начать обучение технологии luxeface & luxebody?"></textarea>
+            </fieldset>
+            <button type="submit" class="button">отправить заявку</button>
+            <div class="agreed-message">
+                Нажимая отпраить заявку я даю согласие на <a
+                    href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
+                персональных данных</a>
+            </div>
+        </form>
+    </div>
+</div>
