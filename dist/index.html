@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20231215020606">
+	<link rel="stylesheet" href="css/style.min.css?_v=20231215113820">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -15,14 +15,80 @@
 <body>
 	<div class="wrapper">
 		<header class="header">
-			<div class="header__container">
-
+			<div class="container">
+				<div class="header-flex">
+					<div class="header-burger icon" style="--icon: url('../img/icon/icon-menu.svg');"></div>
+					<div class="header-logo">
+						<img src="img/logo-black.svg" alt="">
+					</div>
+					<div class="header-contact-mobile icon" style="--icon: url('../img/icon/icon-phone-mobile.svg');"></div>
+					<div class="header-block">
+						<nav class="header-menu">
+							<ul class="header-menu__items">
+								<li class="header-menu__item">
+									<a href="#production" class="header-menu__link">Продукция</a>
+								</li>
+								<li class="header-menu__item">
+									<a href="#course" class="header-menu__link">Курсы</a>
+								</li>
+								<li class="header-menu__item">
+									<a href="#reviews" class="header-menu__link">Результаты и отзывы</a>
+								</li>
+								<li class="header-menu__item">
+									<a href="#search" class="header-menu__link">Поиск специалиста</a>
+								</li>
+								<li class="header-menu__item">
+									<a href="#contact" class="header-menu__link">Контакты</a>
+								</li>
+							</ul>
+						</nav>
+						<a href="mailto:manager@a-swiss.org" class="header-mail">
+							manager@a-swiss.org
+						</a>
+						<div class="header-contact">
+							<a href="https://wa.me/84953230567" class="header-contact__link">
+								<span class="red">8 (495) </span> 323-05-67
+								<span class="icon" style="--icon: url('../img/icon/icon-whats.svg');"></span>
+							</a>
+							<a href="tel:89688676531" class="header-contact__link">
+								<span class="red">8 (968) </span> 867-65-31
+								<span class="icon" style="--icon: url('../img/icon/icon-phone.svg');"></span>
+							</a>
+						</div>
+						<a href="#" class="button button-header">Связаться с нами</a>
+					</div>
+				</div>
 			</div>
 		</header>
 		<main class="page">
 			<div class="presentation">
 				<div class="container">
-					.
+					<div class="presentation-container">
+						<div class="presentation-content">
+							<div class="presentation-title">
+								<b>Скачайте </b> презентацию
+							</div>
+							<div class="presentation-description">
+								Скачайте презентацию и узнайте об уникальных преимуществах, которые выведут вашу практику на новый уровень
+							</div>
+						</div>
+						<form action="#" class="presentation-form">
+							<div class="presentation-form__line">
+								<fieldset class="form-item">
+									<input type="text" placeholder="ФИО" class="form-input">
+								</fieldset>
+								<fieldset class="form-item">
+									<input type="text" placeholder="e-mail" class="form-input">
+								</fieldset>
+							</div>
+							<div class="presentation-form__line presentation-form__line-bottom">
+								<button type="submit" class="button button-white">отправить заявку</button>
+								<div class="agreed-message">
+									Нажимая отпраить заявку я даю согласие на <a href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку персональных данных</a>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 			<div class="concept">
@@ -824,7 +890,7 @@
 </div>
  -->
 
-	<script src="js/app.min.js?_v=20231215020606"></script>
+	<script src="js/app.min.js?_v=20231215113820"></script>
 </body>
 
 </html>

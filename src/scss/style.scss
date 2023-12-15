@@ -101,9 +101,10 @@ body {
   max-width: calc(rem(1920) - rem(80));
   box-sizing: border-box;
   margin: 0 auto;
-  @media(max-width: $tablet) {
+  @media(max-width: 1150px) {
     padding: 0 20px;
   }
+
 }
 
 // Подключение базовых стилей, шаблонов (заготовок) и вспомагательных классов

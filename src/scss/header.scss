@@ -1,49 +1,165 @@
-//====================================================================================================
+.header-flex{
+  padding: rem(60) 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Montserrat;
+  @media(max-width: $tablet) {
+    padding: 20px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.05);
+    margin: 0 -20px 40px;
+  }
+}
 
-//====================================================================================================
+.header-logo{
+  flex-basis: rem(234);
+  flex-shrink: 0;
+  display: flex;
+  margin-right: rem(40);
+  @media(max-width: 1520px) {
+    flex-basis: rem(200);
+  }
+  @media(max-width: 1400px) {
+    flex-basis: rem(180);
+  }
+  @media(max-width: $tablet) {
+    flex-basis: auto;
+    width: 117px;
+    margin-right: 0;
+  }
+}
 
-//Burger
-.icon-menu {
+.header-contact{
+  margin-left: 5px;
+}
+
+.header-contact__link{
+  display: flex;
+  align-items: center;
+  font-size: rem(16);
+  font-weight: 600;
+  line-height: rem(18);
+  margin-bottom: rem(6);
+  white-space: nowrap;
+  .red{
+    margin-right: 3px;
+  }
+  &:last-child{
+    margin-bottom: 0;
+  }
+  .icon{
+    &:before{
+      background: $red;
+      width: rem(14);
+      height: rem(14);
+      margin-left: rem(6);
+    }
+  }
+  &:hover{
+    color: $red;
+  }
+  @media(max-width: 1400px) {
+    font-size: 10px;
+  }
+}
+
+.header-mail{
+  font-weight: 600;
+  font-size: rem(15);
+  line-height: rem(18);
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-left: 5px;
+  &:hover{
+    color: $red;
+  }
+  @media(max-width: 1400px) {
+    font-size: 10px;
+  }
+}
+
+.header-menu__items{
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.header-menu__item{
+  margin: 0 rem(15);
+  line-height: 1.2;
+  @media(max-width: 1520px) {
+    margin: 0 rem(10);
+  }
+  @media(max-width: 1400px) {
+    margin: 0 10px;
+  }
+}
+
+.header-menu__link{
+  font-size: rem(13);
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &:hover{
+    color: $red;
+  }
+  @media(max-width: 1520px) {
+    font-size: rem(12);
+  }
+  @media(max-width: 1400px) {
+    font-size: 10px;
+  }
+}
+.button-header{
+  white-space: nowrap;
+  margin-left: 5px;
+}
+
+.header-block{
+  width: 100%;
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  @media(max-width: $tablet) {
+    display: none;
+  }
+}
+
+.header-burger{
   display: none;
-  @media (max-width: $mobile) {
-    display: block;
-    position: relative;
-    width: 30px;
-    height: 18px;
+  @media(max-width: $tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $gray-2;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
     cursor: pointer;
-    z-index: 5;
-    span,
-    &::before,
-    &::after {
-      content: "";
-      transition: all 0.3s ease 0s;
-      left: 0px;
-      position: absolute;
-      width: 100%;
-      height: 2px;
-      background-color: #000;
+    &:before{
+      width: 18px;
+      height: 13px;
+      background: $black;
     }
-    &::before {
-      top: 0px;
-    }
-    &::after {
-      bottom: 0px;
-    }
-    span {
-      top: calc(50% - 1px);
-    }
-    .menu-open & {
-      span {
-        transform: scale(0);
-      }
-      &::before {
-        transform: rotate(-45deg);
-        top: calc(50% - 1px);
-      }
-      &::after {
-        transform: rotate(45deg);
-        bottom: calc(50% - 1px);
-      }
+  }
+}
+
+.header-contact-mobile{
+  display: none;
+  @media(max-width: $tablet) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: $red;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+
+    &:before{
+      width: 20px;
+      height: 18px;
     }
   }
 }

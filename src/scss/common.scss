@@ -1601,3 +1601,126 @@
     line-height: 16px;
   }
 }
+
+.presentation-container{
+  background: $red;
+  padding: rem(90) rem(80);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @media(max-width: 1400px) {
+    padding: 40px;
+  }
+  @media(max-width: $tablet) {
+    padding: 30px 20px;
+    margin: 0 -20px;
+    flex-direction: column;
+  }
+}
+
+.presentation-content{
+  flex-basis: calc(47% - rem(60));
+  color: white;
+  @media(max-width: 1400px) {
+    flex-basis: calc(38% - rem(30));
+  }
+  @media(max-width: $tablet) {
+    text-align: center;
+  }
+}
+
+.presentation-form{
+  flex-basis: calc(53% - rem(60));
+  @media(max-width: 1400px) {
+    flex-basis: calc(62% - rem(30));
+  }
+}
+
+.presentation-title{
+  font-size: rem(34);
+  line-height: rem(54);
+  text-transform: uppercase;
+  margin-bottom: rem(43);
+  position: relative;
+  &:before{
+    content: '';
+    position: absolute;
+    bottom: rem(-23);
+    left: 0;
+    background: rgba(255, 255, 255, 0.25);
+    width: 40px;
+    height: 3px;
+    @media(max-width: 1400px) {
+      height: 2px;
+    }
+    @media(max-width: $tablet) {
+      bottom: -10px;
+      left: calc(50% - 15px);
+      width: 30px;
+    }
+  }
+  @media(max-width: 1400px) {
+    max-width: 320px;
+    line-height: 1.4;
+  }
+  @media(max-width: $tablet) {
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 22px;
+    max-width: 100%;
+  }
+}
+
+.presentation-description{
+  font-weight: 500;
+  @media(max-width: 1400px) {
+    font-size: 12px;
+    line-height: 16px;
+  }
+  @media(max-width: $tablet) {
+    font-size: 10px;
+    line-height: 14px;
+    margin-bottom: 30px;
+  }
+}
+
+.presentation-form__line{
+  display: flex;
+  justify-content: space-between;
+  .form-item{
+    flex-basis: calc(50% - rem(20));
+  }
+  .form-input{
+    border-bottom: 1px solid white;
+    &::placeholder{
+      color: white;
+    }
+    @media(max-width: $tablet) {
+      text-align: center;
+    }
+  }
+  @media(max-width: $tablet) {
+    flex-direction: column;
+  }
+}
+
+.presentation-form__line-bottom{
+  margin-top: rem(40);
+  align-items: center;
+  .button, .agreed-message{
+    width: calc(50% - rem(20));
+    @media(max-width: $tablet) {
+      width: 100%;
+    }
+  }
+  .agreed-message{
+    color: white;
+    @media(max-width: $tablet) {
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+  @media(max-width: 1400px) {
+    margin-top: 14px;
+  }
+}

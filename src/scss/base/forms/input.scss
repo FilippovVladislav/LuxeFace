@@ -35,6 +35,9 @@ textarea {
 	}
 	&._error {
 	}
+	@media(max-width: 1400px) {
+		height: rem(54);
+	}
 	@media(max-width: $mobile) {
 		text-align: center;
 		height: rem(52);
