@@ -35,6 +35,7 @@ let swiperReviews = new Swiper('.swiper-reviews', {
     },
     loop: true,
     slidesPerView: 1,
+    autoHeight: true,
     breakpoints: {
         320: {
             spaceBetween: 20,

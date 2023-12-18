@@ -30,3 +30,49 @@ document.querySelectorAll('.header-block__close').forEach((item) => {
         }
     })
 })
+
+//перебеираем все path в svg и вешаем на каждый функцию
+function schemaSvg(){
+    Array.prototype.slice.call(document.querySelectorAll('[data-title]')).map(function (item){
+        item.addEventListener('mouseover', () => {
+            pathHover(item);
+        })
+        item.addEventListener('mouseout', () => {
+            pathLeave(item);
+        })
+    })
+}
+schemaSvg();
+
+//функция ховер и подсветка элементов
+function pathHover(item){
+    let classNameActive = item.className.baseVal;
+    Array.prototype.slice.call(item.closest('.model-schema').querySelectorAll(`.${classNameActive}`)).map((item) => {
+        item.classList.add('active')
+        let topTooltip = item.getBoundingClientRect().top - item.closest('.modal-pic-schema').getBoundingClientRect().top + (item.getBoundingClientRect().height / 2);
+        item.closest('.model-schema').querySelector('.schema-tooltip__text').innerText = item.attributes['data-title']['value'];
+        item.closest('.model-schema').querySelector('.schema-tooltip').classList.add('active');
+        item.closest('.model-schema').querySelector('.schema-tooltip').style.top = topTooltip + 'px';
+    })
+}
+
+//функция потеря фокуса и снятие подсветки
+function pathLeave(item){
+    let classNameActive = item.className.baseVal;
+    Array.prototype.slice.call(item.closest('.model-schema').querySelectorAll(`.active`)).map((item) => {
+        item.classList.remove('active')
+    })
+    if(document.querySelector('.schema-tooltip.active') != null){
+        document.querySelector('.schema-tooltip.active').classList.remove('active');
+    }
+}
+
+document.querySelectorAll('.model-slide-switcher').forEach((item) => {
+    item.addEventListener('click', function (){
+        if(item.closest('.model-slide').classList.contains('active')){
+            item.closest('.model-slide').classList.remove('active')
+        }else{
+            item.closest('.model-slide').classList.add('active')
+        }
+    })
+})
