@@ -26,6 +26,10 @@ import "../../scss/base/swiper.scss";
 // Добавление классов слайдерам
 // swiper главному блоку, swiper-wrapper оболочке, swiper-slide для слайдов
 
+function size(px, size){
+    let newSize = `${size / px + 30}`;
+    return newSize;
+}
 
 let swiperReviews = new Swiper('.swiper-reviews', {
     modules: [Navigation, A11y],
@@ -43,11 +47,24 @@ let swiperReviews = new Swiper('.swiper-reviews', {
         991: {
             spaceBetween: 48,
         },
-        1441: {
+        1024: {
+            spaceBetween: 50,
+        },
+        1150: {
+            spaceBetween: 70,
+        },
+        1400: {
+            spaceBetween: 60,
+        },
+        1600: {
+            spaceBetween: 125,
+        },
+        1740: {
             spaceBetween: 100,
         },
     },
 })
+
 
 let swiperResult = new Swiper('.swiper-result', {
     modules: [Navigation, A11y],
@@ -56,18 +73,29 @@ let swiperResult = new Swiper('.swiper-result', {
         prevEl: ".swiper-result .arrow-left",
     },
     loop: true,
-
+    slidesPerView: 3,
     breakpoints: {
         320: {
+            spaceBetween: 20,
             slidesPerView: 1,
-            spaceBetween: 30,
         },
         991: {
+            spaceBetween: 48,
             slidesPerView: 3,
-            spaceBetween: 20,
         },
-        1441: {
-            slidesPerView: 3,
+        1024: {
+            spaceBetween: 48,
+        },
+        1150: {
+            spaceBetween: 48,
+        },
+        1400: {
+            spaceBetween: 60,
+        },
+        1600: {
+            spaceBetween: 100,
+        },
+        1740: {
             spaceBetween: 60,
         },
     },

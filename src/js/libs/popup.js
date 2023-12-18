@@ -17,7 +17,7 @@ class Popup {
 			logging: true,
 			init: true,
 			// Для кнопок 
-			attributeOpenButton: 'data-popup', // Атрибут для кнопки, которая вызывает попап
+			attributeOpenButton: 'data-popup-modal', // Атрибут для кнопки, которая вызывает попап
 			attributeCloseButton: 'data-close', // Атрибут для кнопки, которая закрывает попап
 			// Для сторонних объектов
 			fixElementSelector: '[data-lp]', // Атрибут для элементов с левым паддингом (которые fixed)

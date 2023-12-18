@@ -13,7 +13,7 @@ document.querySelector('.header-contact-mobile').addEventListener('click', funct
 
 function buttonContact(){
     if(window.innerWidth < 991){
-        document.querySelector('.button-header').removeAttribute('data-popup');
+        document.querySelector('.button-header').removeAttribute('data-popup-modal');
         document.querySelector('.button-header').addEventListener('click', function (){
             document.body.classList.add('contact-mobile-active');
         })
@@ -49,7 +49,7 @@ function pathHover(item){
     let classNameActive = item.className.baseVal;
     Array.prototype.slice.call(item.closest('.model-schema').querySelectorAll(`.${classNameActive}`)).map((item) => {
         item.classList.add('active')
-        let topTooltip = item.getBoundingClientRect().top - item.closest('.modal-pic-schema').getBoundingClientRect().top + (item.getBoundingClientRect().height / 2);
+        let topTooltip = item.getBoundingClientRect().top - item.closest('.modal-pic-schema').getBoundingClientRect().top + (item.getBoundingClientRect().height / 2) - 20;
         item.closest('.model-schema').querySelector('.schema-tooltip__text').innerText = item.attributes['data-title']['value'];
         item.closest('.model-schema').querySelector('.schema-tooltip').classList.add('active');
         item.closest('.model-schema').querySelector('.schema-tooltip').style.top = topTooltip + 'px';
@@ -76,3 +76,23 @@ document.querySelectorAll('.model-slide-switcher').forEach((item) => {
         }
     })
 })
+
+const observer = new IntersectionObserver(
+    (entries) => {
+        entries.forEach((entry) => {
+            // если целевой элемент находится в зоне видимости
+            if (entry.isIntersecting) {
+                // записываем его идентификатор в локальное хранилище
+               console.log(entry.target.classList.add('active'))
+            }
+        });
+    },
+    {
+        // процент пересечения целевого элемента с областью просмотра
+        // 10%
+        threshold: 0.4,
+    }
+);
+observer.observe(document.querySelector('.art-flex'));
+
+document.querySelectorAll('.concept-item').forEach((item) => observer.observe(item))
