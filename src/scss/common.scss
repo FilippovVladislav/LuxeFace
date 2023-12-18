@@ -1877,6 +1877,19 @@
       fill-opacity: .8;
     }
   }
+  &:hover{
+    &:before{
+      background: $red;
+    }
+    .modal-pic-schema{
+      opacity: 1;
+    }
+  }
+}
+
+.modal-pic-schema{
+  opacity: 0;
+  transition: all .25s linear;
 }
 
 .model-pic-face{
@@ -1954,6 +1967,7 @@
   bottom: 0;
   content: '';
   z-index: -1;
+  transition: all .25s linear;
 }
 
 .model-block{
@@ -1996,6 +2010,7 @@
     top: rem(196);
     height: rem(579);
     z-index: -1;
+    transition: all .25s linear;
   }
 }
 

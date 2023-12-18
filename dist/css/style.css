@@ -2642,6 +2642,17 @@ body.popup-show::after {
 .model-schema path.active {
   fill-opacity: 0.8;
 }
+.model-schema:hover:before {
+  background: #E5252D;
+}
+.model-schema:hover .modal-pic-schema {
+  opacity: 1;
+}
+
+.modal-pic-schema {
+  opacity: 0;
+  transition: all 0.25s linear;
+}
 
 .model-pic-face {
   position: relative;
@@ -2717,6 +2728,7 @@ body.popup-show::after {
   bottom: 0;
   content: "";
   z-index: -1;
+  transition: all 0.25s linear;
 }
 
 @media (max-width: 61.99875em) {
@@ -2759,6 +2771,7 @@ body.popup-show::after {
   top: 12.25rem;
   height: 36.1875rem;
   z-index: -1;
+  transition: all 0.25s linear;
 }
 
 .model-pic-body {
