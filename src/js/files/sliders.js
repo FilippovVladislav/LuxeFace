@@ -144,33 +144,36 @@ let swiperKinds = new Swiper('.kinds-slider', {
             swiperItemPrev.map(item => item.classList.add('prev'));
             let swiperItemNext = swiper.slides.filter((itemSwiper, index) => index >= swiper.realIndex)
             swiperItemNext.map(item => item.classList.add('next'));
-            document.querySelectorAll('.swiper-slide.next').forEach((item) => {
-                item.style.transform = `translateX(${swiper.translate}px)`
-            })
             if (swiper.slides[swiper.realIndex].classList.contains('prev')) {
                 swiper.slides[swiper.realIndex].classList.remove('next')
                 swiper.slides[swiper.realIndex].classList.remove('prev')
             }
+            document.querySelectorAll('.kinds-content__item').forEach((item) => {
+                item.classList.remove('active')
+            })
+            document.querySelector(`[data-element="item-${swiper.realIndex + 1}"]`).classList.add('active')
         }
     },
     speed: 1000,
-    allowTouchMove: false,
+
     breakpoints: {
         320: {
             slidesPerView: 1,
-            spaceBetween: 20,
+            spaceBetween: 30,
         },
         600: {
             slidesPerView: 2,
-            spaceBetween: 20,
+            spaceBetween: 30,
         },
         991: {
             slidesPerView: 'auto',
             spaceBetween: 0,
+            allowTouchMove: false,
         },
         1440: {
             slidesPerView: 'auto',
             spaceBetween: 0,
+            allowTouchMove: false,
         },
     },
 })

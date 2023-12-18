@@ -11,6 +11,12 @@ document.querySelector('.header-contact-mobile').addEventListener('click', funct
     document.body.classList.add('contact-mobile-active');
 })
 
+document.querySelector('.button-success').addEventListener('click', function (e){
+    e.preventDefault();
+    document.body.classList.remove('contact-mobile-active');
+    document.body.classList.add('modal-success-active');
+})
+
 function buttonContact(){
     if(window.innerWidth < 991){
         document.querySelector('.button-header').removeAttribute('data-popup-modal');
@@ -28,7 +34,15 @@ document.querySelectorAll('.header-block__close').forEach((item) => {
         if(document.body.classList.contains('menu-mobile-active')){
             document.querySelector('.menu-mobile-active').classList.remove('menu-mobile-active');
         }
+        if(document.body.classList.contains('modal-success-active')){
+            document.querySelector('.modal-success-active').classList.remove('modal-success-active');
+        }
     })
+})
+
+document.querySelector('.header-modal-success-close').addEventListener('click', function (e){
+    e.preventDefault();
+    document.querySelector('.modal-success-active').classList.remove('modal-success-active');
 })
 
 //перебеираем все path в svg и вешаем на каждый функцию

@@ -63,7 +63,7 @@
                 <fieldset class="form-item">
                     <textarea class="form-input" placeholder="Как начать обучение технологии luxeface & luxebody?"></textarea>
                 </fieldset>
-                <button type="submit" class="button button-model">отправить заявку</button>
+                <button type="submit" class="button button-model" data-popup-modal="#modal-callback-success">отправить заявку</button>
                 <div class="agreed-message">
                     Нажимая отпраить заявку я даю согласие на <a
                         href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
@@ -73,16 +73,33 @@
         </div>
     </div>
 </div>
+<div id="modal-callback-success" aria-hidden="true" class="popup">
+    <div class="popup__wrapper">
+        <div class="popup__content">
+            <div class="modal-success">
+                <div class="modal-success__icon">
+                    <img src="img/success.svg" alt="">
+                </div>
+                <div class="modal-success__title">Спасибо заявка принята</div>
+                <div class="modal-success__description">В ближайшее время с вами свяжутся</div>
+                <button data-close type="button" class="button button-white">окей</button>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="header-modal-contact">
 	<div class="header-block__close icon" style="--icon: url('../img/icon/icon-close.svg');"></div>
-	<a href="tel:89688676531" class="header-contact-tel-m"><span class="red">8 (968)</span> 867-65-31</a>
-	<a href="https://wa.me/84953230567" class="header-contact-wh-m">
-		<span class="icon" style="--icon: url('../img/icon/icon-whats.svg');"></span>
-		Написать в whats App
-	</a>
-	<a href="mailto:manager@a-swiss.org" class="header-mail">
-		manager@a-swiss.org
-	</a>
+    <div class="header-modal-contact-block">
+        <a href="tel:89688676531" class="header-contact-tel-m"><span class="red">8 (968)</span> 867-65-31</a>
+        <a href="https://wa.me/84953230567" class="header-contact-wh-m">
+            <span class="icon" style="--icon: url('../img/icon/icon-whats.svg');"></span>
+            Написать в whats App
+        </a>
+        <a href="mailto:manager@a-swiss.org" class="header-mail">
+            manager@a-swiss.org
+        </a>
+    </div>
+
     <div class="form-header-block">
         <div class="popup-title">
             <b>Связаться</b> <br>
@@ -112,12 +129,23 @@
             <fieldset class="form-item">
                 <textarea class="form-input" placeholder="Как начать обучение технологии luxeface & luxebody?"></textarea>
             </fieldset>
-            <button type="submit" class="button">отправить заявку</button>
+            <button type="submit" class="button button-success">отправить заявку</button>
             <div class="agreed-message">
                 Нажимая отпраить заявку я даю согласие на <a
                     href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
                 персональных данных</a>
             </div>
         </form>
+    </div>
+</div>
+<div class="header-modal-success">
+    <div class="header-block__close icon" style="--icon: url('../img/icon/icon-close.svg');"></div>
+    <div class="modal-success">
+        <div class="modal-success__icon">
+            <img src="img/success.svg" alt="">
+        </div>
+        <div class="modal-success__title">Спасибо заявка принята</div>
+        <div class="modal-success__description">В ближайшее время с вами свяжутся</div>
+        <button type="button" class="button button-white header-modal-success-close">окей</button>
     </div>
 </div>

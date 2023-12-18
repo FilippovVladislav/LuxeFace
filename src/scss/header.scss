@@ -273,6 +273,16 @@
   }
 }
 
+.header-modal-contact-block{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 40%;
+  text-align: center;
+  justify-content: center;
+}
+
 .menu-mobile-active{
   overflow: hidden;
   .header-block{
@@ -287,7 +297,13 @@
   }
 }
 
-.header-modal-contact{
+.modal-success-active{
+  .header-modal-success{
+    left: 0;
+  }
+}
+
+.header-modal-contact, .header-modal-success{
   position: fixed;
   left: -100%;
   top: 0;
