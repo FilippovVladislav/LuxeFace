@@ -245,6 +245,7 @@
   align-items: center;
   justify-content: center;
   @media(max-width: $tablet) {
+    display: block;
     img {
       max-width: 780px;
     }

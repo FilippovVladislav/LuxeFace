@@ -854,6 +854,9 @@ body.popup-show::after {
   justify-content: center;
 }
 @media (max-width: 61.99875em) {
+  .location-map {
+    display: block;
+  }
   .location-map img {
     max-width: 780px;
   }
