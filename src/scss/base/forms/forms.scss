@@ -4,6 +4,17 @@
 //</FORM>
 .form-item{
 	width: 100%;
+	&.error{
+		input{
+			border-bottom: 1px solid red
+		}
+	}
+}
+
+.error-text{
+	font-size: 12px;
+	color: red;
+	margin-top: 4px;
 }
 
 .agreed-message{

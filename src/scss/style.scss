@@ -111,7 +111,7 @@ body {
 // Для подключения/отключения конкретных стилей смотри base.scss
 @import "variables";
 @import "base";
-
+@import "@fancyapps/ui/dist/fancybox/fancybox.css";
 
 // Подключение стилей общих элементов проекта
 @import "common";

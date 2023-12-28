@@ -110,3 +110,7 @@ const observer = new IntersectionObserver(
 observer.observe(document.querySelector('.art-flex'));
 
 document.querySelectorAll('.concept-item').forEach((item) => observer.observe(item))
+import {Fancybox} from '@fancyapps/ui'
+Fancybox.bind("[data-fancybox]", {
+    // Your custom options
+});
