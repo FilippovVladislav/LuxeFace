@@ -107,7 +107,7 @@ let swiperNews = new Swiper('.swiper-news', {
         nextEl: ".news-head .arrow-right",
         prevEl: ".news-head .arrow-left",
     },
-    loop: true,
+    loop: false,
 
     breakpoints: {
         320: {

@@ -4621,7 +4621,7 @@
           nextEl: ".news-head .arrow-right",
           prevEl: ".news-head .arrow-left",
         },
-        loop: !0,
+        loop: !1,
         breakpoints: {
           320: { slidesPerView: 1, spaceBetween: 20 },
           600: { slidesPerView: 2, spaceBetween: 20 },

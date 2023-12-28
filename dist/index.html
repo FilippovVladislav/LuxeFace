@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20231228133228">
+	<link rel="stylesheet" href="css/style.min.css?_v=20231228161838">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -838,9 +838,9 @@
 										лет.
 									</span>
 								</p>
-								<button class="button button-white">
+								<a href="#" data-popup-modal="#modal-get-production" class="button button-white">
 									Как получить продукцию?
-								</button>
+								</a>
 							</div>
 						</div>
 						<div class="art-pic">
@@ -937,7 +937,7 @@
 											Luxebody
 										</div>
 										<div class="news-item__time">10:00-14:00</div>
-										<a href="#" class="button">Записаться на курс</a>
+										<a href="#" data-popup-modal="#modal-send-application" class="button">Записаться на курс</a>
 									</div>
 								</div>
 							</div>
@@ -1390,7 +1390,9 @@
 					<fieldset class="form-item">
 						<textarea class="form-input" placeholder="Как начать обучение технологии luxeface & luxebody?"></textarea>
 					</fieldset>
-					<button type="submit" class="button button-model" data-popup-modal="#modal-callback-success">отправить заявку</button>
+					<button type="submit" class="button button-model" data-popup-modal="#modal-callback-success">отправить
+						заявку
+					</button>
 					<div class="agreed-message">
 						Нажимая отпраить заявку я даю согласие на <a href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
 							персональных данных</a>
@@ -1409,6 +1411,66 @@
 					<div class="modal-success__title">Спасибо заявка принята</div>
 					<div class="modal-success__description">В ближайшее время с вами свяжутся</div>
 					<button data-close type="button" class="button button-white">окей</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="modal-get-production" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close icon" style="--icon: url('../img/icon/icon-close.svg');"></button>
+
+				<div class="popup-title">
+					Чтобы приобрести нити <br> <b>LuxeFace & Luxebody</b>
+				</div>
+				<p>
+					Свяжитесь с менеджером проекта по телефону:
+				</p>
+				<a href="tel:79688676531" class="popup-tel">
+					<span class="red">+7(968) </span> 867-65-31
+				</a>
+			</div>
+		</div>
+	</div>
+	<div id="modal-send-application" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close icon" style="--icon: url('../img/icon/icon-close.svg');"></button>
+				<div class="popup-model">
+					<div class="popup-title">
+						<b>Отправить</b> <br>
+						заявку на:
+					</div>
+					<div class="popup-date">
+						<time datetime="2023-11-14" class="news-item__date">
+							<span class="news-item__date-day">14</span>
+							<span class="news-item__month">ноября</span>
+						</time>
+						<div class="popup-date__content">
+							<div class="popup-date__title">Курс обучения</div>
+							<div class="popup-date__description">В клинике Expert Clinics в Москве состоится практический
+								мастер-класс ...
+							</div>
+						</div>
+					</div>
+					<form action="#">
+						<fieldset class="form-item">
+							<input type="text" placeholder="ФИО" class="form-input">
+						</fieldset>
+						<div class="form-line-flex">
+							<fieldset class="form-item">
+								<input type="text" placeholder="e-mail" class="form-input">
+							</fieldset>
+							<fieldset class="form-item">
+								<input type="tel" placeholder="телефон" class="form-input">
+							</fieldset>
+						</div>
+						<button type="submit" class="button button-model mt-20">отправить</button>
+						<div class="agreed-message">
+							Нажимая отпраить заявку я даю согласие на <a href="https://luxefaceluxebody.ru/upload/politic_ru.pdf" target="_blank">обработку
+								<br> персональных данных</a>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -1474,7 +1536,7 @@
 			<button type="button" class="button button-white header-modal-success-close">окей</button>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20231228133228"></script>
+	<script src="js/app.min.js?_v=20231228161838"></script>
 </body>
 
 </html>

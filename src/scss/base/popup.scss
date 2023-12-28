@@ -42,6 +42,11 @@ body.popup-show::after {
 				color: $red;
 			}
 		}
+		@media(max-width: $tablet) {
+			br{
+				display: none;
+			}
+		}
 	}
 	.button{
 		min-width: rem(360);
@@ -81,7 +86,7 @@ body.popup-show::after {
 		visibility: visible;
 	}
 	@media(max-width: 1400px) {
-		padding: rem(80);
+		padding: 40px 20px;
 	}
 }
 
@@ -100,6 +105,10 @@ body.popup-show::after {
 			background: $red;
 		}
 	}
+	@media(max-width: $tablet) {
+		top: 20px;
+		right: 20px;
+	}
 }
 
 #modal-model{
@@ -116,10 +125,6 @@ body.popup-show::after {
 			height: rem(780);
 		}
 	}
-}
-
-.popup-model{
-	max-width: rem(510);
 }
 
 .popup-title{
@@ -203,4 +208,92 @@ body.popup-show::after {
 			line-height: 14px;
 		}
 	}
+}
+
+
+#modal-get-production{
+	.popup-title{
+		font-size: rem(30);
+		line-height: 1.3;
+		@media(max-width: $tablet) {
+			font-size: 18px;
+		}
+	}
+	@media(max-width: $tablet) {
+		p{
+			text-align: center;
+			line-height: 1.2;
+		}
+	}
+}
+
+.popup-tel{
+	font-size: rem(30);
+	font-weight: 700;
+	margin-top: 10px;
+	@media(max-width: $tablet) {
+		font-size: 18px;
+		display: flex;
+		justify-content: center;
+		margin: 10px auto 0;
+	}
+}
+
+.popup-date{
+	display: flex;
+	margin-bottom: rem(30);
+	.news-item__date{
+		position: relative;
+		color: white;
+		background: $red;
+		left: 0;
+		flex-shrink: 0;
+		width: rem(106);
+		height: rem(124);
+	}
+	.news-item__date-day{
+		font-size: rem(40);
+		line-height: 1;
+	}
+	.news-item__month{
+		font-size: rem(10);
+	}
+}
+
+.popup-date__content{
+	background: #FAF7F5;
+	padding: rem(30);
+	@media(max-width: $tablet) {
+		padding: 20px;
+	}
+}
+
+.popup-date__title{
+	font-size: rem(14);
+	color: $red;
+	font-weight: 600;
+	margin-bottom: rem(4);
+	line-height: 1.3;
+	text-transform: uppercase;
+}
+
+.popup-date__description{
+	font-weight: 600;
+	font-size: rem(16);
+	line-height: 1.2;
+	@media(max-width: $tablet) {
+		font-size: 10px;
+	}
+}
+
+.form-line-flex{
+	display: flex;
+	justify-content: space-between;
+	.form-item{
+		width: calc(50% - 10px);
+	}
+}
+
+.mt-20{
+	margin-top: rem(20);
 }
