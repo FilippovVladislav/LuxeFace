@@ -107,7 +107,11 @@ const observer = new IntersectionObserver(
         threshold: 0.4,
     }
 );
-observer.observe(document.querySelector('.art-flex'));
+
+if(document.querySelector('.art-flex')){
+    observer.observe(document.querySelector('.art-flex'));
+}
+
 
 document.querySelectorAll('.concept-item').forEach((item) => observer.observe(item))
 import {Fancybox} from '@fancyapps/ui'

@@ -12489,7 +12489,8 @@
       },
       { threshold: 0.4 }
     );
-    zi.observe(document.querySelector(".art-flex")),
+    document.querySelector(".art-flex") &&
+      zi.observe(document.querySelector(".art-flex")),
       document.querySelectorAll(".concept-item").forEach((e) => zi.observe(e)),
       Ii.bind("[data-fancybox]", {}),
       (window.FLS = !0),
