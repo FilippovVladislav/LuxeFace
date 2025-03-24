@@ -7,7 +7,7 @@
 // Подключаем слайдер Swiper из node_modules
 // При необходимости подключаем дополнительные модули слайдера, указывая их в {} через запятую
 // Пример: { Navigation, Autoplay }
-import Swiper, {Navigation, A11y, Pagination} from "swiper";
+import Swiper, {Navigation, A11y, Pagination, EffectFade} from "swiper";
 /*
 Основниые модули слайдера:
 Navigation, Pagination, Autoplay, 
@@ -64,7 +64,6 @@ let swiperReviews = new Swiper('.swiper-reviews', {
         },
     },
 })
-
 
 let swiperResult = new Swiper('.swiper-result', {
     modules: [Navigation, A11y],
@@ -178,6 +177,19 @@ let swiperKinds = new Swiper('.kinds-slider', {
     },
 })
 
+const swiperSchema = new Swiper('.swiper-schema-position', {
+    modules: [Navigation, A11y, Pagination],
+    pagination: {
+        el: '.swiper-pagination'
+    },
+    navigation: {
+        nextEl: ".arrow-right",
+        prevEl: ".arrow-left",
+    },
+    slidesPerView: 1,
+    spaceBetween: 10,
+})
+
 let swiperAdvantages = new Swiper('.advantages-items', {
     modules: [Pagination],
     pagination: {
@@ -200,3 +212,17 @@ let swiperAdvantages = new Swiper('.advantages-items', {
         },
     },
 })
+
+if(document.querySelector('.advantages-slider')){
+    if(window.innerWidth < 991){
+        const swiperAdvantages = new Swiper('.advantages-slider', {
+            modules: [Pagination],
+            autoHeight: true,
+            slidesPerView: 2,
+            spaceBetween: 10,
+            pagination: {
+                el: '.swiper-pagination'
+            }
+        })
+    }
+}

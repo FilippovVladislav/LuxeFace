@@ -297,3 +297,21 @@ body.popup-show::after {
 .mt-20{
 	margin-top: rem(20);
 }
+
+#modal-schema{
+	.popup__content{
+		padding: 25px 20px 20px;
+		background: rgba(247, 247, 247, 1);
+	}
+	.popup__close{
+		background: white;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 44px;
+		height: 44px;
+		top: 20px;
+		right: 20px;
+		border-radius: 50%;
+	}
+}

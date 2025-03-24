@@ -1,56 +1,63 @@
 @font-face {
 	font-family: Montserrat;
-	font-display: fallback;
+	font-display: swap;
 	src: url("../fonts/Montserrat-Bold.woff2") format("woff2"), url("../fonts/Montserrat-Bold.woff") format("woff");
 	font-weight: 700;
 	font-style: normal;
 }
 @font-face {
 	font-family: Montserrat;
-	font-display: fallback;
+	font-display: swap;
 	src: url("../fonts/Montserrat-Medium.woff2") format("woff2"), url("../fonts/Montserrat-Medium.woff") format("woff");
 	font-weight: 500;
 	font-style: normal;
 }
 @font-face {
 	font-family: Montserrat;
-	font-display: fallback;
+	font-display: swap;
 	src: url("../fonts/Montserrat-SemiBold.woff2") format("woff2"), url("../fonts/Montserrat-SemiBold.woff") format("woff");
 	font-weight: 600;
 	font-style: normal;
 }
 @font-face {
-	font-family: RFDewiExtended;
-	font-display: fallback;
-	src: url("../fonts/RFDewiExtended-Bold.woff2") format("woff2"), url("../fonts/RFDewiExtended-Bold.woff") format("woff");
-	font-weight: 700;
+	font-family: RFDewiExpanded;
+	font-display: swap;
+	src: url("../fonts/RFDewiExpanded-Black.woff2") format("woff2"), url("../fonts/RFDewiExpanded-Black.woff") format("woff");
+	font-weight: 900;
 	font-style: normal;
 }
 @font-face {
 	font-family: Montserrat;
-	font-display: fallback;
+	font-display: swap;
 	src: url("../fonts/Montserrat-Regular.woff2") format("woff2"), url("../fonts/Montserrat-Regular.woff") format("woff");
 	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
 	font-family: RFDewiExtended;
-	font-display: fallback;
-	src: url("../fonts/RFDewiExtended-Semibold.woff2") format("woff2"), url("../fonts/RFDewiExtended-Semibold.woff") format("woff");
-	font-weight: 600;
+	font-display: swap;
+	src: url("../fonts/RFDewiExtended-Regular.woff2") format("woff2"), url("../fonts/RFDewiExtended-Regular.woff") format("woff");
+	font-weight: 400;
 	font-style: normal;
 }
 @font-face {
 	font-family: RFDewiExtended;
-	font-display: fallback;
+	font-display: swap;
 	src: url("../fonts/RFDewiExtended-Light.woff2") format("woff2"), url("../fonts/RFDewiExtended-Light.woff") format("woff");
 	font-weight: 300;
 	font-style: normal;
 }
 @font-face {
 	font-family: RFDewiExtended;
-	font-display: fallback;
-	src: url("../fonts/RFDewiExtended-Regular.woff2") format("woff2"), url("../fonts/RFDewiExtended-Regular.woff") format("woff");
-	font-weight: 400;
+	font-display: swap;
+	src: url("../fonts/RFDewiExtended-Semibold.woff2") format("woff2"), url("../fonts/RFDewiExtended-Semibold.woff") format("woff");
+	font-weight: 600;
+	font-style: normal;
+}
+@font-face {
+	font-family: RFDewiExtended;
+	font-display: swap;
+	src: url("../fonts/RFDewiExtended-Bold.woff2") format("woff2"), url("../fonts/RFDewiExtended-Bold.woff") format("woff");
+	font-weight: 700;
 	font-style: normal;
 }
