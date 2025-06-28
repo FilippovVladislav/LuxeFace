@@ -76,6 +76,7 @@
 	},
 	"dependencies": {
 		"@fancyapps/ui": "^5.0.32",
+		"country-phone-mask": "^1.3.33",
 		"simplebar": "^6.2.0"
 	}
 }
