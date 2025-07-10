@@ -16,7 +16,7 @@
     &.error {
       & + label {
         .check-main {
-          border: 1px solid red;
+          border: 1px solid red !important;
         }
       }
     }

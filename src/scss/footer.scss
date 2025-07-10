@@ -388,12 +388,20 @@ footer{
 }
 
 .form-line-bottom{
-  margin-top: rem(144);
+  margin-top: rem(84);
+  flex-direction: column;
+  align-items: flex-start;
   @media(max-width: 1400px) {
     margin-top: rem(80);
   }
   @media(max-width: $mobile) {
     margin-top: 0;
+  }
+  .button{
+    flex-basis: auto;
+  }
+  .check-element{
+    margin-top: 20px;
   }
 }
 

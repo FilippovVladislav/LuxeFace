@@ -6267,7 +6267,9 @@ footer {
 }
 
 .form-line-bottom {
-  margin-top: 9rem;
+  margin-top: 5.25rem;
+  flex-direction: column;
+  align-items: flex-start;
 }
 @media (max-width: 1400px) {
   .form-line-bottom {
@@ -6278,6 +6280,12 @@ footer {
   .form-line-bottom {
     margin-top: 0;
   }
+}
+.form-line-bottom .button {
+  flex-basis: auto;
+}
+.form-line-bottom .check-element {
+  margin-top: 20px;
 }
 
 .footer-bottom {
@@ -6331,7 +6339,7 @@ footer {
   background: #E5252D;
 }
 .check-element input.error + label .check-main {
-  border: 1px solid red;
+  border: 1px solid red !important;
 }
 .check-element label {
   display: flex;
