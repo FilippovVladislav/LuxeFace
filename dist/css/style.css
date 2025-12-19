@@ -5343,6 +5343,10 @@ body.popup-show::after {
   margin: 0 auto;
 }
 
+.accordion_full {
+  max-width: 100%;
+}
+
 .accordion-item {
   padding: 1.875rem 0;
   border-bottom: 1px solid rgba(51, 51, 51, 0.2);
@@ -5420,6 +5424,10 @@ body.popup-show::after {
   .section-how {
     padding-top: 80px;
   }
+}
+
+.content-section {
+  margin-top: 50px;
 }
 
 .header-flex {

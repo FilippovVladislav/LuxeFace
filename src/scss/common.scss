@@ -4142,6 +4142,10 @@
   margin: 0 auto;
 }
 
+.accordion_full{
+  max-width: 100%;
+}
+
 .accordion-item {
   padding: rem(30) 0;
   border-bottom: 1px solid rgba(51, 51, 51, 0.2);
@@ -4231,4 +4235,8 @@
   @media(max-width: 991px) {
     padding-top: 80px;
   }
+}
+
+.content-section{
+  margin-top: 50px;
 }
