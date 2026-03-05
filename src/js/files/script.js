@@ -213,3 +213,25 @@ if(document.querySelector('.zones-pic-mobile-schema')){
     });
 
 }
+
+function formatClick(){
+    const triggers = document.querySelectorAll('.format-block-clicker-trigger');
+    const columns = document.querySelectorAll('.format-block__column');
+
+    triggers.forEach(trigger => {
+        trigger.addEventListener('click', function () {
+            const id = this.dataset.id;
+
+            triggers.forEach(btn => btn.classList.remove('active'));
+            columns.forEach(col => col.classList.remove('active'));
+
+            this.classList.add('active');
+
+            const activeColumn = document.querySelector('.format-block__column[data-content="' + id + '"]');
+            if (activeColumn) {
+                activeColumn.classList.add('active');
+            }
+        });
+    });
+}
+formatClick();

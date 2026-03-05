@@ -310,11 +310,23 @@ h6 {
   padding-bottom: 0;
 }
 
+.pb-40-mobile{
+  @media(max-width: 991px) {
+    padding-bottom: 40px;
+  }
+}
+
 .no-br-mobile {
   @media(max-width: 991px) {
     br {
       display: none;
     }
+  }
+}
+
+.pt-0-mobile{
+  @media(max-width: 991px) {
+    padding-top: 0;
   }
 }
 

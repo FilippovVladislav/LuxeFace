@@ -12561,7 +12561,23 @@
           });
       });
     }
-    (window.FLS = !0),
+    !(function () {
+      const e = document.querySelectorAll(".format-block-clicker-trigger"),
+        t = document.querySelectorAll(".format-block__column");
+      e.forEach((i) => {
+        i.addEventListener("click", function () {
+          const i = this.dataset.id;
+          e.forEach((e) => e.classList.remove("active")),
+            t.forEach((e) => e.classList.remove("active")),
+            this.classList.add("active");
+          const n = document.querySelector(
+            '.format-block__column[data-content="' + i + '"]'
+          );
+          n && n.classList.add("active");
+        });
+      });
+    })(),
+      (window.FLS = !0),
       (function (e) {
         let t = new Image();
         (t.onload = t.onerror =
