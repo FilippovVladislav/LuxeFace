@@ -12378,17 +12378,17 @@
       }),
       document
         .querySelector(".header-burger")
-        .addEventListener("click", function () {
+        ?.addEventListener("click", () => {
           document.body.classList.add("menu-mobile-active");
         }),
       document
         .querySelector(".header-contact-mobile")
-        .addEventListener("click", function () {
+        ?.addEventListener("click", () => {
           document.body.classList.add("contact-mobile-active");
         }),
       document
         .querySelector(".button-success")
-        .addEventListener("click", function (e) {
+        ?.addEventListener("click", (e) => {
           e.preventDefault(),
             document.body.classList.remove("contact-mobile-active"),
             document.body.classList.add("modal-success-active");

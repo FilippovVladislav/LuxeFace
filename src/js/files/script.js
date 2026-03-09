@@ -2,20 +2,20 @@
 import { isMobile } from "./functions.js";
 // Подключение списка активных модулей
 import { flsModules } from "./modules.js";
-document.querySelector('.header-burger').addEventListener('click', function (){
+document.querySelector('.header-burger')?.addEventListener('click', () => {
     document.body.classList.add('menu-mobile-active');
+});
 
-})
-
-document.querySelector('.header-contact-mobile').addEventListener('click', function (){
+document.querySelector('.header-contact-mobile')?.addEventListener('click', () => {
     document.body.classList.add('contact-mobile-active');
-})
+});
 
-document.querySelector('.button-success').addEventListener('click', function (e){
+document.querySelector('.button-success')?.addEventListener('click', (e) => {
     e.preventDefault();
     document.body.classList.remove('contact-mobile-active');
     document.body.classList.add('modal-success-active');
-})
+});
+
 
 function buttonContact(){
     if(window.innerWidth < 991){
