@@ -831,6 +831,16 @@ body.popup-show::after {
 #modal-model .popup__close {
   top: 3.75rem;
   right: 3.75rem;
+  background: transparent;
+}
+@media (max-width: 991px) {
+  #modal-model .popup__close {
+    top: 20px;
+    right: 20px;
+  }
+}
+#modal-model .check-main {
+  border: 1px solid black;
 }
 #modal-model .popup__content {
   max-width: 100rem;
@@ -842,6 +852,21 @@ body.popup-show::after {
   #modal-model .popup__content {
     height: 48.75rem;
   }
+}
+@media (max-width: 991px) {
+  #modal-model .popup__content:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.8);
+  }
+}
+#modal-model .popup-model {
+  position: relative;
+  z-index: 1;
 }
 
 .popup-title {

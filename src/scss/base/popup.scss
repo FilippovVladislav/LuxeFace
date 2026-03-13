@@ -115,7 +115,15 @@ body.popup-show::after {
 	.popup__close{
 		top: rem(60);
 		right: rem(60);
+      background: transparent;
+      @media(max-width: 991px) {
+        top: 20px;
+        right: 20px;
+      }
 	}
+  .check-main{
+    border: 1px solid black;
+  }
 	.popup__content{
 		max-width: rem(1600);
 		height: rem(850);
@@ -124,7 +132,22 @@ body.popup-show::after {
 		@media(max-width: 1400px) {
 			height: rem(780);
 		}
+      @media(max-width: 991px) {
+        &:before{
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(255, 255, 255, 0.8);
+        }
+      }
 	}
+  .popup-model{
+    position: relative;
+    z-index: 1;
+  }
 }
 
 .popup-title{
