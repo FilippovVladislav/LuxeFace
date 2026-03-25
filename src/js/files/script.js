@@ -235,3 +235,50 @@ function formatClick(){
     });
 }
 formatClick();
+
+// Функция для установки cookie
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days*24*60*60*1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Функция для чтения cookie
+function getCookie(name) {
+    const nameEQ = name + "=";
+    const ca = document.cookie.split(';');
+    for(let i=0;i < ca.length;i++) {
+        let c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+
+// Функция для показа модалки "Доктор"
+function showDoctorModal() {
+    const cookieName = 'modal_doctor_shown';
+
+    if (!getCookie(cookieName)) {
+        setTimeout(() => {
+            // Открываем попап
+            window.flsModules.popup.open('#modal-doctor');
+
+            // Подписываемся на закрытие попапа, чтобы ставить куки
+            const popup = window.flsModules.popup;
+            const originalAfterClose = popup.options.on.afterClose;
+
+            popup.options.on.afterClose = function(p) {
+                if (p.previousOpen.selector === '#modal-doctor') {
+                    setCookie(cookieName, 'true', 365); // сохраняем на год
+                }
+                // Вызываем оригинальный обработчик, если был
+                if (originalAfterClose) originalAfterClose(p);
+            };
+        }, 10000); // 10 секунд
+    }
+}
+
+// Вызываем функцию при загрузке страницы
+window.addEventListener('load', showDoctorModal);

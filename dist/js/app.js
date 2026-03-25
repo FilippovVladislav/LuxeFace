@@ -148,17 +148,17 @@
             $ = function (e, t) {
               e && (e.toLoadCount = t);
             },
-            R = function (e) {
+            D = function (e) {
               for (var t, i = [], n = 0; (t = e.children[n]); n += 1)
                 "SOURCE" === t.tagName && i.push(t);
               return i;
             },
-            D = function (e, t) {
+            R = function (e, t) {
               var i = e.parentNode;
-              i && "PICTURE" === i.tagName && R(i).forEach(t);
+              i && "PICTURE" === i.tagName && D(i).forEach(t);
             },
             B = function (e, t) {
-              R(e).forEach(t);
+              D(e).forEach(t);
             },
             F = [c],
             j = [c, u],
@@ -214,7 +214,7 @@
             },
             J = {
               IMG: function (e, t) {
-                D(e, function (e) {
+                R(e, function (e) {
                   V(e, N), K(e, t);
                 }),
                   V(e, N),
@@ -368,7 +368,7 @@
               e.removeAttribute(c), e.removeAttribute(d), e.removeAttribute(h);
             },
             ce = function (e) {
-              D(e, function (e) {
+              R(e, function (e) {
                 X(e, N);
               }),
                 X(e, N);
@@ -447,7 +447,7 @@
                             "IMG" === e.tagName &&
                             (se(e),
                             (function (e) {
-                              D(e, function (e) {
+                              R(e, function (e) {
                                 le(e);
                               }),
                                 le(e);
@@ -1831,7 +1831,7 @@
         );
       },
     };
-    const R = {
+    const D = {
       updateSize: function () {
         const e = this;
         let t, i;
@@ -2323,7 +2323,7 @@
             t.slideToClickedSlide();
       },
     };
-    const D = {
+    const R = {
       getTranslate: function (e = this.isHorizontal() ? "x" : "y") {
         const {
           params: t,
@@ -3578,8 +3578,8 @@
     }
     const ne = {
         eventsEmitter: $,
-        update: R,
-        translate: D,
+        update: D,
+        translate: R,
         transition: {
           setTransition: function (e, t) {
             const i = this;
@@ -5626,13 +5626,13 @@
         ze +
         "</svg></div>",
       $e = (e) => e && null !== e && e instanceof Element && "nodeType" in e,
-      Re = (e, t) => {
+      De = (e, t) => {
         e &&
           ve(t).forEach((t) => {
             e.classList.remove(t);
           });
       },
-      De = (e, t) => {
+      Re = (e, t) => {
         e &&
           ve(t).forEach((t) => {
             e.classList.add(t);
@@ -5942,7 +5942,7 @@
         if (
           (i ||
             ((i = e.querySelector("img,picture") || e.firstElementChild),
-            i && De(i, t)),
+            i && Re(i, t)),
           i instanceof HTMLPictureElement && (i = i.querySelector("img")),
           !i)
         )
@@ -6411,8 +6411,8 @@
         for (const e of ke) this.velocity[e] = 0;
         (this.target.e = this.current.e),
           (this.target.f = this.current.f),
-          Re(this.container, "is-scaling"),
-          Re(this.container, "is-animating"),
+          De(this.container, "is-scaling"),
+          De(this.container, "is-animating"),
           (this.isTicking = !1);
         const { trackingPoints: i } = this,
           n = i[0],
@@ -6823,8 +6823,8 @@
               ? (this.current[t] = this.target[t])
               : "target" === e && (this.target[t] = this.current[t]);
         this.setTransform(),
-          Re(this.container, "is-scaling"),
-          Re(this.container, "is-animating"),
+          De(this.container, "is-scaling"),
+          De(this.container, "is-animating"),
           (this.isTicking = !1),
           (this.state = Le.Ready),
           t && (this.emit("endAnimation"), this.updateControls());
@@ -6833,8 +6833,8 @@
         this.isTicking ||
           (this.emit("startAnimation"),
           this.updateControls(),
-          De(this.container, "is-animating"),
-          this.isScaling && De(this.container, "is-scaling")),
+          Re(this.container, "is-animating"),
+          this.isScaling && Re(this.container, "is-scaling")),
           (this.isTicking = !0),
           this.rAF || (this.rAF = requestAnimationFrame(() => this.animate()));
       }
@@ -7168,10 +7168,10 @@
         let e = this.list;
         if (!e) {
           (e = document.createElement("ul")),
-            De(e, this.cn("list")),
+            Re(e, this.cn("list")),
             e.setAttribute("role", "tablist");
           const t = this.instance.container;
-          t.appendChild(e), De(t, this.cn("hasDots")), (this.list = e);
+          t.appendChild(e), Re(t, this.cn("hasDots")), (this.list = e);
         }
         return e;
       }
@@ -7201,16 +7201,16 @@
               void 0 === e ||
               e.setAttribute("aria-selected", i ? "true" : "false");
           for (const e of ["isBeforePrev", "isPrev", "isNext", "isAfterNext"])
-            Re(t, this.cn(e));
+            De(t, this.cn(e));
           c++;
         }
         if (((l = l || r.firstChild), o && l)) {
           const e = l.previousElementSibling,
             t = e && e.previousElementSibling;
-          De(e, this.cn("isPrev")), De(t, this.cn("isBeforePrev"));
+          Re(e, this.cn("isPrev")), Re(t, this.cn("isBeforePrev"));
           const i = l.nextElementSibling,
             n = i && i.nextElementSibling;
-          De(i, this.cn("isNext")), De(n, this.cn("isAfterNext"));
+          Re(i, this.cn("isNext")), Re(n, this.cn("isAfterNext"));
         }
         this.isDynamic = o;
       }
@@ -7234,7 +7234,7 @@
       cleanup() {
         this.list && (this.list.remove(), (this.list = null)),
           (this.isDynamic = !1),
-          Re(this.instance.container, this.cn("hasDots"));
+          De(this.instance.container, this.cn("hasDots"));
       }
       attach() {
         this.instance.on(["refresh", "change"], this.onRefresh);
@@ -7320,7 +7320,7 @@
           n = document.createElement("button");
         n.setAttribute("tabindex", "0"),
           n.setAttribute("title", i.localize(`{{${e.toUpperCase()}}}`)),
-          De(
+          Re(
             n,
             this.cn("button") + " " + this.cn(e === et ? "isNext" : "isPrev")
           );
@@ -7348,7 +7348,7 @@
         let { container: i, prev: n, next: s } = this;
         i || ((i = e.querySelector("." + t)), (this.isDom = !!i)),
           i ||
-            ((i = document.createElement("div")), De(i, t), e.appendChild(i)),
+            ((i = document.createElement("div")), Re(i, t), e.appendChild(i)),
           (this.container = i),
           s || (s = i.querySelector("[data-carousel-next]")),
           s || (s = this.addBtn(et)),
@@ -7721,7 +7721,7 @@
       initLayout() {
         const { container: e } = this,
           t = this.option("classes");
-        De(e, this.cn("container")),
+        Re(e, this.cn("container")),
           be(e, t.isLTR, !this.isRTL),
           be(e, t.isRTL, this.isRTL),
           be(e, t.isVertical, !this.isHorizontal),
@@ -7729,14 +7729,14 @@
         let i = this.option("viewport") || e.querySelector(`.${t.viewport}`);
         i ||
           ((i = document.createElement("div")),
-          De(i, t.viewport),
+          Re(i, t.viewport),
           i.append(...Xe(e, `.${t.slide}`)),
           e.prepend(i)),
           i.addEventListener("scroll", this.onScroll);
         let n = this.option("track") || e.querySelector(`.${t.track}`);
         n ||
           ((n = document.createElement("div")),
-          De(n, t.track),
+          Re(n, t.track),
           n.append(...Array.from(i.childNodes))),
           n.setAttribute("aria-live", "polite"),
           i.contains(n) || i.prepend(n),
@@ -7915,7 +7915,7 @@
             : ((a = document.createElement("div")),
               (a.style.visibility = "hidden"),
               (this.track || document.body).prepend(a)),
-          De(a, this.cn(rt) + " " + e.class + " " + e.customClass),
+          Re(a, this.cn(rt) + " " + e.class + " " + e.customClass),
           s)
         )
           (a.style[n] = `${s}px`),
@@ -8030,7 +8030,7 @@
         if (!t || !e) return;
         if (e.el && e.el.parentNode) return;
         const n = e.el || document.createElement("div");
-        De(n, this.cn(rt)), De(n, e.class), De(n, e.customClass);
+        Re(n, this.cn(rt)), Re(n, e.class), Re(n, e.customClass);
         const s = e.html;
         s &&
           (s instanceof HTMLElement
@@ -8060,7 +8060,7 @@
         if (!i || !i.parentNode) return;
         const n = this.cn(at);
         if (
-          (i.classList.contains(n) && (Re(i, n), this.emit("unselectSlide", e)),
+          (i.classList.contains(n) && (De(i, n), this.emit("unselectSlide", e)),
           e.isDom && !t)
         )
           return (
@@ -8098,7 +8098,7 @@
         if (a === c && Math.abs(h - l.target[this.axis]) < 1) return !1;
         this.clearTransitions();
         const u = l.isResting;
-        De(this.container, this.cn("inTransition"));
+        Re(this.container, this.cn("inTransition"));
         const p =
             (null === (s = r[a]) || void 0 === s ? void 0 : s.slides[0]) ||
             null,
@@ -8155,10 +8155,10 @@
                   : n.setAttribute(e, "true")
                 : this.pages[this.page].slides.includes(i)
                 ? (n.classList.contains(t) ||
-                    (De(n, t), this.emit("selectSlide", i)),
+                    (Re(n, t), this.emit("selectSlide", i)),
                   n.removeAttribute(e))
                 : (n.classList.contains(t) &&
-                    (Re(n, t), this.emit("unselectSlide", i)),
+                    (De(n, t), this.emit("unselectSlide", i)),
                   n.setAttribute(e, "true")));
           }
       }
@@ -8192,11 +8192,11 @@
           o ||
             ((o = !0),
             a && (a.remove(), (a = null)),
-            Re(t, s),
+            De(t, s),
             t.complete &&
-              (De(t, n),
+              (Re(t, n),
               setTimeout(() => {
-                Re(t, n);
+                De(t, n);
               }, 350)),
             this.option("adaptiveHeight") &&
               e.el &&
@@ -8204,7 +8204,7 @@
               (i.updateMetrics(), i.setViewportHeight()),
             this.emit("load", e));
         };
-        De(t, s),
+        Re(t, s),
           (t.src = t.dataset.lazySrcset || t.dataset.lazySrc || ""),
           delete t.dataset.lazySrc,
           delete t.dataset.lazySrcset,
@@ -8385,7 +8385,7 @@
         this.slideTo(this.page - 1);
       }
       clearTransitions() {
-        this.inTransition.clear(), Re(this.container, this.cn("inTransition"));
+        this.inTransition.clear(), De(this.container, this.cn("inTransition"));
         const e = ["to-prev", "to-next", "from-prev", "from-next"];
         for (const t of this.slides) {
           const i = t.el;
@@ -8977,7 +8977,7 @@
           (i.imageEl = void 0);
       }
       onChange(e, t, i, n) {
-        Re(this.instance.container, Ot);
+        De(this.instance.container, Ot);
         for (const e of t.slides) {
           const t = e.panzoom;
           t && e.index !== i && t.reset(0.35);
@@ -9062,7 +9062,7 @@
                   e.preventDefault();
                 });
                 const e = document.createElement("div");
-                De(e, "fancybox-protected"), n.appendChild(e);
+                Re(e, "fancybox-protected"), n.appendChild(e);
               }
               if (o && r) {
                 const s = t.contentRect,
@@ -9071,12 +9071,12 @@
                 !r.opacity &&
                   a > 1200 &&
                   ((c = document.createElement("img")),
-                  De(c, "fancybox-ghost"),
+                  Re(c, "fancybox-ghost"),
                   (c.src = o),
                   n.appendChild(c));
                 const d = () => {
                   c &&
-                    (De(c, "f-fadeFastOut"),
+                    (Re(c, "f-fadeFastOut"),
                     setTimeout(() => {
                       c && (c.remove(), (c = null));
                     }, 200));
@@ -9167,7 +9167,7 @@
             }
             e.sizes && r.setAttribute("sizes", e.sizes);
           }
-          De(r, "fancybox-image"),
+          Re(r, "fancybox-image"),
             (e.imageEl = r),
             o.setContent(e, r, !1),
             (e.panzoom = new Ge(
@@ -9253,7 +9253,7 @@
             },
             f = (e) => {
               ((e.scale < 0.99 || e.scale > 1.01) && !e.isDragging) ||
-                (Re(s, Ot),
+                (De(s, Ot),
                 (a.style.opacity = ""),
                 e.off("endAnimation", f),
                 e.off("touchStart", f),
@@ -9275,7 +9275,7 @@
                   : void 0,
             },
             g = this.optionFor(e, "initialSize");
-          De(s, Ot),
+          Re(s, Ot),
             n.hideLoading(e),
             "full" === g
               ? o.zoomToFull(m)
@@ -9360,7 +9360,7 @@
       zt = "youtube",
       _t = "vimeo",
       $t = "html5video",
-      Rt = (e, t = {}) => {
+      Dt = (e, t = {}) => {
         const i = new URL(e),
           n = new URLSearchParams(i.search),
           s = new URLSearchParams();
@@ -9379,7 +9379,7 @@
           a = e.match(/#t=((.*)?\d+s)/);
         return a && (o += `#t=${a[1]}`), o;
       },
-      Dt = [
+      Rt = [
         "image",
         "html",
         "ajax",
@@ -9672,7 +9672,7 @@
               return i;
             })(s, ["nocookie"]),
             r = `www.youtube${o ? "-nocookie" : ""}.com`,
-            l = Rt(t, a),
+            l = Dt(t, a),
             c = encodeURIComponent(n[2]);
           (e.videoId = c),
             (e.src = `https://${r}/embed/${c}?${l}`),
@@ -9684,7 +9684,7 @@
             /^.+vimeo.com\/(?:\/)?([\d]+)((\/|\?h=)([a-z0-9]+))?(.*)?/
           ))
         ) {
-          const s = Rt(t, this.optionFor(e, _t)),
+          const s = Dt(t, this.optionFor(e, _t)),
             o = encodeURIComponent(n[1]),
             a = n[4] || "";
           (e.videoId = o),
@@ -9695,7 +9695,7 @@
         }
         if (!i && e.triggerEl) {
           const t = e.triggerEl.dataset.type;
-          Dt.includes(t) && (i = t);
+          Rt.includes(t) && (i = t);
         }
         i ||
           ("string" == typeof t &&
@@ -9930,7 +9930,7 @@
           return null;
         const s = document.createElement("div");
         return (
-          De(s, "f-progress"),
+          Re(s, "f-progress"),
           n.prepend(s),
           (this.progressBar = s),
           s.offsetHeight,
@@ -9943,7 +9943,7 @@
         if (t.pages.length < 2) return;
         if (e.timer) return;
         const i = e.option("timeout");
-        (e.state = Ft), De(t.container, "has-autoplay");
+        (e.state = Ft), Re(t.container, "has-autoplay");
         let n = e.createProgressBar();
         n &&
           ((n.style.transitionDuration = `${i}ms`),
@@ -9987,7 +9987,7 @@
             e.onVisibilityChange,
             !1
           ),
-          Re(i, "has-autoplay"),
+          De(i, "has-autoplay"),
           t !== Nt && e.emit("stop");
       }
       pause() {
@@ -10283,7 +10283,7 @@
           a = i.page;
         if (n && s && o) {
           if (n.isDragging) {
-            Re(t, this.cn(Vt));
+            De(t, this.cn(Vt));
             let n =
               (null === (e = s.pages[a]) || void 0 === e ? void 0 : e.pos) || 0;
             n += i.getProgress(a) * (this[Ut] + this.thumbGap);
@@ -10366,16 +10366,16 @@
         let l = null == o ? void 0 : o.querySelector("." + a);
         l ||
           ((l = document.createElement("div")),
-          De(l, a),
+          Re(l, a),
           o ? o.appendChild(l) : i.after(l)),
-          De(l, `is-${s}`),
-          De(i, e.cn("hasThumbs")),
+          Re(l, `is-${s}`),
+          Re(i, e.cn("hasThumbs")),
           (e.container = l),
           e.updateProps();
         let c = l.querySelector("." + r);
         c ||
           ((c = document.createElement("div")),
-          De(c, e.cn("track")),
+          Re(c, e.cn("track")),
           l.appendChild(c)),
           (e.track = c);
         const d = Te(
@@ -10526,7 +10526,7 @@
           e.track && e.track.remove(),
           (e.track = null),
           (e.state = Gt.Init),
-          Re(e.instance.container, e.cn("hasThumbs"));
+          De(e.instance.container, e.cn("hasThumbs"));
       }
       attach() {
         const e = this,
@@ -10606,7 +10606,7 @@
           let e = `for-${o}`;
           ["video", "youtube", "vimeo", "html5video"].includes(o) &&
             (e += " for-video"),
-            De(a, e);
+            Re(a, e);
         }
       }
       onInit() {
@@ -10850,12 +10850,12 @@
         if ((o && (r = this.createContainer()), r)) {
           for (const [e, t] of Object.entries(a)) {
             const i = document.createElement("div");
-            De(i, oi + "__column is-" + e);
+            Re(i, oi + "__column is-" + e);
             for (const e of t) i.appendChild(e);
             "auto" !== n || "middle" !== e || t.length || (n = !0),
               r.appendChild(i);
           }
-          !0 === n && De(r, "is-absolute"),
+          !0 === n && Re(r, "is-absolute"),
             (this.state = ii.Ready),
             this.onRefresh();
         } else this.state = ii.Disabled;
@@ -10955,12 +10955,12 @@
         const t = this.option("parentEl") || e;
         let i = t.querySelector("." + oi);
         return (
-          i || ((i = document.createElement("div")), De(i, oi), t.prepend(i)),
+          i || ((i = document.createElement("div")), Re(i, oi), t.prepend(i)),
           i.addEventListener("click", this.onClick, {
             passive: !1,
             capture: !0,
           }),
-          e && De(e, si),
+          e && Re(e, si),
           (this.container = i),
           i
         );
@@ -10993,7 +10993,7 @@
               "title",
               this.instance.localize(`{{${e.toUpperCase()}}}`)
             ),
-            De(n, "f-button"),
+            Re(n, "f-button"),
             t.action && (n.dataset.panzoomAction = t.action),
             t.change && (n.dataset.panzoomChange = JSON.stringify(t.change)),
             n.appendChild(ge(this.instance.localize(t.icon)));
@@ -11018,7 +11018,7 @@
         const e = this.container;
         e && e.remove(), (this.container = null), (this.state = ii.Disabled);
         const t = this.instance.container;
-        t && Re(t, si);
+        t && De(t, si);
       }
       attach() {
         const e = this,
@@ -11336,15 +11336,15 @@
           (n.setAttribute("id", `fancybox-${this.id}`),
           n.setAttribute("aria-label", this.localize("{{MODAL}}")),
           n.classList.toggle(mi, this.isCompact),
-          De(n, this.option("mainClass") || ""),
-          De(n, vi),
+          Re(n, this.option("mainClass") || ""),
+          Re(n, vi),
           (this.container = n),
           (this.footer = n.querySelector(".fancybox__footer")),
           i.appendChild(n),
-          De(document.documentElement, li),
+          Re(document.documentElement, li),
           (Pi && Oi) ||
             ((Pi = document.createElement("span")),
-            De(Pi, "fancybox-focus-guard"),
+            Re(Pi, "fancybox-focus-guard"),
             Pi.setAttribute(wi, "0"),
             Pi.setAttribute(ui, "true"),
             Pi.setAttribute("aria-label", "Focus guard"),
@@ -11354,12 +11354,12 @@
               e.insertBefore(Pi, n),
             null === (t = n.parentElement) || void 0 === t || t.append(Oi)),
           n.addEventListener("mousedown", (e) => {
-            (Li = e.pageX), (ki = e.pageY), Re(n, pi);
+            (Li = e.pageX), (ki = e.pageY), De(n, pi);
           }),
           this.option("animated") &&
-            (De(n, fi),
+            (Re(n, fi),
             setTimeout(() => {
-              this.isClosing() || Re(n, fi);
+              this.isClosing() || De(n, fi);
             }, 350)),
           this.emit("initLayout"));
       }
@@ -11681,7 +11681,7 @@
         )
           return;
         if (
-          ("Tab" === e.key ? De(this.container, pi) : Re(this.container, pi),
+          ("Tab" === e.key ? Re(this.container, pi) : De(this.container, pi),
           e.ctrlKey || e.altKey || e.shiftKey)
         )
           return;
@@ -11723,7 +11723,7 @@
         if (i) {
           const t = ge(this.localize(i));
           (e.closeBtnEl = e.contentEl.appendChild(t)),
-            e.el && De(e.el, "has-close-btn");
+            e.el && Re(e.el, "has-close-btn");
         }
       }
       manageCaption(e = void 0) {
@@ -11731,7 +11731,7 @@
         const n = "fancybox__caption",
           s = this.container;
         if (!s) return;
-        Re(s, bi);
+        De(s, bi);
         const o = this.isCompact || this.option("commonCaption"),
           a = !o;
         if (
@@ -11745,7 +11745,7 @@
             e.captionEl &&
               (e.captionEl.remove(),
               (e.captionEl = void 0),
-              Re(e.el, bi),
+              De(e.el, bi),
               null === (i = e.el) ||
                 void 0 === i ||
                 i.removeAttribute("aria-labelledby"));
@@ -11766,10 +11766,10 @@
           if (((c = e.captionEl || null), r && !c)) {
             const t = n + `_${this.id}_${e.index}`;
             (c = document.createElement("div")),
-              De(c, n),
+              Re(c, n),
               c.setAttribute("id", t),
               (e.captionEl = r.appendChild(c)),
-              De(r, bi),
+              Re(r, bi),
               r.setAttribute("aria-labelledby", t);
           }
         } else
@@ -11778,9 +11778,9 @@
             c ||
               ((c = document.createElement("div")),
               (c.dataset.fancyboxCaption = ""),
-              De(c, n),
+              Re(c, n),
               (this.footer || s).prepend(c)),
-            De(s, bi),
+            Re(s, bi),
             (this.caption = c);
         c &&
           ((c.innerHTML = ""),
@@ -11866,11 +11866,11 @@
             (e.removeEventListener("animationend", n),
             delete e.dataset.animationName,
             i && i(),
-            Re(e, t));
+            De(e, t));
         };
         (e.dataset.animationName = t),
           e.addEventListener("animationend", n),
-          De(e, t);
+          Re(e, t);
       }
       stop(e) {
         e &&
@@ -11902,7 +11902,7 @@
         }
         $e(s) && e.filter && !e.error && (s = s.querySelector(e.filter)),
           s && $e(s)
-            ? (De(s, "fancybox__content"),
+            ? (Re(s, "fancybox__content"),
               e.id && s.setAttribute("id", e.id),
               ("none" !== s.style.display &&
                 "none" !== getComputedStyle(s).getPropertyValue("display")) ||
@@ -11938,7 +11938,7 @@
         this.isClosing() ||
           ((e.state = vt.Ready),
           this.emit("done", e),
-          De(e.el, "is-done"),
+          Re(e.el, "is-done"),
           this.isCurrentSlide(e) &&
             this.option("autoFocus") &&
             queueMicrotask(() => {
@@ -11947,7 +11947,7 @@
                 this.option("autoFocus") && this.focus();
             }),
           this.isOpeningSlide(e) &&
-            (Re(this.container, vi),
+            (De(this.container, vi),
             !this.isCompact && this.option("idle") && this.setIdle()));
       }
       isCurrentSlide(e) {
@@ -11970,13 +11970,13 @@
         e.state = vt.Loading;
         const t = e.el;
         t &&
-          (De(t, gi),
+          (Re(t, gi),
           this.emit("loading", e),
           e.spinnerEl ||
             setTimeout(() => {
               if (!this.isClosing() && !e.spinnerEl && e.state === vt.Loading) {
                 let i = ge(_e);
-                De(i, "fancybox-spinner"),
+                Re(i, "fancybox-spinner"),
                   (e.spinnerEl = i),
                   t.prepend(i),
                   this.animate(i, "f-fadeIn");
@@ -11989,7 +11989,7 @@
         const i = e.spinnerEl;
         this.isClosing()
           ? null == i || i.remove()
-          : (Re(t, gi),
+          : (De(t, gi),
             i &&
               this.animate(i, "f-fadeOut", () => {
                 i.remove();
@@ -12013,9 +12013,9 @@
           e.contentEl && (e.contentEl.remove(), (e.contentEl = void 0));
         const t = e.el;
         t &&
-          (Re(t, "has-error"),
-          Re(t, "has-unknown"),
-          Re(t, `has-${e.type || "unknown"}`)),
+          (De(t, "has-error"),
+          De(t, "has-unknown"),
+          De(t, `has-${e.type || "unknown"}`)),
           e.closeBtnEl && e.closeBtnEl.remove(),
           (e.closeBtnEl = void 0),
           e.captionEl && e.captionEl.remove(),
@@ -12053,7 +12053,7 @@
         const t = () => {
           this.clearIdle(),
             (this.idle = !0),
-            De(this.container, "is-idle"),
+            Re(this.container, "is-idle"),
             this.emit("setIdle");
         };
         if ((this.clearIdle(), !this.isClosing()))
@@ -12068,7 +12068,7 @@
           this.idle &&
             !this.isClosing() &&
             ((this.idle = !1),
-            Re(this.container, "is-idle"),
+            De(this.container, "is-idle"),
             this.emit("endIdle"));
       }
       resetIdle() {
@@ -12101,10 +12101,10 @@
         if (
           (r && (ct(r) ? pt(r) : r.focus()),
           s &&
-            (Re(s, vi),
-            De(s, "is-closing"),
+            (De(s, vi),
+            Re(s, "is-closing"),
             s.setAttribute(ui, "true"),
-            this.option("animated") && De(s, fi),
+            this.option("animated") && Re(s, fi),
             (s.style.pointerEvents = "none")),
           o)
         ) {
@@ -12147,7 +12147,7 @@
           ? i.focus()
           : (Pi && (Pi.remove(), (Pi = null)),
             Oi && (Oi.remove(), (Oi = null)),
-            Re(document.documentElement, li),
+            De(document.documentElement, li),
             (() => {
               if (!dt) return;
               const e = document,
@@ -12577,6 +12577,34 @@
         });
       });
     })(),
+      window.addEventListener("load", function () {
+        const e = "modal_doctor_shown";
+        (function (e) {
+          const t = e + "=",
+            i = document.cookie.split(";");
+          for (let e = 0; e < i.length; e++) {
+            let n = i[e];
+            for (; " " == n.charAt(0); ) n = n.substring(1, n.length);
+            if (0 == n.indexOf(t)) return n.substring(t.length, n.length);
+          }
+          return null;
+        })(e) ||
+          setTimeout(() => {
+            window.flsModules.popup.open("#modal-doctor");
+            const t = window.flsModules.popup,
+              i = t.options.on.afterClose;
+            t.options.on.afterClose = function (t) {
+              "#modal-doctor" === t.previousOpen.selector &&
+                (function (e, t, i) {
+                  const n = new Date();
+                  n.setTime(n.getTime() + 24 * i * 60 * 60 * 1e3);
+                  const s = "expires=" + n.toUTCString();
+                  document.cookie = e + "=" + t + ";" + s + ";path=/";
+                })(e, "true", 365),
+                i && i(t);
+            };
+          }, 1e4);
+      }),
       (window.FLS = !0),
       (function (e) {
         let t = new Image();
