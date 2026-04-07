@@ -334,6 +334,10 @@ h6 {
   color: #E5252D;
 }
 
+.color-black-50{
+  color: rgba(47, 49, 51, 0.50);
+}
+
 .color-black-75{
   color: rgba(47, 49, 51, 0.75);
 }
@@ -409,4 +413,8 @@ h6 {
     background: #FAF7F5;
     margin: 40px 0;
   }
+}
+
+.letter-2{
+  letter-spacing: 2px;
 }
