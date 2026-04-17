@@ -643,7 +643,30 @@ body::-webkit-scrollbar-thumb {
     height: 44px;
   }
 }
+.button[disabled] {
+  background: rgba(229, 37, 45, 0.5);
+}
+.button[disabled]:before {
+  content: "";
+  position: absolute;
+  width: 1.25rem;
+  height: 1.25rem;
+  z-index: 2;
+  border: 0.125rem solid red;
+  border-top: 0.125rem solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  opacity: 1;
+}
 
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 .button-white {
   background: #FFFFFF;
   color: #333333;
