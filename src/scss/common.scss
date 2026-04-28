@@ -4429,6 +4429,10 @@
   a{
     text-decoration: underline;
   }
+  .button{
+    width: max-content;
+    text-decoration: none;
+  }
   @media(max-width: 1400px) {
     padding: 30px;
   }
@@ -4561,8 +4565,8 @@ gap: 14px;
 }
 
 .callback-form-flex{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
+  flex-direction: column;
   gap: 20px;
   .form-input{
     color: #333333;

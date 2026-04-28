@@ -280,5 +280,63 @@ function showDoctorModal() {
     }
 }
 
+function initAnchor() {
+    const header = document.querySelector("header");
+
+    const getHeaderOffset = () => {
+        if (!header) return 0;
+
+        const styles = getComputedStyle(header);
+        const isFixed = styles.position === "fixed" || styles.position === "sticky";
+
+        return isFixed ? header.getBoundingClientRect().height : 0;
+    };
+
+    const scrollToAnchor = (el, smooth = true) => {
+        const top =
+            el.getBoundingClientRect().top + window.pageYOffset - getHeaderOffset() - 8;
+
+        window.scrollTo({
+            top,
+            behavior: smooth ? "smooth" : "auto",
+        });
+    };
+
+    const scrollToHash = (smooth = false) => {
+        const hash = window.location.hash;
+        if (!hash) return;
+
+        const target = document.querySelector(hash);
+        if (target) scrollToAnchor(target, smooth);
+    };
+
+    document.addEventListener("click", (event) => {
+        if (!(event.target instanceof Element)) return;
+
+        const anchor = event.target.closest(".anchor");
+        if (!anchor) return;
+
+        const href = anchor.getAttribute("href");
+        if (!href || !href.startsWith("#")) return;
+
+        const scrollTarget = document.querySelector(href);
+        if (!scrollTarget) return;
+
+        event.preventDefault();
+        document.body.classList.remove("menu-active");
+        history.pushState(null, "", href);
+
+        requestAnimationFrame(() => scrollToAnchor(scrollTarget, true));
+    });
+
+    window.addEventListener("load", () => {
+        setTimeout(() => scrollToHash(false), 0);
+    });
+
+    window.addEventListener("hashchange", () => {
+        scrollToHash(false);
+    });
+}
+initAnchor();
 // Вызываем функцию при загрузке страницы
 window.addEventListener('load', showDoctorModal);

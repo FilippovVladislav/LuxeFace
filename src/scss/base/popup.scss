@@ -131,6 +131,7 @@ body.popup-show::after {
 }
 
 #modal-model {
+
   .popup__close {
     top: rem(60);
     right: rem(60);
@@ -170,6 +171,45 @@ body.popup-show::after {
     position: relative;
     z-index: 1;
   }
+  .button{
+    width: max-content;
+  }
+  .popup__content{
+    padding: 60px;
+  }
+  @media(max-width: 991px) {
+    .start-luxe-absolute{
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      .icon{
+        margin: 0 5px;
+        padding: 0;
+        background: transparent;
+      }
+      &:before{
+        content: '';
+        width: calc(50% - 12px);
+        height: 1px;
+        background: black;
+        bottom: auto;
+        top: auto;
+      }
+      &:after{
+        position: relative;
+        width: calc(50% - 12px);
+        bottom: auto;
+        top: auto;
+      }
+    }
+    .popup__content {
+      padding: 40px;
+    }
+    .button{
+      width: 100%;
+    }
+  }
+
 }
 
 .popup-title {

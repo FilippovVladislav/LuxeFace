@@ -82,8 +82,8 @@
             },
             c = "src",
             d = "srcset",
-            h = "sizes",
-            u = "poster",
+            u = "sizes",
+            h = "poster",
             p = "llOriginalAttrs",
             f = "data",
             m = "loading",
@@ -92,40 +92,40 @@
             b = "error",
             y = "native",
             w = "data-",
-            x = "ll-status",
-            E = function (e, t) {
+            C = "ll-status",
+            x = function (e, t) {
               return e.getAttribute(w + t);
             },
-            S = function (e) {
-              return E(e, x);
+            E = function (e) {
+              return x(e, C);
             },
-            C = function (e, t) {
+            S = function (e, t) {
               return (function (e, t, i) {
                 var n = "data-ll-status";
                 null !== i ? e.setAttribute(n, i) : e.removeAttribute(n);
               })(e, 0, t);
             },
             T = function (e) {
-              return C(e, null);
+              return S(e, null);
+            },
+            _ = function (e) {
+              return null === E(e);
             },
             M = function (e) {
-              return null === S(e);
+              return E(e) === y;
             },
-            P = function (e) {
-              return S(e) === y;
-            },
-            O = [m, g, v, b],
-            L = function (e, t, i, n) {
+            P = [m, g, v, b],
+            O = function (e, t, i, n) {
               e &&
                 "function" == typeof e &&
                 (void 0 === n ? (void 0 === i ? e(t) : e(t, i)) : e(t, i, n));
             },
-            k = function (e, t) {
+            L = function (e, t) {
               s
                 ? e.classList.add(t)
                 : (e.className += (e.className ? " " : "") + t);
             },
-            A = function (e, t) {
+            k = function (e, t) {
               s
                 ? e.classList.remove(t)
                 : (e.className = e.className
@@ -133,36 +133,36 @@
                     .replace(/^\s+/, "")
                     .replace(/\s+$/, ""));
             },
-            I = function (e) {
+            A = function (e) {
               return e.llTempImage;
             },
-            z = function (e, t) {
+            I = function (e, t) {
               if (t) {
                 var i = t._observer;
                 i && i.unobserve(e);
               }
             },
-            _ = function (e, t) {
+            z = function (e, t) {
               e && (e.loadingCount += t);
             },
             $ = function (e, t) {
               e && (e.toLoadCount = t);
             },
-            D = function (e) {
+            R = function (e) {
               for (var t, i = [], n = 0; (t = e.children[n]); n += 1)
                 "SOURCE" === t.tagName && i.push(t);
               return i;
             },
-            R = function (e, t) {
+            D = function (e, t) {
               var i = e.parentNode;
-              i && "PICTURE" === i.tagName && D(i).forEach(t);
+              i && "PICTURE" === i.tagName && R(i).forEach(t);
             },
             B = function (e, t) {
-              D(e).forEach(t);
+              R(e).forEach(t);
             },
             F = [c],
-            j = [c, u],
-            N = [c, d, h],
+            j = [c, h],
+            N = [c, d, u],
             H = [f],
             q = function (e) {
               return !!e[p];
@@ -193,47 +193,47 @@
               }
             },
             Y = function (e, t, i) {
-              k(e, t.class_applied),
-                C(e, v),
+              L(e, t.class_applied),
+                S(e, v),
                 i &&
-                  (t.unobserve_completed && z(e, t),
-                  L(t.callback_applied, e, i));
+                  (t.unobserve_completed && I(e, t),
+                  O(t.callback_applied, e, i));
             },
             U = function (e, t, i) {
-              k(e, t.class_loading),
-                C(e, m),
-                i && (_(i, 1), L(t.callback_loading, e, i));
+              L(e, t.class_loading),
+                S(e, m),
+                i && (z(i, 1), O(t.callback_loading, e, i));
             },
             Z = function (e, t, i) {
               i && e.setAttribute(t, i);
             },
             K = function (e, t) {
-              Z(e, h, E(e, t.data_sizes)),
-                Z(e, d, E(e, t.data_srcset)),
-                Z(e, c, E(e, t.data_src));
+              Z(e, u, x(e, t.data_sizes)),
+                Z(e, d, x(e, t.data_srcset)),
+                Z(e, c, x(e, t.data_src));
             },
             J = {
               IMG: function (e, t) {
-                R(e, function (e) {
+                D(e, function (e) {
                   V(e, N), K(e, t);
                 }),
                   V(e, N),
                   K(e, t);
               },
               IFRAME: function (e, t) {
-                V(e, F), Z(e, c, E(e, t.data_src));
+                V(e, F), Z(e, c, x(e, t.data_src));
               },
               VIDEO: function (e, t) {
                 B(e, function (e) {
-                  V(e, F), Z(e, c, E(e, t.data_src));
+                  V(e, F), Z(e, c, x(e, t.data_src));
                 }),
                   V(e, j),
-                  Z(e, u, E(e, t.data_poster)),
-                  Z(e, c, E(e, t.data_src)),
+                  Z(e, h, x(e, t.data_poster)),
+                  Z(e, c, x(e, t.data_src)),
                   e.load();
               },
               OBJECT: function (e, t) {
-                V(e, H), Z(e, f, E(e, t.data_src));
+                V(e, H), Z(e, f, x(e, t.data_src));
               },
             },
             Q = ["IMG", "IFRAME", "VIDEO", "OBJECT"],
@@ -245,7 +245,7 @@
                 (function (e) {
                   return e.toLoadCount > 0;
                 })(t) ||
-                L(e.callback_finish, t);
+                O(e.callback_finish, t);
             },
             te = function (e, t, i) {
               e.addEventListener(t, i), (e.llEvLisnrs[t] = i);
@@ -270,15 +270,15 @@
               !(function (e) {
                 delete e.llTempImage;
               })(e),
-                _(i, -1),
+                z(i, -1),
                 (function (e) {
                   e && (e.toLoadCount -= 1);
                 })(i),
-                A(e, t.class_loading),
-                t.unobserve_completed && z(e, i);
+                k(e, t.class_loading),
+                t.unobserve_completed && I(e, i);
             },
             ae = function (e, t, i) {
-              var n = I(e) || e;
+              var n = A(e) || e;
               ne(n) ||
                 (function (e, t, i) {
                   ne(e) || (e.llEvLisnrs = {});
@@ -288,22 +288,22 @@
                   n,
                   function (s) {
                     !(function (e, t, i, n) {
-                      var s = P(t);
+                      var s = M(t);
                       oe(t, i, n),
-                        k(t, i.class_loaded),
-                        C(t, g),
-                        L(i.callback_loaded, t, n),
+                        L(t, i.class_loaded),
+                        S(t, g),
+                        O(i.callback_loaded, t, n),
                         s || ee(i, n);
                     })(0, e, t, i),
                       se(n);
                   },
                   function (s) {
                     !(function (e, t, i, n) {
-                      var s = P(t);
+                      var s = M(t);
                       oe(t, i, n),
-                        k(t, i.class_error),
-                        C(t, b),
-                        L(i.callback_error, t, n),
+                        L(t, i.class_error),
+                        S(t, b),
+                        O(i.callback_error, t, n),
                         i.restore_on_error && X(t, N),
                         s || ee(i, n);
                     })(0, e, t, i),
@@ -325,22 +325,22 @@
                           (e[p] = { backgroundImage: e.style.backgroundImage });
                       })(e),
                       (function (e, t, i) {
-                        var n = E(e, t.data_bg),
-                          s = E(e, t.data_bg_hidpi),
+                        var n = x(e, t.data_bg),
+                          s = x(e, t.data_bg_hidpi),
                           a = o && s ? s : n;
                         a &&
                           ((e.style.backgroundImage = 'url("'.concat(a, '")')),
-                          I(e).setAttribute(c, a),
+                          A(e).setAttribute(c, a),
                           U(e, t, i));
                       })(e, t, i),
                       (function (e, t, i) {
-                        var n = E(e, t.data_bg_multi),
-                          s = E(e, t.data_bg_multi_hidpi),
+                        var n = x(e, t.data_bg_multi),
+                          s = x(e, t.data_bg_multi_hidpi),
                           a = o && s ? s : n;
                         a && ((e.style.backgroundImage = a), Y(e, t, i));
                       })(e, t, i),
                       (function (e, t, i) {
-                        var n = E(e, t.data_bg_set);
+                        var n = x(e, t.data_bg_set);
                         if (n) {
                           var s = n.split("|"),
                             o = s.map(function (e) {
@@ -365,10 +365,10 @@
                   })(e, t, i);
             },
             le = function (e) {
-              e.removeAttribute(c), e.removeAttribute(d), e.removeAttribute(h);
+              e.removeAttribute(c), e.removeAttribute(d), e.removeAttribute(u);
             },
             ce = function (e) {
-              R(e, function (e) {
+              D(e, function (e) {
                 X(e, N);
               }),
                 X(e, N);
@@ -389,7 +389,7 @@
                 X(e, H);
               },
             },
-            he = function (e, t) {
+            ue = function (e, t) {
               (function (e) {
                 var t = de[e.tagName];
                 t
@@ -402,19 +402,19 @@
                     })(e);
               })(e),
                 (function (e, t) {
-                  M(e) ||
-                    P(e) ||
-                    (A(e, t.class_entered),
-                    A(e, t.class_exited),
-                    A(e, t.class_applied),
-                    A(e, t.class_loading),
-                    A(e, t.class_loaded),
-                    A(e, t.class_error));
+                  _(e) ||
+                    M(e) ||
+                    (k(e, t.class_entered),
+                    k(e, t.class_exited),
+                    k(e, t.class_applied),
+                    k(e, t.class_loading),
+                    k(e, t.class_loaded),
+                    k(e, t.class_error));
                 })(e, t),
                 T(e),
                 G(e);
             },
-            ue = ["IMG", "IFRAME", "VIDEO"],
+            he = ["IMG", "IFRAME", "VIDEO"],
             pe = function (e) {
               return e.use_native && "loading" in HTMLImageElement.prototype;
             },
@@ -425,40 +425,40 @@
                 })(e)
                   ? (function (e, t, i, n) {
                       var s = (function (e) {
-                        return O.indexOf(S(e)) >= 0;
+                        return P.indexOf(E(e)) >= 0;
                       })(e);
-                      C(e, "entered"),
-                        k(e, i.class_entered),
-                        A(e, i.class_exited),
+                      S(e, "entered"),
+                        L(e, i.class_entered),
+                        k(e, i.class_exited),
                         (function (e, t, i) {
-                          t.unobserve_entered && z(e, i);
+                          t.unobserve_entered && I(e, i);
                         })(e, i, n),
-                        L(i.callback_enter, e, t, n),
+                        O(i.callback_enter, e, t, n),
                         s || re(e, i, n);
                     })(e.target, e, t, i)
                   : (function (e, t, i, n) {
-                      M(e) ||
-                        (k(e, i.class_exited),
+                      _(e) ||
+                        (L(e, i.class_exited),
                         (function (e, t, i, n) {
                           i.cancel_on_exit &&
                             (function (e) {
-                              return S(e) === m;
+                              return E(e) === m;
                             })(e) &&
                             "IMG" === e.tagName &&
                             (se(e),
                             (function (e) {
-                              R(e, function (e) {
+                              D(e, function (e) {
                                 le(e);
                               }),
                                 le(e);
                             })(e),
                             ce(e),
-                            A(e, i.class_loading),
-                            _(n, -1),
+                            k(e, i.class_loading),
+                            z(n, -1),
                             T(e),
-                            L(i.callback_cancel, e, t, n));
+                            O(i.callback_cancel, e, t, n));
                         })(e, t, i, n),
-                        L(i.callback_exit, e, t, n));
+                        O(i.callback_exit, e, t, n));
                     })(e.target, e, t, i);
               });
             },
@@ -470,12 +470,12 @@
             },
             ve = function (e) {
               return (function (e) {
-                return S(e) === b;
+                return E(e) === b;
               })(e);
             },
             be = function (e, t) {
               return (function (e) {
-                return me(e).filter(M);
+                return me(e).filter(_);
               })(e || ge(t));
             },
             ye = function (e, i) {
@@ -503,7 +503,7 @@
                       !(function (e, t) {
                         var i;
                         ((i = ge(e)), me(i).filter(ve)).forEach(function (t) {
-                          A(t, e.class_error), T(t);
+                          k(t, e.class_error), T(t);
                         }),
                           t.update();
                       })(e, i);
@@ -524,7 +524,7 @@
                     ? pe(o)
                       ? (function (e, t, i) {
                           e.forEach(function (e) {
-                            -1 !== ue.indexOf(e.tagName) &&
+                            -1 !== he.indexOf(e.tagName) &&
                               (function (e, t, i) {
                                 e.setAttribute("loading", "lazy"),
                                   ae(e, t, i),
@@ -532,7 +532,7 @@
                                     var i = J[e.tagName];
                                     i && i(e, t);
                                   })(e, t),
-                                  C(e, y);
+                                  S(e, y);
                               })(e, t, i);
                           }),
                             $(i, 0);
@@ -565,13 +565,13 @@
                 var t = this,
                   i = this._settings;
                 be(e, i).forEach(function (e) {
-                  z(e, t), re(e, i, t);
+                  I(e, t), re(e, i, t);
                 });
               },
               restoreAll: function () {
                 var e = this._settings;
                 ge(e).forEach(function (t) {
-                  he(t, e);
+                  ue(t, e);
                 });
               },
             }),
@@ -962,11 +962,11 @@
         search: "",
       },
     };
-    function h() {
+    function u() {
       const e = "undefined" != typeof document ? document : {};
       return c(e, d), e;
     }
-    const u = {
+    const h = {
       document: d,
       navigator: { userAgent: "" },
       location: {
@@ -1000,7 +1000,7 @@
     };
     function p() {
       const e = "undefined" != typeof window ? window : {};
-      return c(e, u), e;
+      return c(e, h), e;
     }
     class f extends Array {
       constructor(e) {
@@ -1032,7 +1032,7 @@
     }
     function v(e, t) {
       const i = p(),
-        n = h();
+        n = u();
       let s = [];
       if (!t && e instanceof f) return e;
       if (!e) return new f(s);
@@ -1307,7 +1307,7 @@
       offset: function () {
         if (this.length > 0) {
           const e = p(),
-            t = h(),
+            t = u(),
             i = this[0],
             n = i.getBoundingClientRect(),
             s = t.body,
@@ -1357,7 +1357,7 @@
       },
       is: function (e) {
         const t = p(),
-          i = h(),
+          i = u(),
           n = this[0];
         let s, o;
         if (!n || void 0 === e) return !1;
@@ -1398,7 +1398,7 @@
       },
       append: function (...e) {
         let t;
-        const i = h();
+        const i = u();
         for (let n = 0; n < e.length; n += 1) {
           t = e[n];
           for (let e = 0; e < this.length; e += 1)
@@ -1413,7 +1413,7 @@
         return this;
       },
       prepend: function (e) {
-        const t = h();
+        const t = u();
         let i, n;
         for (i = 0; i < this.length; i += 1)
           if ("string" == typeof e) {
@@ -1521,14 +1521,14 @@
     Object.keys(w).forEach((e) => {
       Object.defineProperty(v.fn, e, { value: w[e], writable: !0 });
     });
-    const x = v;
-    function E(e, t = 0) {
+    const C = v;
+    function x(e, t = 0) {
       return setTimeout(e, t);
     }
-    function S() {
+    function E() {
       return Date.now();
     }
-    function C(e, t = "x") {
+    function S(e, t = "x") {
       const i = p();
       let n, s, o;
       const a = (function (e) {
@@ -1583,7 +1583,7 @@
         "Object" === Object.prototype.toString.call(e).slice(8, -1)
       );
     }
-    function M(...e) {
+    function _(...e) {
       const t = Object(e[0]),
         i = ["__proto__", "constructor", "prototype"];
       for (let s = 1; s < e.length; s += 1) {
@@ -1604,9 +1604,9 @@
               (T(t[n]) && T(o[n])
                 ? o[n].__swiper__
                   ? (t[n] = o[n])
-                  : M(t[n], o[n])
+                  : _(t[n], o[n])
                 : !T(t[n]) && T(o[n])
-                ? ((t[n] = {}), o[n].__swiper__ ? (t[n] = o[n]) : M(t[n], o[n]))
+                ? ((t[n] = {}), o[n].__swiper__ ? (t[n] = o[n]) : _(t[n], o[n]))
                 : (t[n] = o[n]));
           }
         }
@@ -1614,10 +1614,10 @@
       var n;
       return t;
     }
-    function P(e, t, i) {
+    function M(e, t, i) {
       e.style.setProperty(t, i);
     }
-    function O({ swiper: e, targetPosition: t, side: i }) {
+    function P({ swiper: e, targetPosition: t, side: i }) {
       const n = p(),
         s = -e.translate;
       let o,
@@ -1630,15 +1630,15 @@
         d = () => {
           (o = new Date().getTime()), null === a && (a = o);
           const l = Math.max(Math.min((o - a) / r, 1), 0),
-            h = 0.5 - Math.cos(l * Math.PI) / 2;
-          let u = s + h * (t - s);
-          if ((c(u, t) && (u = t), e.wrapperEl.scrollTo({ [i]: u }), c(u, t)))
+            u = 0.5 - Math.cos(l * Math.PI) / 2;
+          let h = s + u * (t - s);
+          if ((c(h, t) && (h = t), e.wrapperEl.scrollTo({ [i]: h }), c(h, t)))
             return (
               (e.wrapperEl.style.overflow = "hidden"),
               (e.wrapperEl.style.scrollSnapType = ""),
               setTimeout(() => {
                 (e.wrapperEl.style.overflow = ""),
-                  e.wrapperEl.scrollTo({ [i]: u });
+                  e.wrapperEl.scrollTo({ [i]: h });
               }),
               void n.cancelAnimationFrame(e.cssModeFrameID)
             );
@@ -1646,13 +1646,13 @@
         };
       d();
     }
-    let L, k, A;
-    function I() {
+    let O, L, k;
+    function A() {
       return (
-        L ||
-          (L = (function () {
+        O ||
+          (O = (function () {
             const e = p(),
-              t = h();
+              t = u();
             return {
               smoothScroll:
                 t.documentElement &&
@@ -1676,14 +1676,14 @@
               gestures: "ongesturestart" in e,
             };
           })()),
-        L
+        O
       );
     }
-    function z(e = {}) {
+    function I(e = {}) {
       return (
-        k ||
-          (k = (function ({ userAgent: e } = {}) {
-            const t = I(),
+        L ||
+          (L = (function ({ userAgent: e } = {}) {
+            const t = A(),
               i = p(),
               n = i.navigator.platform,
               s = e || i.navigator.userAgent,
@@ -1693,8 +1693,8 @@
               l = s.match(/(Android);?[\s\/]+([\d.]+)?/);
             let c = s.match(/(iPad).*OS\s([\d_]+)/);
             const d = s.match(/(iPod)(.*OS\s([\d_]+))?/),
-              h = !c && s.match(/(iPhone\sOS|iOS)\s([\d_]+)/),
-              u = "Win32" === n;
+              u = !c && s.match(/(iPhone\sOS|iOS)\s([\d_]+)/),
+              h = "Win32" === n;
             let f = "MacIntel" === n;
             return (
               !c &&
@@ -1717,18 +1717,18 @@
                 ((c = s.match(/(Version)\/([\d.]+)/)),
                 c || (c = [0, 1, "13_0_0"]),
                 (f = !1)),
-              l && !u && ((o.os = "android"), (o.android = !0)),
-              (c || h || d) && ((o.os = "ios"), (o.ios = !0)),
+              l && !h && ((o.os = "android"), (o.android = !0)),
+              (c || u || d) && ((o.os = "ios"), (o.ios = !0)),
               o
             );
           })(e)),
-        k
+        L
       );
     }
-    function _() {
+    function z() {
       return (
-        A ||
-          (A = (function () {
+        k ||
+          (k = (function () {
             const e = p();
             return {
               isSafari: (function () {
@@ -1744,7 +1744,7 @@
               ),
             };
           })()),
-        A
+        k
       );
     }
     const $ = {
@@ -1831,7 +1831,7 @@
         );
       },
     };
-    const D = {
+    const R = {
       updateSize: function () {
         const e = this;
         let t, i;
@@ -1886,8 +1886,8 @@
           l = e.virtual && n.virtual.enabled,
           c = l ? e.virtual.slides.length : e.slides.length,
           d = s.children(`.${e.params.slideClass}`),
-          h = l ? e.virtual.slides.length : d.length;
-        let u = [];
+          u = l ? e.virtual.slides.length : d.length;
+        let h = [];
         const p = [],
           f = [];
         let m = n.slidesOffsetBefore;
@@ -1898,8 +1898,8 @@
           b = e.slidesGrid.length;
         let y = n.spaceBetween,
           w = -m,
-          x = 0,
-          E = 0;
+          C = 0,
+          x = 0;
         if (void 0 === o) return;
         "string" == typeof y &&
           y.indexOf("%") >= 0 &&
@@ -1910,22 +1910,22 @@
             : d.css({ marginRight: "", marginBottom: "", marginTop: "" }),
           n.centeredSlides &&
             n.cssMode &&
-            (P(e.wrapperEl, "--swiper-centered-offset-before", ""),
-            P(e.wrapperEl, "--swiper-centered-offset-after", ""));
-        const S = n.grid && n.grid.rows > 1 && e.grid;
-        let C;
-        S && e.grid.initSlides(h);
+            (M(e.wrapperEl, "--swiper-centered-offset-before", ""),
+            M(e.wrapperEl, "--swiper-centered-offset-after", ""));
+        const E = n.grid && n.grid.rows > 1 && e.grid;
+        let S;
+        E && e.grid.initSlides(u);
         const T =
           "auto" === n.slidesPerView &&
           n.breakpoints &&
           Object.keys(n.breakpoints).filter(
             (e) => void 0 !== n.breakpoints[e].slidesPerView
           ).length > 0;
-        for (let s = 0; s < h; s += 1) {
-          C = 0;
+        for (let s = 0; s < u; s += 1) {
+          S = 0;
           const a = d.eq(s);
           if (
-            (S && e.grid.updateSlide(s, a, h, t), "none" !== a.css("display"))
+            (E && e.grid.updateSlide(s, a, u, t), "none" !== a.css("display"))
           ) {
             if ("auto" === n.slidesPerView) {
               T && (d[s].style[t("width")] = "");
@@ -1937,7 +1937,7 @@
                 l && (a[0].style.webkitTransform = "none"),
                 n.roundLengths)
               )
-                C = e.isHorizontal() ? a.outerWidth(!0) : a.outerHeight(!0);
+                S = e.isHorizontal() ? a.outerWidth(!0) : a.outerHeight(!0);
               else {
                 const e = i(o, "width"),
                   t = i(o, "padding-left"),
@@ -1945,38 +1945,38 @@
                   s = i(o, "margin-left"),
                   r = i(o, "margin-right"),
                   l = o.getPropertyValue("box-sizing");
-                if (l && "border-box" === l) C = e + s + r;
+                if (l && "border-box" === l) S = e + s + r;
                 else {
                   const { clientWidth: i, offsetWidth: o } = a[0];
-                  C = e + t + n + s + r + (o - i);
+                  S = e + t + n + s + r + (o - i);
                 }
               }
               r && (a[0].style.transform = r),
                 l && (a[0].style.webkitTransform = l),
-                n.roundLengths && (C = Math.floor(C));
+                n.roundLengths && (S = Math.floor(S));
             } else
-              (C = (o - (n.slidesPerView - 1) * y) / n.slidesPerView),
-                n.roundLengths && (C = Math.floor(C)),
-                d[s] && (d[s].style[t("width")] = `${C}px`);
-            d[s] && (d[s].swiperSlideSize = C),
-              f.push(C),
+              (S = (o - (n.slidesPerView - 1) * y) / n.slidesPerView),
+                n.roundLengths && (S = Math.floor(S)),
+                d[s] && (d[s].style[t("width")] = `${S}px`);
+            d[s] && (d[s].swiperSlideSize = S),
+              f.push(S),
               n.centeredSlides
-                ? ((w = w + C / 2 + x / 2 + y),
-                  0 === x && 0 !== s && (w = w - o / 2 - y),
+                ? ((w = w + S / 2 + C / 2 + y),
+                  0 === C && 0 !== s && (w = w - o / 2 - y),
                   0 === s && (w = w - o / 2 - y),
                   Math.abs(w) < 0.001 && (w = 0),
                   n.roundLengths && (w = Math.floor(w)),
-                  E % n.slidesPerGroup == 0 && u.push(w),
+                  x % n.slidesPerGroup == 0 && h.push(w),
                   p.push(w))
                 : (n.roundLengths && (w = Math.floor(w)),
-                  (E - Math.min(e.params.slidesPerGroupSkip, E)) %
+                  (x - Math.min(e.params.slidesPerGroupSkip, x)) %
                     e.params.slidesPerGroup ==
-                    0 && u.push(w),
+                    0 && h.push(w),
                   p.push(w),
-                  (w = w + C + y)),
-              (e.virtualSize += C + y),
-              (x = C),
-              (E += 1);
+                  (w = w + S + y)),
+              (e.virtualSize += S + y),
+              (C = S),
+              (x += 1);
           }
         }
         if (
@@ -1987,20 +1987,20 @@
             s.css({ width: `${e.virtualSize + n.spaceBetween}px` }),
           n.setWrapperSize &&
             s.css({ [t("width")]: `${e.virtualSize + n.spaceBetween}px` }),
-          S && e.grid.updateWrapperSize(C, u, t),
+          E && e.grid.updateWrapperSize(S, h, t),
           !n.centeredSlides)
         ) {
           const t = [];
-          for (let i = 0; i < u.length; i += 1) {
-            let s = u[i];
+          for (let i = 0; i < h.length; i += 1) {
+            let s = h[i];
             n.roundLengths && (s = Math.floor(s)),
-              u[i] <= e.virtualSize - o && t.push(s);
+              h[i] <= e.virtualSize - o && t.push(s);
           }
-          (u = t),
-            Math.floor(e.virtualSize - o) - Math.floor(u[u.length - 1]) > 1 &&
-              u.push(e.virtualSize - o);
+          (h = t),
+            Math.floor(e.virtualSize - o) - Math.floor(h[h.length - 1]) > 1 &&
+              h.push(e.virtualSize - o);
         }
-        if ((0 === u.length && (u = [0]), 0 !== n.spaceBetween)) {
+        if ((0 === h.length && (h = [0]), 0 !== n.spaceBetween)) {
           const i = e.isHorizontal() && a ? "marginLeft" : t("marginRight");
           d.filter((e, t) => !n.cssMode || t !== d.length - 1).css({
             [i]: `${y}px`,
@@ -2013,7 +2013,7 @@
           }),
             (e -= n.spaceBetween);
           const t = e - o;
-          u = u.map((e) => (e < 0 ? -m : e > t ? t + g : e));
+          h = h.map((e) => (e < 0 ? -m : e > t ? t + g : e));
         }
         if (n.centerInsufficientSlides) {
           let e = 0;
@@ -2025,8 +2025,8 @@
             e < o)
           ) {
             const t = (o - e) / 2;
-            u.forEach((e, i) => {
-              u[i] = e - t;
+            h.forEach((e, i) => {
+              h[i] = e - t;
             }),
               p.forEach((e, i) => {
                 p[i] = e + t;
@@ -2036,14 +2036,14 @@
         if (
           (Object.assign(e, {
             slides: d,
-            snapGrid: u,
+            snapGrid: h,
             slidesGrid: p,
             slidesSizesGrid: f,
           }),
           n.centeredSlides && n.cssMode && !n.centeredSlidesBounds)
         ) {
-          P(e.wrapperEl, "--swiper-centered-offset-before", -u[0] + "px"),
-            P(
+          M(e.wrapperEl, "--swiper-centered-offset-before", -h[0] + "px"),
+            M(
               e.wrapperEl,
               "--swiper-centered-offset-after",
               e.size / 2 - f[f.length - 1] / 2 + "px"
@@ -2054,8 +2054,8 @@
             (e.slidesGrid = e.slidesGrid.map((e) => e + i));
         }
         if (
-          (h !== c && e.emit("slidesLengthChange"),
-          u.length !== v &&
+          (u !== c && e.emit("slidesLengthChange"),
+          h.length !== v &&
             (e.params.watchOverflow && e.checkOverflow(),
             e.emit("snapGridLengthChange")),
           p.length !== b && e.emit("slidesGridLengthChange"),
@@ -2064,7 +2064,7 @@
         ) {
           const t = `${n.containerModifierClass}backface-hidden`,
             i = e.$el.hasClass(t);
-          h <= n.maxBackfaceHiddenSlides
+          u <= n.maxBackfaceHiddenSlides
             ? i || e.$el.addClass(t)
             : i && e.$el.removeClass(t);
         }
@@ -2087,7 +2087,7 @@
             : t.slides.eq(e)[0];
         if ("auto" !== t.params.slidesPerView && t.params.slidesPerView > 1)
           if (t.params.centeredSlides)
-            (t.visibleSlides || x([])).each((e) => {
+            (t.visibleSlides || C([])).each((e) => {
               i.push(e);
             });
           else
@@ -2133,18 +2133,18 @@
             d =
               (a - o[0] + (i.centeredSlides ? t.minTranslate() : 0) - l) /
               (r.swiperSlideSize + i.spaceBetween),
-            h = -(a - l),
-            u = h + t.slidesSizesGrid[e];
-          ((h >= 0 && h < t.size - 1) ||
-            (u > 1 && u <= t.size) ||
-            (h <= 0 && u >= t.size)) &&
+            u = -(a - l),
+            h = u + t.slidesSizesGrid[e];
+          ((u >= 0 && u < t.size - 1) ||
+            (h > 1 && h <= t.size) ||
+            (u <= 0 && h >= t.size)) &&
             (t.visibleSlides.push(r),
             t.visibleSlidesIndexes.push(e),
             n.eq(e).addClass(i.slideVisibleClass)),
             (r.progress = s ? -c : c),
             (r.originalProgress = s ? -d : d);
         }
-        t.visibleSlides = x(t.visibleSlides);
+        t.visibleSlides = C(t.visibleSlides);
       },
       updateProgress: function (e) {
         const t = this;
@@ -2280,26 +2280,26 @@
           return void (
             c !== l && ((t.snapIndex = c), t.emit("snapIndexChange"))
           );
-        const h = parseInt(
+        const u = parseInt(
           t.slides.eq(d).attr("data-swiper-slide-index") || d,
           10
         );
         Object.assign(t, {
           snapIndex: c,
-          realIndex: h,
+          realIndex: u,
           previousIndex: a,
           activeIndex: d,
         }),
           t.emit("activeIndexChange"),
           t.emit("snapIndexChange"),
-          r !== h && t.emit("realIndexChange"),
+          r !== u && t.emit("realIndexChange"),
           (t.initialized || t.params.runCallbacksOnInit) &&
             t.emit("slideChange");
       },
       updateClickedSlide: function (e) {
         const t = this,
           i = t.params,
-          n = x(e).closest(`.${i.slideClass}`)[0];
+          n = C(e).closest(`.${i.slideClass}`)[0];
         let s,
           o = !1;
         if (n)
@@ -2313,7 +2313,7 @@
         (t.clickedSlide = n),
           t.virtual && t.params.virtual.enabled
             ? (t.clickedIndex = parseInt(
-                x(n).attr("data-swiper-slide-index"),
+                C(n).attr("data-swiper-slide-index"),
                 10
               ))
             : (t.clickedIndex = s),
@@ -2323,7 +2323,7 @@
             t.slideToClickedSlide();
       },
     };
-    const R = {
+    const D = {
       getTranslate: function (e = this.isHorizontal() ? "x" : "y") {
         const {
           params: t,
@@ -2333,7 +2333,7 @@
         } = this;
         if (t.virtualTranslate) return i ? -n : n;
         if (t.cssMode) return n;
-        let o = C(s[0], e);
+        let o = S(s[0], e);
         return i && (o = -o), o || 0;
       },
       setTranslate: function (e, t) {
@@ -2357,8 +2357,8 @@
               o.transform(`translate3d(${c}px, ${d}px, 0px)`),
           (i.previousTranslate = i.translate),
           (i.translate = i.isHorizontal() ? c : d);
-        const h = i.maxTranslate() - i.minTranslate();
-        (l = 0 === h ? 0 : (e - i.minTranslate()) / h),
+        const u = i.maxTranslate() - i.minTranslate();
+        (l = 0 === u ? 0 : (e - i.minTranslate()) / u),
           l !== r && i.updateProgress(e),
           i.emit("setTranslate", i.translate, t);
       },
@@ -2385,7 +2385,7 @@
           else {
             if (!o.support.smoothScroll)
               return (
-                O({ swiper: o, targetPosition: -d, side: e ? "left" : "top" }),
+                P({ swiper: o, targetPosition: -d, side: e ? "left" : "top" }),
                 !0
               );
             r.scrollTo({ [e ? "left" : "top"]: -d, behavior: "smooth" });
@@ -2472,8 +2472,8 @@
           snapGrid: l,
           slidesGrid: c,
           previousIndex: d,
-          activeIndex: h,
-          rtlTranslate: u,
+          activeIndex: u,
+          rtlTranslate: h,
           wrapperEl: p,
           enabled: f,
         } = o;
@@ -2497,14 +2497,14 @@
                 : t >= i && t < n && (a = e + 1)
               : t >= i && (a = e);
           }
-        if (o.initialized && a !== h) {
+        if (o.initialized && a !== u) {
           if (!o.allowSlideNext && v < o.translate && v < o.minTranslate())
             return !1;
           if (
             !o.allowSlidePrev &&
             v > o.translate &&
             v > o.maxTranslate() &&
-            (h || 0) !== a
+            (u || 0) !== a
           )
             return !1;
         }
@@ -2512,8 +2512,8 @@
         if (
           (a !== (d || 0) && i && o.emit("beforeSlideChangeStart"),
           o.updateProgress(v),
-          (b = a > h ? "next" : a < h ? "prev" : "reset"),
-          (u && -v === o.translate) || (!u && v === o.translate))
+          (b = a > u ? "next" : a < u ? "prev" : "reset"),
+          (h && -v === o.translate) || (!h && v === o.translate))
         )
           return (
             o.updateActiveIndex(a),
@@ -2525,7 +2525,7 @@
           );
         if (r.cssMode) {
           const e = o.isHorizontal(),
-            i = u ? v : -v;
+            i = h ? v : -v;
           if (0 === t) {
             const t = o.virtual && o.params.virtual.enabled;
             t &&
@@ -2540,7 +2540,7 @@
           } else {
             if (!o.support.smoothScroll)
               return (
-                O({ swiper: o, targetPosition: i, side: e ? "left" : "top" }),
+                P({ swiper: o, targetPosition: i, side: e ? "left" : "top" }),
                 !0
               );
             p.scrollTo({ [e ? "left" : "top"]: i, behavior: "smooth" });
@@ -2635,13 +2635,13 @@
         function d(e) {
           return e < 0 ? -Math.floor(Math.abs(e)) : Math.floor(e);
         }
-        const h = d(l ? n.translate : -n.translate),
-          u = a.map((e) => d(e));
-        let p = a[u.indexOf(h) - 1];
+        const u = d(l ? n.translate : -n.translate),
+          h = a.map((e) => d(e));
+        let p = a[h.indexOf(u) - 1];
         if (void 0 === p && s.cssMode) {
           let e;
           a.forEach((t, i) => {
-            h >= t && (e = i);
+            u >= t && (e = i);
           }),
             void 0 !== e && (p = a[e > 0 ? e - 1 : e]);
         }
@@ -2698,7 +2698,7 @@
           o = e.clickedIndex;
         if (t.loop) {
           if (e.animating) return;
-          (s = parseInt(x(e.clickedSlide).attr("data-swiper-slide-index"), 10)),
+          (s = parseInt(C(e.clickedSlide).attr("data-swiper-slide-index"), 10)),
             t.centeredSlides
               ? o < e.loopedSlides - n / 2 ||
                 o > e.slides.length - e.loopedSlides + n / 2
@@ -2709,7 +2709,7 @@
                     )
                     .eq(0)
                     .index()),
-                  E(() => {
+                  x(() => {
                     e.slideTo(o);
                   }))
                 : e.slideTo(o)
@@ -2721,7 +2721,7 @@
                   )
                   .eq(0)
                   .index()),
-                E(() => {
+                x(() => {
                   e.slideTo(o);
                 }))
               : e.slideTo(o);
@@ -2731,16 +2731,16 @@
     const j = {
       loopCreate: function () {
         const e = this,
-          t = h(),
+          t = u(),
           { params: i, $wrapperEl: n } = e,
-          s = n.children().length > 0 ? x(n.children()[0].parentNode) : n;
+          s = n.children().length > 0 ? C(n.children()[0].parentNode) : n;
         s.children(`.${i.slideClass}.${i.slideDuplicateClass}`).remove();
         let o = s.children(`.${i.slideClass}`);
         if (i.loopFillGroupWithBlank) {
           const e = i.slidesPerGroup - (o.length % i.slidesPerGroup);
           if (e !== i.slidesPerGroup) {
             for (let n = 0; n < e; n += 1) {
-              const e = x(t.createElement("div")).addClass(
+              const e = C(t.createElement("div")).addClass(
                 `${i.slideClass} ${i.slideBlankClass}`
               );
               s.append(e);
@@ -2761,16 +2761,16 @@
         const a = [],
           r = [];
         o.each((e, t) => {
-          x(e).attr("data-swiper-slide-index", t);
+          C(e).attr("data-swiper-slide-index", t);
         });
         for (let t = 0; t < e.loopedSlides; t += 1) {
           const e = t - Math.floor(t / o.length) * o.length;
           r.push(o.eq(e)[0]), a.unshift(o.eq(o.length - e - 1)[0]);
         }
         for (let e = 0; e < r.length; e += 1)
-          s.append(x(r[e].cloneNode(!0)).addClass(i.slideDuplicateClass));
+          s.append(C(r[e].cloneNode(!0)).addClass(i.slideDuplicateClass));
         for (let e = a.length - 1; e >= 0; e -= 1)
-          s.prepend(x(a[e].cloneNode(!0)).addClass(i.slideDuplicateClass));
+          s.prepend(C(a[e].cloneNode(!0)).addClass(i.slideDuplicateClass));
       },
       loopFix: function () {
         const e = this;
@@ -2812,7 +2812,7 @@
     };
     function N(e) {
       const t = this,
-        i = h(),
+        i = u(),
         n = p(),
         s = t.touchEventsData,
         { params: o, touches: a, enabled: r } = t;
@@ -2821,7 +2821,7 @@
       !t.animating && o.cssMode && o.loop && t.loopFix();
       let l = e;
       l.originalEvent && (l = l.originalEvent);
-      let c = x(l.target);
+      let c = C(l.target);
       if ("wrapper" === o.touchEventsTarget && !c.closest(t.wrapperEl).length)
         return;
       if (
@@ -2832,8 +2832,8 @@
       if (!s.isTouchEvent && "button" in l && l.button > 0) return;
       if (s.isTouched && s.isMoved) return;
       const d = !!o.noSwipingClass && "" !== o.noSwipingClass,
-        u = e.composedPath ? e.composedPath() : e.path;
-      d && l.target && l.target.shadowRoot && u && (c = x(u[0]));
+        h = e.composedPath ? e.composedPath() : e.path;
+      d && l.target && l.target.shadowRoot && h && (c = C(h[0]));
       const f = o.noSwipingSelector
           ? o.noSwipingSelector
           : `.${o.noSwipingClass}`,
@@ -2843,7 +2843,7 @@
         (m
           ? (function (e, t = this) {
               return (function t(i) {
-                if (!i || i === h() || i === p()) return null;
+                if (!i || i === u() || i === p()) return null;
                 i.assignedSlot && (i = i.assignedSlot);
                 const n = i.closest(e);
                 return n || i.getRootNode ? n || t(i.getRootNode().host) : null;
@@ -2875,7 +2875,7 @@
         }),
         (a.startX = g),
         (a.startY = v),
-        (s.touchStartTime = S()),
+        (s.touchStartTime = E()),
         (t.allowClick = !0),
         t.updateSize(),
         (t.swipeDirection = void 0),
@@ -2886,7 +2886,7 @@
         c.is(s.focusableElements) &&
           ((e = !1), "SELECT" === c[0].nodeName && (s.isTouched = !1)),
           i.activeElement &&
-            x(i.activeElement).is(s.focusableElements) &&
+            C(i.activeElement).is(s.focusableElements) &&
             i.activeElement !== c[0] &&
             i.activeElement.blur();
         const n = e && t.allowTouchMove && o.touchStartPreventDefault;
@@ -2903,7 +2903,7 @@
         t.emit("touchStart", l);
     }
     function H(e) {
-      const t = h(),
+      const t = u(),
         i = this,
         n = i.touchEventsData,
         { params: s, touches: o, rtlTranslate: a, enabled: r } = i;
@@ -2921,27 +2921,27 @@
           l.targetTouches &&
           (l.targetTouches[0] || l.changedTouches[0]),
         d = "touchmove" === l.type ? c.pageX : l.pageX,
-        u = "touchmove" === l.type ? c.pageY : l.pageY;
-      if (l.preventedByNestedSwiper) return (o.startX = d), void (o.startY = u);
+        h = "touchmove" === l.type ? c.pageY : l.pageY;
+      if (l.preventedByNestedSwiper) return (o.startX = d), void (o.startY = h);
       if (!i.allowTouchMove)
         return (
-          x(l.target).is(n.focusableElements) || (i.allowClick = !1),
+          C(l.target).is(n.focusableElements) || (i.allowClick = !1),
           void (
             n.isTouched &&
             (Object.assign(o, {
               startX: d,
-              startY: u,
+              startY: h,
               currentX: d,
-              currentY: u,
+              currentY: h,
             }),
-            (n.touchStartTime = S()))
+            (n.touchStartTime = E()))
           )
         );
       if (n.isTouchEvent && s.touchReleaseOnEdges && !s.loop)
         if (i.isVertical()) {
           if (
-            (u < o.startY && i.translate <= i.maxTranslate()) ||
-            (u > o.startY && i.translate >= i.minTranslate())
+            (h < o.startY && i.translate <= i.maxTranslate()) ||
+            (h > o.startY && i.translate >= i.minTranslate())
           )
             return (n.isTouched = !1), void (n.isMoved = !1);
         } else if (
@@ -2953,7 +2953,7 @@
         n.isTouchEvent &&
         t.activeElement &&
         l.target === t.activeElement &&
-        x(l.target).is(n.focusableElements)
+        C(l.target).is(n.focusableElements)
       )
         return (n.isMoved = !0), void (i.allowClick = !1);
       if (
@@ -2961,7 +2961,7 @@
         l.targetTouches && l.targetTouches.length > 1)
       )
         return;
-      (o.currentX = d), (o.currentY = u);
+      (o.currentX = d), (o.currentY = h);
       const p = o.currentX - o.startX,
         f = o.currentY - o.startY;
       if (i.params.threshold && Math.sqrt(p ** 2 + f ** 2) < i.params.threshold)
@@ -3094,7 +3094,7 @@
         i.isTouched &&
         (!0 === t.allowSlideNext || !0 === t.allowSlidePrev) &&
         t.setGrabCursor(!1);
-      const c = S(),
+      const c = E(),
         d = c - i.touchStartTime;
       if (t.allowClick) {
         const e = l.path || (l.composedPath && l.composedPath());
@@ -3105,8 +3105,8 @@
             t.emit("doubleTap doubleClick", l);
       }
       if (
-        ((i.lastClickTime = S()),
-        E(() => {
+        ((i.lastClickTime = E()),
+        x(() => {
           t.destroyed || (t.allowClick = !0);
         }),
         !i.isTouched ||
@@ -3116,12 +3116,12 @@
           i.currentTranslate === i.startTranslate)
       )
         return (i.isTouched = !1), (i.isMoved = !1), void (i.startMoving = !1);
-      let h;
+      let u;
       if (
         ((i.isTouched = !1),
         (i.isMoved = !1),
         (i.startMoving = !1),
-        (h = n.followFinger
+        (u = n.followFinger
           ? o
             ? t.translate
             : -t.translate
@@ -3130,8 +3130,8 @@
       )
         return;
       if (t.params.freeMode && n.freeMode.enabled)
-        return void t.freeMode.onTouchEnd({ currentPos: h });
-      let u = 0,
+        return void t.freeMode.onTouchEnd({ currentPos: u });
+      let h = 0,
         p = t.slidesSizesGrid[0];
       for (
         let e = 0;
@@ -3140,8 +3140,8 @@
       ) {
         const t = e < n.slidesPerGroupSkip - 1 ? 1 : n.slidesPerGroup;
         void 0 !== a[e + t]
-          ? h >= a[e] && h < a[e + t] && ((u = e), (p = a[e + t] - a[e]))
-          : h >= a[e] && ((u = e), (p = a[a.length - 1] - a[a.length - 2]));
+          ? u >= a[e] && u < a[e + t] && ((h = e), (p = a[e + t] - a[e]))
+          : u >= a[e] && ((h = e), (p = a[a.length - 1] - a[a.length - 2]));
       }
       let f = null,
         m = null;
@@ -3152,29 +3152,29 @@
                 ? t.virtual.slides.length - 1
                 : t.slides.length - 1)
           : t.isEnd && (f = 0));
-      const g = (h - a[u]) / p,
-        v = u < n.slidesPerGroupSkip - 1 ? 1 : n.slidesPerGroup;
+      const g = (u - a[h]) / p,
+        v = h < n.slidesPerGroupSkip - 1 ? 1 : n.slidesPerGroup;
       if (d > n.longSwipesMs) {
         if (!n.longSwipes) return void t.slideTo(t.activeIndex);
         "next" === t.swipeDirection &&
           (g >= n.longSwipesRatio
-            ? t.slideTo(n.rewind && t.isEnd ? f : u + v)
-            : t.slideTo(u)),
+            ? t.slideTo(n.rewind && t.isEnd ? f : h + v)
+            : t.slideTo(h)),
           "prev" === t.swipeDirection &&
             (g > 1 - n.longSwipesRatio
-              ? t.slideTo(u + v)
+              ? t.slideTo(h + v)
               : null !== m && g < 0 && Math.abs(g) > n.longSwipesRatio
               ? t.slideTo(m)
-              : t.slideTo(u));
+              : t.slideTo(h));
       } else {
         if (!n.shortSwipes) return void t.slideTo(t.activeIndex);
         t.navigation &&
         (l.target === t.navigation.nextEl || l.target === t.navigation.prevEl)
           ? l.target === t.navigation.nextEl
-            ? t.slideTo(u + v)
-            : t.slideTo(u)
-          : ("next" === t.swipeDirection && t.slideTo(null !== f ? f : u + v),
-            "prev" === t.swipeDirection && t.slideTo(null !== m ? m : u));
+            ? t.slideTo(h + v)
+            : t.slideTo(h)
+          : ("next" === t.swipeDirection && t.slideTo(null !== f ? f : h + v),
+            "prev" === t.swipeDirection && t.slideTo(null !== m ? m : h));
       }
     }
     function W() {
@@ -3231,7 +3231,7 @@
     let X = !1;
     function Y() {}
     const U = (e, t) => {
-      const i = h(),
+      const i = u(),
         {
           params: n,
           touchEvents: s,
@@ -3242,7 +3242,7 @@
         } = e,
         c = !!n.nested,
         d = "on" === t ? "addEventListener" : "removeEventListener",
-        u = t;
+        h = t;
       if (l.touch) {
         const t = !(
           "touchstart" !== s.start ||
@@ -3265,19 +3265,19 @@
         o[d]("click", e.onClick, !0),
         n.cssMode && a[d]("scroll", e.onScroll),
         n.updateOnWindowResize
-          ? e[u](
+          ? e[h](
               r.ios || r.android
                 ? "resize orientationchange observerUpdate"
                 : "resize observerUpdate",
               W,
               !0
             )
-          : e[u]("observerUpdate", W, !0);
+          : e[h]("observerUpdate", W, !0);
     };
     const Z = {
         attachEvents: function () {
           const e = this,
-            t = h(),
+            t = u(),
             { params: i, support: n } = e;
           (e.onTouchStart = N.bind(e)),
             (e.onTouchMove = H.bind(e)),
@@ -3309,7 +3309,7 @@
         const l = (r in a ? a[r] : void 0) || e.originalParams,
           c = K(e, s),
           d = K(e, l),
-          h = s.enabled;
+          u = s.enabled;
         c && !d
           ? (o.removeClass(
               `${s.containerModifierClass}grid ${s.containerModifierClass}grid-column`
@@ -3327,16 +3327,16 @@
               n = l[t] && l[t].enabled;
             i && !n && e[t].disable(), !i && n && e[t].enable();
           });
-        const u = l.direction && l.direction !== s.direction,
-          p = s.loop && (l.slidesPerView !== s.slidesPerView || u);
-        u && i && e.changeDirection(), M(e.params, l);
+        const h = l.direction && l.direction !== s.direction,
+          p = s.loop && (l.slidesPerView !== s.slidesPerView || h);
+        h && i && e.changeDirection(), _(e.params, l);
         const f = e.params.enabled;
         Object.assign(e, {
           allowTouchMove: e.params.allowTouchMove,
           allowSlideNext: e.params.allowSlideNext,
           allowSlidePrev: e.params.allowSlidePrev,
         }),
-          h && !f ? e.disable() : !h && f && e.enable(),
+          u && !f ? e.disable() : !u && f && e.enable(),
           (e.currentBreakpoint = r),
           e.emit("_beforeBreakpoint", l),
           p &&
@@ -3427,7 +3427,7 @@
         function l() {
           o && o();
         }
-        x(e).parent("picture")[0] || (e.complete && s)
+        C(e).parent("picture")[0] || (e.complete && s)
           ? l()
           : t
           ? ((r = new a.Image()),
@@ -3571,15 +3571,15 @@
                   "enabled" in e[n] ||
                   (e[n].enabled = !0),
                 e[n] || (e[n] = { enabled: !1 }),
-                M(t, i))
-              : M(t, i))
-          : M(t, i);
+                _(t, i))
+              : _(t, i))
+          : _(t, i);
       };
     }
     const ne = {
         eventsEmitter: $,
-        update: D,
-        translate: R,
+        update: R,
+        translate: D,
         transition: {
           setTransition: function (e, t) {
             const i = this;
@@ -3661,14 +3661,14 @@
             ? (i = e[0])
             : ([t, i] = e),
           i || (i = {}),
-          (i = M({}, i)),
+          (i = _({}, i)),
           t && !i.el && (i.el = t),
-          i.el && x(i.el).length > 1)
+          i.el && C(i.el).length > 1)
         ) {
           const e = [];
           return (
-            x(i.el).each((t) => {
-              const n = M({}, i, { el: t });
+            C(i.el).each((t) => {
+              const n = _({}, i, { el: t });
               e.push(new oe(n));
             }),
             e
@@ -3676,9 +3676,9 @@
         }
         const n = this;
         (n.__swiper__ = !0),
-          (n.support = I()),
-          (n.device = z({ userAgent: i.userAgent })),
-          (n.browser = _()),
+          (n.support = A()),
+          (n.device = I({ userAgent: i.userAgent })),
+          (n.browser = z()),
           (n.eventsListeners = {}),
           (n.eventsAnyListeners = []),
           (n.modules = [...n.__modules__]),
@@ -3694,23 +3694,23 @@
             emit: n.emit.bind(n),
           });
         });
-        const o = M({}, te, s);
+        const o = _({}, te, s);
         return (
-          (n.params = M({}, o, se, i)),
-          (n.originalParams = M({}, n.params)),
-          (n.passedParams = M({}, i)),
+          (n.params = _({}, o, se, i)),
+          (n.originalParams = _({}, n.params)),
+          (n.passedParams = _({}, i)),
           n.params &&
             n.params.on &&
             Object.keys(n.params.on).forEach((e) => {
               n.on(e, n.params.on[e]);
             }),
           n.params && n.params.onAny && n.onAny(n.params.onAny),
-          (n.$ = x),
+          (n.$ = C),
           Object.assign(n, {
             enabled: n.params.enabled,
             el: t,
             classNames: [],
-            slides: x(),
+            slides: C(),
             slidesGrid: [],
             snapGrid: [],
             slidesSizesGrid: [],
@@ -3753,7 +3753,7 @@
               startTranslate: void 0,
               allowThresholdMove: void 0,
               focusableElements: n.params.focusableElements,
-              lastClickTime: S(),
+              lastClickTime: E(),
               clickTimeout: void 0,
               velocities: [],
               allowMomentumBounce: void 0,
@@ -3930,21 +3930,21 @@
       mount(e) {
         const t = this;
         if (t.mounted) return !0;
-        const i = x(e || t.params.el);
+        const i = C(e || t.params.el);
         if (!(e = i[0])) return !1;
         e.swiper = t;
         const n = () =>
           `.${(t.params.wrapperClass || "").trim().split(" ").join(".")}`;
         let s = (() => {
           if (e && e.shadowRoot && e.shadowRoot.querySelector) {
-            const t = x(e.shadowRoot.querySelector(n()));
+            const t = C(e.shadowRoot.querySelector(n()));
             return (t.children = (e) => i.children(e)), t;
           }
-          return i.children ? i.children(n()) : x(i).children(n());
+          return i.children ? i.children(n()) : C(i).children(n());
         })();
         if (0 === s.length && t.params.createElements) {
-          const e = h().createElement("div");
-          (s = x(e)),
+          const e = u().createElement("div");
+          (s = C(e)),
             (e.className = t.params.wrapperClass),
             i.append(e),
             i.children(`.${t.params.slideClass}`).each((e) => {
@@ -4052,7 +4052,7 @@
         );
       }
       static extendDefaults(e) {
-        M(se, e);
+        _(se, e);
       }
       static get extendedDefaults() {
         return se;
@@ -4164,7 +4164,7 @@
       ]);
     const ae = oe;
     function re(e, t, i, n) {
-      const s = h();
+      const s = u();
       return (
         e.params.createElements &&
           Object.keys(n).forEach((o) => {
@@ -4186,7 +4186,7 @@
         let i;
         return (
           t &&
-            ((i = x(t)),
+            ((i = C(t)),
             e.params.uniqueNavElements &&
               "string" == typeof t &&
               i.length > 1 &&
@@ -4274,7 +4274,7 @@
           $prevEl: null,
         }),
         i("init", () => {
-          !1 === e.params.navigation.enabled ? h() : (c(), a());
+          !1 === e.params.navigation.enabled ? u() : (c(), a());
         }),
         i("toEdge fromEdge lock unlock", () => {
           a();
@@ -4296,7 +4296,7 @@
         i("click", (t, i) => {
           const { $nextEl: s, $prevEl: o } = e.navigation,
             a = i.target;
-          if (e.params.navigation.hideOnClick && !x(a).is(o) && !x(a).is(s)) {
+          if (e.params.navigation.hideOnClick && !C(a).is(o) && !C(a).is(s)) {
             if (
               e.pagination &&
               e.params.pagination &&
@@ -4313,7 +4313,7 @@
               o && o.toggleClass(e.params.navigation.hiddenClass);
           }
         });
-      const h = () => {
+      const u = () => {
         e.$el.addClass(e.params.navigation.navigationDisabledClass), d();
       };
       Object.assign(e.navigation, {
@@ -4322,7 +4322,7 @@
             c(),
             a();
         },
-        disable: h,
+        disable: u,
         update: a,
         init: c,
         destroy: d,
@@ -4392,7 +4392,7 @@
               : e.slides.length,
           c = e.pagination.$el;
         let d;
-        const h = e.params.loop
+        const u = e.params.loop
           ? Math.ceil((s - 2 * e.loopedSlides) / e.params.slidesPerGroup)
           : e.snapGrid.length;
         if (
@@ -4401,15 +4401,15 @@
                 (e.activeIndex - e.loopedSlides) / e.params.slidesPerGroup
               )),
               d > s - 1 - 2 * e.loopedSlides && (d -= s - 2 * e.loopedSlides),
-              d > h - 1 && (d -= h),
-              d < 0 && "bullets" !== e.params.paginationType && (d = h + d))
+              d > u - 1 && (d -= u),
+              d < 0 && "bullets" !== e.params.paginationType && (d = u + d))
             : (d = void 0 !== e.snapIndex ? e.snapIndex : e.activeIndex || 0),
           "bullets" === i.type &&
             e.pagination.bullets &&
             e.pagination.bullets.length > 0)
         ) {
           const n = e.pagination.bullets;
-          let s, r, h;
+          let s, r, u;
           if (
             (i.dynamicBullets &&
               ((o = n
@@ -4427,7 +4427,7 @@
                   : a < 0 && (a = 0)),
               (s = Math.max(d - a, 0)),
               (r = s + (Math.min(n.length, i.dynamicMainBullets) - 1)),
-              (h = (r + s) / 2)),
+              (u = (r + s) / 2)),
             n.removeClass(
               ["", "-next", "-next-next", "-prev", "-prev-prev", "-main"]
                 .map((e) => `${i.bulletActiveClass}${e}`)
@@ -4436,7 +4436,7 @@
             c.length > 1)
           )
             n.each((e) => {
-              const t = x(e),
+              const t = C(e),
                 n = t.index();
               n === d && t.addClass(i.bulletActiveClass),
                 i.dynamicBullets &&
@@ -4467,7 +4467,7 @@
           }
           if (i.dynamicBullets) {
             const s = Math.min(n.length, i.dynamicMainBullets + 4),
-              a = (o * s - o) / 2 - h * o,
+              a = (o * s - o) / 2 - u * o,
               r = t ? "right" : "left";
             n.css(e.isHorizontal() ? r : "top", `${a}px`);
           }
@@ -4475,7 +4475,7 @@
         if (
           ("fraction" === i.type &&
             (c.find(ce(i.currentClass)).text(i.formatFractionCurrent(d + 1)),
-            c.find(ce(i.totalClass)).text(i.formatFractionTotal(h))),
+            c.find(ce(i.totalClass)).text(i.formatFractionTotal(u))),
           "progressbar" === i.type)
         ) {
           let t;
@@ -4486,7 +4486,7 @@
             : e.isHorizontal()
             ? "horizontal"
             : "vertical";
-          const n = (d + 1) / h;
+          const n = (d + 1) / u;
           let s = 1,
             o = 1;
           "horizontal" === t ? (s = n) : (o = n),
@@ -4496,7 +4496,7 @@
               .transition(e.params.speed);
         }
         "custom" === i.type && i.renderCustom
-          ? (c.html(i.renderCustom(e, d + 1, h)), n("paginationRender", c[0]))
+          ? (c.html(i.renderCustom(e, d + 1, u)), n("paginationRender", c[0]))
           : n("paginationUpdate", c[0]),
           e.params.watchOverflow &&
             e.enabled &&
@@ -4538,7 +4538,7 @@
             s.html(o)),
           "custom" !== t.type && n("paginationRender", e.pagination.$el[0]);
       }
-      function h() {
+      function u() {
         e.params.pagination = re(
           e,
           e.originalParams.pagination,
@@ -4547,14 +4547,14 @@
         );
         const t = e.params.pagination;
         if (!t.el) return;
-        let i = x(t.el);
+        let i = C(t.el);
         0 !== i.length &&
           (e.params.uniqueNavElements &&
             "string" == typeof t.el &&
             i.length > 1 &&
             ((i = e.$el.find(t.el)),
             i.length > 1 &&
-              (i = i.filter((t) => x(t).parents(".swiper")[0] === e.el))),
+              (i = i.filter((t) => C(t).parents(".swiper")[0] === e.el))),
           "bullets" === t.type && t.clickable && i.addClass(t.clickableClass),
           i.addClass(t.modifierClass + t.type),
           i.addClass(e.isHorizontal() ? t.horizontalClass : t.verticalClass),
@@ -4569,13 +4569,13 @@
           t.clickable &&
             i.on("click", ce(t.bulletClass), function (t) {
               t.preventDefault();
-              let i = x(this).index() * e.params.slidesPerGroup;
+              let i = C(this).index() * e.params.slidesPerGroup;
               e.params.loop && (i += e.loopedSlides), e.slideTo(i);
             }),
           Object.assign(e.pagination, { $el: i, el: i[0] }),
           e.enabled || i.addClass(t.lockClass));
       }
-      function u() {
+      function h() {
         const t = e.params.pagination;
         if (r()) return;
         const i = e.pagination.$el;
@@ -4588,7 +4588,7 @@
           t.clickable && i.off("click", ce(t.bulletClass));
       }
       i("init", () => {
-        !1 === e.params.pagination.enabled ? p() : (h(), d(), c());
+        !1 === e.params.pagination.enabled ? p() : (u(), d(), c());
       }),
         i("activeIndexChange", () => {
           (e.params.loop || void 0 === e.snapIndex) && c();
@@ -4603,7 +4603,7 @@
           e.params.loop || (d(), c());
         }),
         i("destroy", () => {
-          u();
+          h();
         }),
         i("enable disable", () => {
           const { $el: t } = e.pagination;
@@ -4623,7 +4623,7 @@
             e.params.pagination.hideOnClick &&
             o &&
             o.length > 0 &&
-            !x(s).hasClass(e.params.pagination.bulletClass)
+            !C(s).hasClass(e.params.pagination.bulletClass)
           ) {
             if (
               e.navigation &&
@@ -4642,7 +4642,7 @@
             e.pagination.$el.addClass(
               e.params.pagination.paginationDisabledClass
             ),
-          u();
+          h();
       };
       Object.assign(e.pagination, {
         enable: () => {
@@ -4651,18 +4651,18 @@
               e.pagination.$el.removeClass(
                 e.params.pagination.paginationDisabledClass
               ),
-            h(),
+            u(),
             d(),
             c();
         },
         disable: p,
         render: d,
         update: c,
-        init: h,
-        destroy: u,
+        init: u,
+        destroy: h,
       });
     }
-    function he({ swiper: e, extendParams: t, on: i }) {
+    function ue({ swiper: e, extendParams: t, on: i }) {
       t({
         a11y: {
           enabled: !0,
@@ -4704,13 +4704,13 @@
       function d(e) {
         e.attr("aria-disabled", !0);
       }
-      function h(e) {
+      function u(e) {
         e.attr("aria-disabled", !1);
       }
-      function u(t) {
+      function h(t) {
         if (13 !== t.keyCode && 32 !== t.keyCode) return;
         const i = e.params.a11y,
-          n = x(t.target);
+          n = C(t.target);
         e.navigation &&
           e.navigation.$nextEl &&
           n.is(e.navigation.$nextEl) &&
@@ -4735,7 +4735,7 @@
       }
       const m = (e, t, i) => {
           o(e),
-            "BUTTON" !== e[0].tagName && (r(e, "button"), e.on("keydown", u)),
+            "BUTTON" !== e[0].tagName && (r(e, "button"), e.on("keydown", h)),
             c(e, i),
             (function (e, t) {
               e.attr("aria-controls", t);
@@ -4769,8 +4769,8 @@
         y = () => {
           const t = e.params.a11y;
           t.itemRoleDescriptionMessage &&
-            l(x(e.slides), t.itemRoleDescriptionMessage),
-            t.slideRole && r(x(e.slides), t.slideRole);
+            l(C(e.slides), t.itemRoleDescriptionMessage),
+            t.slideRole && r(C(e.slides), t.slideRole);
           const i = e.params.loop
             ? e.slides.filter(
                 (t) => !t.classList.contains(e.params.slideDuplicateClass)
@@ -4778,7 +4778,7 @@
             : e.slides.length;
           t.slideLabelMessage &&
             e.slides.each((n, s) => {
-              const o = x(n),
+              const o = C(n),
                 a = e.params.loop
                   ? parseInt(o.attr("data-swiper-slide-index"), 10)
                   : s;
@@ -4811,7 +4811,7 @@
             a =
               e.params.autoplay && e.params.autoplay.enabled ? "off" : "polite";
           var r;
-          let d, h;
+          let d, u;
           (r = o),
             s.attr("id", r),
             (function (e, t) {
@@ -4819,21 +4819,21 @@
             })(s, a),
             y(),
             e.navigation && e.navigation.$nextEl && (d = e.navigation.$nextEl),
-            e.navigation && e.navigation.$prevEl && (h = e.navigation.$prevEl),
+            e.navigation && e.navigation.$prevEl && (u = e.navigation.$prevEl),
             d && d.length && m(d, o, t.nextSlideMessage),
-            h && h.length && m(h, o, t.prevSlideMessage),
+            u && u.length && m(u, o, t.prevSlideMessage),
             f() &&
               e.pagination.$el.on(
                 "keydown",
                 ce(e.params.pagination.bulletClass),
-                u
+                h
               ),
             e.$el.on("focus", b, !0),
             e.$el.on("pointerdown", g, !0),
             e.$el.on("pointerup", v, !0);
         };
       i("beforeInit", () => {
-        n = x(
+        n = C(
           `<span class="${e.params.a11y.notificationClass}" aria-live="assertive" aria-atomic="true"></span>`
         );
       }),
@@ -4853,8 +4853,8 @@
               const { $nextEl: t, $prevEl: i } = e.navigation;
               i &&
                 i.length > 0 &&
-                (e.isBeginning ? (d(i), a(i)) : (h(i), o(i))),
-                t && t.length > 0 && (e.isEnd ? (d(t), a(t)) : (h(t), o(t)));
+                (e.isBeginning ? (d(i), a(i)) : (u(i), o(i))),
+                t && t.length > 0 && (e.isEnd ? (d(t), a(t)) : (u(t), o(t)));
             })();
         }),
         i("paginationUpdate", () => {
@@ -4863,7 +4863,7 @@
               const t = e.params.a11y;
               p() &&
                 e.pagination.bullets.each((i) => {
-                  const n = x(i);
+                  const n = C(i);
                   e.params.pagination.clickable &&
                     (o(n),
                     e.params.pagination.renderBullet ||
@@ -4892,13 +4892,13 @@
                 e.navigation &&
                   e.navigation.$prevEl &&
                   (i = e.navigation.$prevEl),
-                t && t.off("keydown", u),
-                i && i.off("keydown", u),
+                t && t.off("keydown", h),
+                i && i.off("keydown", h),
                 f() &&
                   e.pagination.$el.off(
                     "keydown",
                     ce(e.params.pagination.bulletClass),
-                    u
+                    h
                   ),
                 e.$el.off("focus", b, !0),
                 e.$el.off("pointerdown", g, !0),
@@ -4907,7 +4907,7 @@
         });
     }
     new ae(".swiper-reviews", {
-      modules: [le, he],
+      modules: [le, ue],
       navigation: {
         nextEl: ".swiper-reviews .arrow-right",
         prevEl: ".swiper-reviews .arrow-left",
@@ -4926,7 +4926,7 @@
       },
     }),
       new ae(".swiper-result", {
-        modules: [le, he],
+        modules: [le, ue],
         navigation: {
           nextEl: ".swiper-result .arrow-right",
           prevEl: ".swiper-result .arrow-left",
@@ -4944,7 +4944,7 @@
         },
       }),
       new ae(".swiper-news", {
-        modules: [le, he],
+        modules: [le, ue],
         navigation: {
           nextEl: ".news-head .arrow-right",
           prevEl: ".news-head .arrow-left",
@@ -4958,7 +4958,7 @@
         },
       }),
       new ae(".kinds-slider", {
-        modules: [le, he],
+        modules: [le, ue],
         navigation: {
           nextEl: ".kinds-block .arrow-right",
           prevEl: ".kinds-block .arrow-left",
@@ -4990,7 +4990,7 @@
         },
       });
     new ae(".swiper-schema-position", {
-      modules: [le, he, de],
+      modules: [le, ue, de],
       pagination: { el: ".swiper-pagination" },
       navigation: { nextEl: ".arrow-right", prevEl: ".arrow-left" },
       slidesPerView: 1,
@@ -5133,9 +5133,9 @@
           );
       }
     })({});
-    let ue = !1;
+    let he = !1;
     setTimeout(() => {
-      if (ue) {
+      if (he) {
         let e = new Event("windowScroll");
         window.addEventListener("scroll", function (t) {
           document.dispatchEvent(e);
@@ -5229,7 +5229,7 @@
       }
     }
     const we = { passive: !1 };
-    class xe {
+    class Ce {
       constructor(
         e,
         { start: t = () => !0, move: i = () => {}, end: n = () => {} }
@@ -5371,7 +5371,7 @@
           window.removeEventListener("blur", this.onWindowBlur);
       }
     }
-    function Ee(e, t) {
+    function xe(e, t) {
       return t
         ? Math.sqrt(
             Math.pow(t.clientX - e.clientX, 2) +
@@ -5379,7 +5379,7 @@
           )
         : 0;
     }
-    function Se(e, t) {
+    function Ee(e, t) {
       return t
         ? {
             clientX: (e.clientX + t.clientX) / 2,
@@ -5387,7 +5387,7 @@
           }
         : e;
     }
-    const Ce = (e) =>
+    const Se = (e) =>
         "object" == typeof e &&
         null !== e &&
         e.constructor === Object &&
@@ -5399,7 +5399,7 @@
           Object.entries(i).forEach(([t, i]) => {
             const n = Array.isArray(i) ? [] : {};
             e[t] || Object.assign(e, { [t]: n }),
-              Ce(i)
+              Se(i)
                 ? Object.assign(e[t], Te(n, i))
                 : Array.isArray(i)
                 ? Object.assign(e, { [t]: [...i] })
@@ -5408,12 +5408,12 @@
         }
         return e;
       },
-      Me = function (e, t) {
+      _e = function (e, t) {
         return e
           .split(".")
           .reduce((e, t) => ("object" == typeof e ? e[t] : void 0), t);
       };
-    class Pe {
+    class Me {
       constructor(e = {}) {
         Object.defineProperty(this, "options", {
           enumerable: !0,
@@ -5439,11 +5439,11 @@
           this.on(e, t);
       }
       option(e, ...t) {
-        let i = Me(e, this.options);
+        let i = _e(e, this.options);
         return i && "function" == typeof i && (i = i.call(this, this, ...t)), i;
       }
       optionFor(e, t, i, ...n) {
-        let s = Me(t, e);
+        let s = _e(t, e);
         var o;
         "string" != typeof (o = s) ||
           isNaN(o) ||
@@ -5452,7 +5452,7 @@
           "true" === s && (s = !0),
           "false" === s && (s = !1),
           s && "function" == typeof s && (s = s.call(this, this, e, ...n));
-        let a = Me(t, this.options);
+        let a = _e(t, this.options);
         return (
           a && "function" == typeof a
             ? (s = a.call(this, this, e, ...n, s))
@@ -5507,19 +5507,19 @@
           "*" !== e && this.emit("*", e, ...t);
       }
     }
-    Object.defineProperty(Pe, "version", {
+    Object.defineProperty(Me, "version", {
       enumerable: !0,
       configurable: !0,
       writable: !0,
       value: "5.0.32",
     }),
-      Object.defineProperty(Pe, "defaults", {
+      Object.defineProperty(Me, "defaults", {
         enumerable: !0,
         configurable: !0,
         writable: !0,
         value: {},
       });
-    class Oe extends Pe {
+    class Pe extends Me {
       constructor(e = {}) {
         super(e),
           Object.defineProperty(this, "plugins", {
@@ -5549,7 +5549,7 @@
         return this.emit("detachPlugins"), this;
       }
     }
-    var Le;
+    var Oe;
     !(function (e) {
       (e[(e.Init = 0)] = "Init"),
         (e[(e.Error = 1)] = "Error"),
@@ -5557,9 +5557,9 @@
         (e[(e.Panning = 3)] = "Panning"),
         (e[(e.Mousemove = 4)] = "Mousemove"),
         (e[(e.Destroy = 5)] = "Destroy");
-    })(Le || (Le = {}));
-    const ke = ["a", "b", "c", "d", "e", "f"],
-      Ae = {
+    })(Oe || (Oe = {}));
+    const Le = ["a", "b", "c", "d", "e", "f"],
+      ke = {
         PANUP: "Move up",
         PANDOWN: "Move down",
         PANLEFT: "Move left",
@@ -5578,7 +5578,7 @@
         RESET: "Reset",
         TOGGLEFS: "Toggle fullscreen",
       },
-      Ie = {
+      Ae = {
         content: null,
         width: "auto",
         height: "auto",
@@ -5617,22 +5617,22 @@
           inFullscreen: "in-fullscreen",
           htmlHasFullscreen: "with-panzoom-in-fullscreen",
         },
-        l10n: Ae,
+        l10n: ke,
       },
-      ze = '<circle cx="25" cy="25" r="20"></circle>',
-      _e =
+      Ie = '<circle cx="25" cy="25" r="20"></circle>',
+      ze =
         '<div class="f-spinner"><svg viewBox="0 0 50 50">' +
-        ze +
-        ze +
+        Ie +
+        Ie +
         "</svg></div>",
       $e = (e) => e && null !== e && e instanceof Element && "nodeType" in e,
-      De = (e, t) => {
+      Re = (e, t) => {
         e &&
           ve(t).forEach((t) => {
             e.classList.remove(t);
           });
       },
-      Re = (e, t) => {
+      De = (e, t) => {
         e &&
           ve(t).forEach((t) => {
             e.classList.add(t);
@@ -5645,7 +5645,7 @@
       He = "content";
     let qe = null,
       We = null;
-    class Ge extends Oe {
+    class Ge extends Pe {
       get fits() {
         return (
           this.contentRect.width - this.contentRect.fitWidth < 1 &&
@@ -5716,7 +5716,7 @@
       }
       get isResting() {
         if (this.isBouncingX || this.isBouncingY) return !1;
-        for (const e of ke) {
+        for (const e of Le) {
           const t = "e" == e || "f" === e ? 1e-4 : 1e-5;
           if (Math.abs(this.target[e] - this.current[e]) > t) return !1;
         }
@@ -5820,7 +5820,7 @@
             enumerable: !0,
             configurable: !0,
             writable: !0,
-            value: Le.Init,
+            value: Oe.Init,
           }),
           Object.defineProperty(this, "isDragging", {
             enumerable: !0,
@@ -5921,7 +5921,7 @@
         ) {
           if (this.option("spinner")) {
             e.classList.add(this.cn("isLoading"));
-            const t = ge(_e);
+            const t = ge(ze);
             !e.contains(s) || s.parentElement instanceof HTMLPictureElement
               ? (this.spinner = e.appendChild(t))
               : (this.spinner =
@@ -5942,7 +5942,7 @@
         if (
           (i ||
             ((i = e.querySelector("img,picture") || e.firstElementChild),
-            i && Re(i, t)),
+            i && De(i, t)),
           i instanceof HTMLPictureElement && (i = i.querySelector("img")),
           !i)
         )
@@ -5954,14 +5954,14 @@
         e && (e.remove(), (this.spinner = null)),
           this.option("spinner") && t.classList.remove(this.cn("isLoading")),
           this.emit("afterLoad"),
-          i === Le.Init ? this.enable() : this.updateMetrics();
+          i === Oe.Init ? this.enable() : this.updateMetrics();
       }
       onError() {
-        this.state !== Le.Destroy &&
+        this.state !== Oe.Destroy &&
           (this.spinner && (this.spinner.remove(), (this.spinner = null)),
           this.stop(),
           this.detachEvents(),
-          (this.state = Le.Error),
+          (this.state = Oe.Error),
           this.emit("error"));
       }
       attachObserver() {
@@ -5998,7 +5998,7 @@
         const { container: e } = this;
         e.addEventListener("click", this.onClick, { passive: !1, capture: !1 }),
           e.addEventListener("wheel", this.onWheel, { passive: !1 }),
-          (this.pointerTracker = new xe(e, {
+          (this.pointerTracker = new Ce(e, {
             start: this.onPointerDown,
             move: this.onPointerMove,
             end: this.onPointerUp,
@@ -6026,7 +6026,7 @@
         this.setTargetForce();
         const e = this.friction,
           t = this.option("maxVelocity");
-        for (const i of ke)
+        for (const i of Le)
           e
             ? ((this.velocity[i] *= 1 - e),
               t &&
@@ -6044,7 +6044,7 @@
             : this.stop("current");
       }
       setTargetForce() {
-        for (const e of ke)
+        for (const e of Le)
           ("e" === e && this.isBouncingX) ||
             ("f" === e && this.isBouncingY) ||
             (this.velocity[e] =
@@ -6060,22 +6060,22 @@
           l = a.min,
           c = a.max,
           d = r.min,
-          h = r.max;
-        let u = 0,
+          u = r.max;
+        let h = 0,
           p = 0;
         return (
           l !== 1 / 0 && n < l
-            ? (u = l - n)
-            : c !== 1 / 0 && n > c && (u = c - n),
+            ? (h = l - n)
+            : c !== 1 / 0 && n > c && (h = c - n),
           d !== 1 / 0 && s < d
             ? (p = d - s)
-            : h !== 1 / 0 && s > h && (p = h - s),
-          Math.abs(u) < 1e-4 && (u = 0),
+            : u !== 1 / 0 && s > u && (p = u - s),
+          Math.abs(h) < 1e-4 && (h = 0),
           Math.abs(p) < 1e-4 && (p = 0),
           Object.assign(Object.assign({}, o), {
-            xDiff: u,
+            xDiff: h,
             yDiff: p,
-            inBounds: !u && !p,
+            inBounds: !h && !p,
           })
         );
       }
@@ -6100,13 +6100,13 @@
             ),
             c = i ? o : n,
             d = i ? a : s,
-            h = this.getMatrix(e),
-            u = new DOMPoint(0, 0).matrixTransform(h),
-            p = new DOMPoint(0 + c, 0).matrixTransform(h),
-            f = new DOMPoint(0 + c, 0 + d).matrixTransform(h),
-            m = new DOMPoint(0, 0 + d).matrixTransform(h),
-            g = Math.abs(f.x - u.x),
-            v = Math.abs(f.y - u.y),
+            u = this.getMatrix(e),
+            h = new DOMPoint(0, 0).matrixTransform(u),
+            p = new DOMPoint(0 + c, 0).matrixTransform(u),
+            f = new DOMPoint(0 + c, 0 + d).matrixTransform(u),
+            m = new DOMPoint(0, 0 + d).matrixTransform(u),
+            g = Math.abs(f.x - h.x),
+            v = Math.abs(f.y - h.y),
             b = Math.abs(m.x - p.x),
             y = Math.abs(m.y - p.y);
           (r = Math.max(g, b)), (l = Math.max(v, y));
@@ -6150,11 +6150,11 @@
       enable() {
         const { content: e } = this,
           t = new DOMMatrixReadOnly(window.getComputedStyle(e).transform);
-        for (const e of ke) this.current[e] = this.target[e] = t[e];
+        for (const e of Le) this.current[e] = this.target[e] = t[e];
         this.updateMetrics(),
           this.attachObserver(),
           this.attachEvents(),
-          (this.state = Le.Ready),
+          (this.state = Oe.Ready),
           this.emit("ready");
       }
       onClick(e) {
@@ -6219,14 +6219,14 @@
               (e.preventDefault(), this[t]({ event: e }));
           },
           d = this.option("click", e),
-          h = this.option("dblClick", e);
-        h
+          u = this.option("dblClick", e);
+        u
           ? (this.clicks++,
             1 == this.clicks &&
               (this.clickTimer = setTimeout(() => {
                 1 === this.clicks
                   ? (this.emit("click", e), !e.defaultPrevented && d && c(d))
-                  : (this.emit("dblClick", e), e.defaultPrevented || c(h)),
+                  : (this.emit("dblClick", e), e.defaultPrevented || c(u)),
                   (this.clicks = 0),
                   (this.clickTimer = null);
               }, 350)))
@@ -6302,8 +6302,8 @@
         if ((this.emit("touchMove", e), e.defaultPrevented)) return;
         this.addTrackingPoint(t[0]);
         const { content: n } = this,
-          s = Se(i[0], i[1]),
-          o = Se(t[0], t[1]);
+          s = Ee(i[0], i[1]),
+          o = Ee(t[0], t[1]);
         let a = 0,
           r = 0;
         if (t.length > 1) {
@@ -6311,13 +6311,13 @@
           (a = s.clientX - e.left - 0.5 * e.width),
             (r = s.clientY - e.top - 0.5 * e.height);
         }
-        const l = Ee(i[0], i[1]),
-          c = Ee(t[0], t[1]);
+        const l = xe(i[0], i[1]),
+          c = xe(t[0], t[1]);
         let d = l ? c / l : 1,
-          h = o.clientX - s.clientX,
-          u = o.clientY - s.clientY;
-        (this.dragOffset.x += h),
-          (this.dragOffset.y += u),
+          u = o.clientX - s.clientX,
+          h = o.clientY - s.clientY;
+        (this.dragOffset.x += u),
+          (this.dragOffset.y += h),
           (this.dragOffset.time = Date.now() - this.dragStart.time);
         let p =
           pe(this.targetScale) === pe(this.minScale) && this.option("lockAxis");
@@ -6334,8 +6334,8 @@
             (this.lockedAxis = t > 45 && t < 135 ? "y" : "x"),
               (this.dragOffset.x = 0),
               (this.dragOffset.y = 0),
-              (h = 0),
-              (u = 0);
+              (u = 0),
+              (h = 0);
           } else this.lockedAxis = p;
         if (
           (me(e.target, this.content) && ((p = "x"), (this.dragOffset.y = 0)),
@@ -6347,33 +6347,33 @@
           return;
         e.cancelable && e.preventDefault(),
           this.container.classList.add(this.cn("isDragging"));
-        const f = this.checkBounds(h, u);
+        const f = this.checkBounds(u, h);
         this.option("rubberband")
           ? ("x" !== this.isInfinite &&
-              ((f.xDiff > 0 && h < 0) || (f.xDiff < 0 && h > 0)) &&
-              (h *= Math.max(
+              ((f.xDiff > 0 && u < 0) || (f.xDiff < 0 && u > 0)) &&
+              (u *= Math.max(
                 0,
                 0.5 - Math.abs((0.75 / this.contentRect.fitWidth) * f.xDiff)
               )),
             "y" !== this.isInfinite &&
-              ((f.yDiff > 0 && u < 0) || (f.yDiff < 0 && u > 0)) &&
-              (u *= Math.max(
+              ((f.yDiff > 0 && h < 0) || (f.yDiff < 0 && h > 0)) &&
+              (h *= Math.max(
                 0,
                 0.5 - Math.abs((0.75 / this.contentRect.fitHeight) * f.yDiff)
               )))
-          : (f.xDiff && (h = 0), f.yDiff && (u = 0));
+          : (f.xDiff && (u = 0), f.yDiff && (h = 0));
         const m = this.targetScale,
           g = this.minScale,
           v = this.maxScale;
         m < 0.5 * g && (d = Math.max(d, g)),
           m > 1.5 * v && (d = Math.min(d, v)),
-          "y" === this.lockedAxis && pe(m) === pe(g) && (h = 0),
-          "x" === this.lockedAxis && pe(m) === pe(g) && (u = 0),
+          "y" === this.lockedAxis && pe(m) === pe(g) && (u = 0),
+          "x" === this.lockedAxis && pe(m) === pe(g) && (h = 0),
           this.applyChange({
             originX: a,
             originY: r,
-            panX: h,
-            panY: u,
+            panX: u,
+            panY: h,
             scale: d,
             friction: this.option("dragFriction"),
             ignoreBounds: !0,
@@ -6399,7 +6399,7 @@
             this.emit("touchEnd", e),
             (this.isDragging = !1),
             (this.lockedAxis = !1),
-            this.state !== Le.Destroy &&
+            this.state !== Oe.Destroy &&
               (e.defaultPrevented || this.startDecelAnim()));
       }
       startDecelAnim() {
@@ -6408,11 +6408,11 @@
         this.rAF && (cancelAnimationFrame(this.rAF), (this.rAF = null)),
           (this.isBouncingX = !1),
           (this.isBouncingY = !1);
-        for (const e of ke) this.velocity[e] = 0;
+        for (const e of Le) this.velocity[e] = 0;
         (this.target.e = this.current.e),
           (this.target.f = this.current.f),
-          De(this.container, "is-scaling"),
-          De(this.container, "is-animating"),
+          Re(this.container, "is-scaling"),
+          Re(this.container, "is-animating"),
           (this.isTicking = !1);
         const { trackingPoints: i } = this,
           n = i[0],
@@ -6432,40 +6432,40 @@
         1 !== l && ((o *= l), (a *= l));
         let c = 0,
           d = 0,
-          h = 0,
           u = 0,
+          h = 0,
           p = this.option("decelFriction");
         const f = this.targetScale;
         if (r > 0) {
-          (h = Math.abs(o) > 3 ? o / (r / 30) : 0),
-            (u = Math.abs(a) > 3 ? a / (r / 30) : 0);
+          (u = Math.abs(o) > 3 ? o / (r / 30) : 0),
+            (h = Math.abs(a) > 3 ? a / (r / 30) : 0);
           const e = this.option("maxVelocity");
           e &&
-            ((h = Math.max(Math.min(h, e), -1 * e)),
-            (u = Math.max(Math.min(u, e), -1 * e)));
+            ((u = Math.max(Math.min(u, e), -1 * e)),
+            (h = Math.max(Math.min(h, e), -1 * e)));
         }
-        h && (c = h / (1 / (1 - p) - 1)),
-          u && (d = u / (1 / (1 - p) - 1)),
+        u && (c = u / (1 / (1 - p) - 1)),
+          h && (d = h / (1 / (1 - p) - 1)),
           ("y" === this.option("lockAxis") ||
             ("xy" === this.option("lockAxis") &&
               "y" === this.lockedAxis &&
               pe(f) === this.minScale)) &&
-            (c = h = 0),
+            (c = u = 0),
           ("x" === this.option("lockAxis") ||
             ("xy" === this.option("lockAxis") &&
               "x" === this.lockedAxis &&
               pe(f) === this.minScale)) &&
-            (d = u = 0);
+            (d = h = 0);
         const m = this.dragOffset.x,
           g = this.dragOffset.y,
           v = this.option("dragMinThreshold") || 0;
-        Math.abs(m) < v && Math.abs(g) < v && ((c = d = 0), (h = u = 0)),
+        Math.abs(m) < v && Math.abs(g) < v && ((c = d = 0), (u = h = 0)),
           ((this.option("zoom") &&
             (f < this.minScale - 1e-5 || f > this.maxScale + 1e-5)) ||
             (t && !c && !d)) &&
             (p = 0.35),
           this.applyChange({ panX: c, panY: d, friction: p }),
-          this.emit("decel", h, u, m, g);
+          this.emit("decel", u, h, m, g);
       }
       onWheel(e) {
         var t = [-e.deltaX || 0, -e.deltaY || 0, -e.detail || 0].reduce(
@@ -6500,29 +6500,29 @@
         this.emit("beforeTransform");
         const { current: e, target: t, content: i, contentRect: n } = this,
           s = Object.assign({}, Be);
-        for (const i of ke) {
+        for (const i of Le) {
           const n = "e" == i || "f" === i ? Fe : 1e5;
           (s[i] = pe(e[i], n)),
             Math.abs(t[i] - e[i]) < ("e" == i || "f" === i ? 0.51 : 0.001) &&
               (e[i] = t[i]);
         }
         let { a: o, b: a, c: r, d: l, e: c, f: d } = s,
-          h = `matrix(${o}, ${a}, ${r}, ${l}, ${c}, ${d})`,
-          u =
+          u = `matrix(${o}, ${a}, ${r}, ${l}, ${c}, ${d})`,
+          h =
             i.parentElement instanceof HTMLPictureElement ? i.parentElement : i;
         if (
-          (this.option("transformParent") && (u = u.parentElement || u),
-          u.style.transform === h)
+          (this.option("transformParent") && (h = h.parentElement || h),
+          h.style.transform === u)
         )
           return;
-        u.style.transform = h;
+        h.style.transform = u;
         const { contentWidth: p, contentHeight: f } =
           this.calculateContentDim();
         (n.width = p), (n.height = f), this.emit("afterTransform");
       }
       updateMetrics(e = !1) {
         var t;
-        if (!this || this.state === Le.Destroy) return;
+        if (!this || this.state === Oe.Destroy) return;
         if (this.isContentLoading) return;
         const i = Math.max(
             1,
@@ -6537,13 +6537,13 @@
         let l = a.width * i,
           c = a.height * i;
         const d = parseFloat(r.paddingTop) + parseFloat(r.paddingBottom),
-          h = l - (parseFloat(r.paddingLeft) + parseFloat(r.paddingRight)),
-          u = c - d;
+          u = l - (parseFloat(r.paddingLeft) + parseFloat(r.paddingRight)),
+          h = c - d;
         this.containerRect = {
           width: l,
           height: c,
-          innerWidth: h,
-          innerHeight: u,
+          innerWidth: u,
+          innerHeight: h,
         };
         let p = this.option("width") || "auto",
           f = this.option("height") || "auto";
@@ -6588,14 +6588,14 @@
         let b = v.width * i,
           y = v.height * i,
           w = 0,
-          x = 0;
+          C = 0;
         o &&
           (Math.abs(p - b) > 1 || Math.abs(f - y) > 1) &&
           ({
             width: b,
             height: y,
             top: w,
-            left: x,
+            left: C,
           } = ((e, t, i, n) => {
             const s = i / n;
             return (
@@ -6608,8 +6608,8 @@
             {
               top: v.top - a.top + w,
               bottom: a.bottom - v.bottom + w,
-              left: v.left - a.left + x,
-              right: a.right - v.right + x,
+              left: v.left - a.left + C,
+              right: a.right - v.right + C,
               fitWidth: b,
               fitHeight: y,
               width: b,
@@ -6627,7 +6627,7 @@
               ? this.zoomTo(this.minScale, { friction: 0 })
               : this.targetScale > this.maxScale
               ? this.zoomTo(this.maxScale, { friction: 0 })
-              : this.state === Le.Init ||
+              : this.state === Oe.Init ||
                 this.checkBounds().inBounds ||
                 this.requestTick()),
           this.updateControls();
@@ -6647,12 +6647,12 @@
           (a = -1 / 0), (l = 1 / 0), (r = -1 / 0), (c = 1 / 0);
         else {
           let { containerRect: n, contentRect: d } = this,
-            h = pe(s * i, Fe),
-            u = pe(o * i, Fe),
+            u = pe(s * i, Fe),
+            h = pe(o * i, Fe),
             { innerWidth: p, innerHeight: f } = n;
           if (
-            (n.width === h && (p = n.width),
-            n.width === u && (f = n.height),
+            (n.width === u && (p = n.width),
+            n.width === h && (f = n.height),
             e > p)
           ) {
             (l = 0.5 * (e - p)), (a = -1 * l);
@@ -6694,11 +6694,11 @@
               toggleZoom: o - l < 0.5 * (s - l) ? s : l,
             }[e.option("click") || ""] || l,
           d = e.canZoomIn(),
-          h = e.canZoomOut(),
-          u = i === Ne && !!this.option("touch"),
-          p = h && u;
+          u = e.canZoomOut(),
+          h = i === Ne && !!this.option("touch"),
+          p = u && h;
         if (
-          (u &&
+          (h &&
             (pe(o) < pe(l) && !this.panOnlyZoomed && (p = !0),
             (pe(n.width, 1) > pe(n.fitWidth, 1) ||
               pe(n.height, 1) > pe(n.fitHeight, 1)) &&
@@ -6710,7 +6710,7 @@
         )
           return;
         let f = d && pe(c) > pe(o),
-          m = !f && !p && h && pe(c) < pe(o);
+          m = !f && !p && u && pe(c) < pe(o);
         be(t, this.cn("canZoomIn"), f), be(t, this.cn("canZoomOut"), m);
         for (const e of t.querySelectorAll('[data-panzoom-action="zoomIn"]'))
           d
@@ -6718,14 +6718,14 @@
             : (e.setAttribute("disabled", ""),
               e.setAttribute("tabindex", "-1"));
         for (const e of t.querySelectorAll('[data-panzoom-action="zoomOut"]'))
-          h
+          u
             ? (e.removeAttribute("disabled"), e.removeAttribute("tabindex"))
             : (e.setAttribute("disabled", ""),
               e.setAttribute("tabindex", "-1"));
         for (const e of t.querySelectorAll(
           '[data-panzoom-action="toggleZoom"],[data-panzoom-action="iterateZoom"]'
         )) {
-          d || h
+          d || u
             ? (e.removeAttribute("disabled"), e.removeAttribute("tabindex"))
             : (e.setAttribute("disabled", ""),
               e.setAttribute("tabindex", "-1"));
@@ -6745,7 +6745,7 @@
         flipY: l = !1,
         ignoreBounds: c = !1,
       }) {
-        this.state !== Le.Destroy &&
+        this.state !== Oe.Destroy &&
           this.applyChange({
             panX: e - this.target.e,
             panY: t - this.target.f,
@@ -6772,14 +6772,14 @@
         ignoreBounds: c = !1,
         bounce: d = this.option("bounce"),
       }) {
-        const h = this.state;
-        if (h === Le.Destroy) return;
+        const u = this.state;
+        if (u === Oe.Destroy) return;
         this.rAF && (cancelAnimationFrame(this.rAF), (this.rAF = null)),
           (this.friction = a || 0),
           (this.ignoreBounds = c);
-        const { current: u } = this,
-          p = u.e,
-          f = u.f,
+        const { current: h } = this,
+          p = h.e,
+          f = h.f,
           m = this.getMatrix(this.target);
         let g = new DOMMatrix().translate(p, f).translate(s, o).translate(e, t);
         if (this.option("zoom")) {
@@ -6795,7 +6795,7 @@
           n && (g = g.rotate(n)),
           r && (g = g.scale(-1, 1)),
           l && (g = g.scale(1, -1));
-        for (const e of ke)
+        for (const e of Le)
           "e" !== e &&
           "f" !== e &&
           (g[e] > this.minScale + 1e-5 || g[e] < this.minScale - 1e-5)
@@ -6807,34 +6807,34 @@
           !1 === d) &&
           !c &&
           this.clampTargetBounds(),
-          h === Le.Init
+          u === Oe.Init
             ? this.animate()
-            : this.isResting || ((this.state = Le.Panning), this.requestTick());
+            : this.isResting || ((this.state = Oe.Panning), this.requestTick());
       }
       stop(e = !1) {
-        if (this.state === Le.Init || this.state === Le.Destroy) return;
+        if (this.state === Oe.Init || this.state === Oe.Destroy) return;
         const t = this.isTicking;
         this.rAF && (cancelAnimationFrame(this.rAF), (this.rAF = null)),
           (this.isBouncingX = !1),
           (this.isBouncingY = !1);
-        for (const t of ke)
+        for (const t of Le)
           (this.velocity[t] = 0),
             "current" === e
               ? (this.current[t] = this.target[t])
               : "target" === e && (this.target[t] = this.current[t]);
         this.setTransform(),
-          De(this.container, "is-scaling"),
-          De(this.container, "is-animating"),
+          Re(this.container, "is-scaling"),
+          Re(this.container, "is-animating"),
           (this.isTicking = !1),
-          (this.state = Le.Ready),
+          (this.state = Oe.Ready),
           t && (this.emit("endAnimation"), this.updateControls());
       }
       requestTick() {
         this.isTicking ||
           (this.emit("startAnimation"),
           this.updateControls(),
-          Re(this.container, "is-animating"),
-          this.isScaling && Re(this.container, "is-scaling")),
+          De(this.container, "is-animating"),
+          this.isScaling && De(this.container, "is-scaling")),
           (this.isTicking = !0),
           this.rAF || (this.rAF = requestAnimationFrame(() => this.animate()));
       }
@@ -6848,14 +6848,14 @@
           r = i.getBoundingClientRect(),
           l = (e.clientX || 0) - r.left,
           c = (e.clientY || 0) - r.top;
-        let { contentWidth: d, contentHeight: h } = this.calculateContentDim(
+        let { contentWidth: d, contentHeight: u } = this.calculateContentDim(
           this.target
         );
-        const u = this.option("mouseMoveFactor");
-        u > 1 && (d !== o && (d *= u), h !== a && (h *= u));
+        const h = this.option("mouseMoveFactor");
+        h > 1 && (d !== o && (d *= h), u !== a && (u *= h));
         let p = 0.5 * (d - o) - (((l / o) * 100) / 100) * (d - o);
         p += 0.5 * (s.right - s.left);
-        let f = 0.5 * (h - a) - (((c / a) * 100) / 100) * (h - a);
+        let f = 0.5 * (u - a) - (((c / a) * 100) / 100) * (u - a);
         (f += 0.5 * (s.bottom - s.top)),
           this.applyChange({
             panX: p - this.target.e,
@@ -6864,7 +6864,7 @@
           });
       }
       zoomWithWheel(e) {
-        if (this.state === Le.Destroy || this.state === Le.Init) return;
+        if (this.state === Oe.Destroy || this.state === Oe.Init) return;
         const t = Date.now();
         if (t - this.pwt < 45) return void e.preventDefault();
         this.pwt = t;
@@ -6952,7 +6952,7 @@
           event: s,
         } = {}
       ) {
-        if (this.isContentLoading || this.state === Le.Destroy) return;
+        if (this.isContentLoading || this.state === Oe.Destroy) return;
         const { targetScale: o } = this;
         this.stop();
         let a = 1;
@@ -7038,21 +7038,21 @@
         return new DOMMatrix([t, i, n, s, o, a]);
       }
       reset(e) {
-        if (this.state !== Le.Init && this.state !== Le.Destroy) {
+        if (this.state !== Oe.Init && this.state !== Oe.Destroy) {
           this.stop("current");
-          for (const e of ke) this.target[e] = Be[e];
+          for (const e of Le) this.target[e] = Be[e];
           (this.target.a = this.minScale),
             (this.target.d = this.minScale),
             this.clampTargetBounds(),
             this.isResting ||
               ((this.friction = void 0 === e ? this.option("friction") : e),
-              (this.state = Le.Panning),
+              (this.state = Oe.Panning),
               this.requestTick());
         }
       }
       destroy() {
         this.stop(),
-          (this.state = Le.Destroy),
+          (this.state = Oe.Destroy),
           this.detachEvents(),
           this.detachObserver();
         const { container: e, content: t } = this,
@@ -7068,7 +7068,7 @@
       enumerable: !0,
       configurable: !0,
       writable: !0,
-      value: Ie,
+      value: Ae,
     }),
       Object.defineProperty(Ge, "Plugins", {
         enumerable: !0,
@@ -7132,7 +7132,7 @@
       },
       Ze = (e = {}) =>
         Object.assign({ index: -1, slides: [], dim: 0, pos: -1 }, e);
-    class Ke extends Pe {
+    class Ke extends Me {
       constructor(e, t) {
         super(t),
           Object.defineProperty(this, "instance", {
@@ -7168,10 +7168,10 @@
         let e = this.list;
         if (!e) {
           (e = document.createElement("ul")),
-            Re(e, this.cn("list")),
+            De(e, this.cn("list")),
             e.setAttribute("role", "tablist");
           const t = this.instance.container;
-          t.appendChild(e), Re(t, this.cn("hasDots")), (this.list = e);
+          t.appendChild(e), De(t, this.cn("hasDots")), (this.list = e);
         }
         return e;
       }
@@ -7201,16 +7201,16 @@
               void 0 === e ||
               e.setAttribute("aria-selected", i ? "true" : "false");
           for (const e of ["isBeforePrev", "isPrev", "isNext", "isAfterNext"])
-            De(t, this.cn(e));
+            Re(t, this.cn(e));
           c++;
         }
         if (((l = l || r.firstChild), o && l)) {
           const e = l.previousElementSibling,
             t = e && e.previousElementSibling;
-          Re(e, this.cn("isPrev")), Re(t, this.cn("isBeforePrev"));
+          De(e, this.cn("isPrev")), De(t, this.cn("isBeforePrev"));
           const i = l.nextElementSibling,
             n = i && i.nextElementSibling;
-          Re(i, this.cn("isNext")), Re(n, this.cn("isAfterNext"));
+          De(i, this.cn("isNext")), De(n, this.cn("isAfterNext"));
         }
         this.isDynamic = o;
       }
@@ -7234,7 +7234,7 @@
       cleanup() {
         this.list && (this.list.remove(), (this.list = null)),
           (this.isDynamic = !1),
-          De(this.instance.container, this.cn("hasDots"));
+          Re(this.instance.container, this.cn("hasDots"));
       }
       attach() {
         this.instance.on(["refresh", "change"], this.onRefresh);
@@ -7320,7 +7320,7 @@
           n = document.createElement("button");
         n.setAttribute("tabindex", "0"),
           n.setAttribute("title", i.localize(`{{${e.toUpperCase()}}}`)),
-          Re(
+          De(
             n,
             this.cn("button") + " " + this.cn(e === et ? "isNext" : "isPrev")
           );
@@ -7348,7 +7348,7 @@
         let { container: i, prev: n, next: s } = this;
         i || ((i = e.querySelector("." + t)), (this.isDom = !!i)),
           i ||
-            ((i = document.createElement("div")), Re(i, t), e.appendChild(i)),
+            ((i = document.createElement("div")), De(i, t), e.appendChild(i)),
           (this.container = i),
           s || (s = i.querySelector("[data-carousel-next]")),
           s || (s = this.addBtn(et)),
@@ -7457,8 +7457,8 @@
         if ((i.stopPropagation(), i.preventDefault(), !l)) return;
         const c = parseInt(l.dataset.index || "", 10) || 0,
           d = r.getPageForSlide(c),
-          h = a.getPageForSlide(c);
-        a.slideTo(h),
+          u = a.getPageForSlide(c);
+        a.slideTo(u),
           r.slideTo(d, {
             friction:
               (null ===
@@ -7541,7 +7541,7 @@
       ot = "animationend",
       at = "isSelected",
       rt = "slide";
-    class lt extends Oe {
+    class lt extends Pe {
       get axis() {
         return this.isHorizontal ? "e" : "f";
       }
@@ -7680,9 +7680,9 @@
         const i = Te({}, lt.defaults, this.userOptions);
         let n = "";
         const s = i.breakpoints;
-        if (s && Ce(s))
+        if (s && Se(s))
           for (const [e, t] of Object.entries(s))
-            window.matchMedia(e).matches && Ce(t) && ((n += e), Te(i, t));
+            window.matchMedia(e).matches && Se(t) && ((n += e), Te(i, t));
         (n === this.bp && this.state !== Ye.Init) ||
           ((this.bp = n),
           this.state === Ye.Ready &&
@@ -7721,7 +7721,7 @@
       initLayout() {
         const { container: e } = this,
           t = this.option("classes");
-        Re(e, this.cn("container")),
+        De(e, this.cn("container")),
           be(e, t.isLTR, !this.isRTL),
           be(e, t.isRTL, this.isRTL),
           be(e, t.isVertical, !this.isHorizontal),
@@ -7729,14 +7729,14 @@
         let i = this.option("viewport") || e.querySelector(`.${t.viewport}`);
         i ||
           ((i = document.createElement("div")),
-          Re(i, t.viewport),
+          De(i, t.viewport),
           i.append(...Xe(e, `.${t.slide}`)),
           e.prepend(i)),
           i.addEventListener("scroll", this.onScroll);
         let n = this.option("track") || e.querySelector(`.${t.track}`);
         n ||
           ((n = document.createElement("div")),
-          Re(n, t.track),
+          De(n, t.track),
           n.append(...Array.from(i.childNodes))),
           n.setAttribute("aria-live", "polite"),
           i.contains(n) || i.prepend(n),
@@ -7915,7 +7915,7 @@
             : ((a = document.createElement("div")),
               (a.style.visibility = "hidden"),
               (this.track || document.body).prepend(a)),
-          Re(a, this.cn(rt) + " " + e.class + " " + e.customClass),
+          De(a, this.cn(rt) + " " + e.class + " " + e.customClass),
           s)
         )
           (a.style[n] = `${s}px`),
@@ -7975,8 +7975,8 @@
             slides: c,
             panzoom: d,
           } = this,
-          h = 0,
           u = 0,
+          h = 0,
           p = 0,
           f = 0;
         d ? (f = -1 * d.current[this.axis]) : l[r] && (f = l[r].pos || 0),
@@ -7988,12 +7988,12 @@
             ? ("top" === e
                 ? ((i.style.right = ""), (i.style.left = ""))
                 : (i.style.top = ""),
-              t.index !== h
-                ? (i.style[e] = 0 === u ? "" : `${pe(u, 1e3)}px`)
+              t.index !== u
+                ? (i.style[e] = 0 === h ? "" : `${pe(h, 1e3)}px`)
                 : (i.style[e] = ""),
               (p += t.dim + t.gap),
-              h++)
-            : (u += t.dim + t.gap);
+              u++)
+            : (h += t.dim + t.gap);
         }
         if (n && p && s) {
           let i = getComputedStyle(s),
@@ -8006,7 +8006,7 @@
               (pe(t.pos) < pe(o) &&
                 pe(t.pos + t.dim + t.gap) < pe(f) &&
                 pe(f) > pe(a - o) &&
-                (t.el.style[e] = `${pe(u + p, 1e3)}px`),
+                (t.el.style[e] = `${pe(h + p, 1e3)}px`),
               pe(t.pos + t.gap) >= pe(a - o) &&
                 pe(t.pos) > pe(f + o) &&
                 pe(f) < pe(o) &&
@@ -8030,7 +8030,7 @@
         if (!t || !e) return;
         if (e.el && e.el.parentNode) return;
         const n = e.el || document.createElement("div");
-        Re(n, this.cn(rt)), Re(n, e.class), Re(n, e.customClass);
+        De(n, this.cn(rt)), De(n, e.class), De(n, e.customClass);
         const s = e.html;
         s &&
           (s instanceof HTMLElement
@@ -8060,7 +8060,7 @@
         if (!i || !i.parentNode) return;
         const n = this.cn(at);
         if (
-          (i.classList.contains(n) && (De(i, n), this.emit("unselectSlide", e)),
+          (i.classList.contains(n) && (Re(i, n), this.emit("unselectSlide", e)),
           e.isDom && !t)
         )
           return (
@@ -8094,11 +8094,11 @@
         )
           return !1;
         const d = e > a ? 1 : -1,
-          h = r[c].pos * (this.isRTL ? 1 : -1);
-        if (a === c && Math.abs(h - l.target[this.axis]) < 1) return !1;
+          u = r[c].pos * (this.isRTL ? 1 : -1);
+        if (a === c && Math.abs(u - l.target[this.axis]) < 1) return !1;
         this.clearTransitions();
-        const u = l.isResting;
-        Re(this.container, this.cn("inTransition"));
+        const h = l.isResting;
+        De(this.container, this.cn("inTransition"));
         const p =
             (null === (s = r[a]) || void 0 === s ? void 0 : s.slides[0]) ||
             null,
@@ -8108,7 +8108,7 @@
         this.inTransition.add(f.index), this.createSlideEl(f);
         let m = p.el,
           g = f.el;
-        u || t === rt || ((t = "fadeFast"), (m = null));
+        h || t === rt || ((t = "fadeFast"), (m = null));
         const v = this.isRTL ? "next" : "prev",
           b = this.isRTL ? "prev" : "next";
         return (
@@ -8121,8 +8121,8 @@
             ((f.transition = t),
             g.addEventListener(ot, this.onAnimationEnd),
             g.classList.add(`f-${t}In`, `from-${d > 0 ? v : b}`)),
-          (l.current[this.axis] = h),
-          (l.target[this.axis] = h),
+          (l.current[this.axis] = u),
+          (l.target[this.axis] = u),
           l.requestTick(),
           this.onChange(c),
           !0
@@ -8155,10 +8155,10 @@
                   : n.setAttribute(e, "true")
                 : this.pages[this.page].slides.includes(i)
                 ? (n.classList.contains(t) ||
-                    (Re(n, t), this.emit("selectSlide", i)),
+                    (De(n, t), this.emit("selectSlide", i)),
                   n.removeAttribute(e))
                 : (n.classList.contains(t) &&
-                    (De(n, t), this.emit("unselectSlide", i)),
+                    (Re(n, t), this.emit("unselectSlide", i)),
                   n.setAttribute(e, "true")));
           }
       }
@@ -8192,11 +8192,11 @@
           o ||
             ((o = !0),
             a && (a.remove(), (a = null)),
-            De(t, s),
+            Re(t, s),
             t.complete &&
-              (Re(t, n),
+              (De(t, n),
               setTimeout(() => {
-                De(t, n);
+                Re(t, n);
               }, 350)),
             this.option("adaptiveHeight") &&
               e.el &&
@@ -8204,7 +8204,7 @@
               (i.updateMetrics(), i.setViewportHeight()),
             this.emit("load", e));
         };
-        Re(t, s),
+        De(t, s),
           (t.src = t.dataset.lazySrcset || t.dataset.lazySrc || ""),
           delete t.dataset.lazySrc,
           delete t.dataset.lazySrcset,
@@ -8218,7 +8218,7 @@
             const i = t.parentNode;
             i &&
               e.el &&
-              (t.complete ? r() : o || ((a = ge(_e)), i.insertBefore(a, t)));
+              (t.complete ? r() : o || ((a = ge(ze)), i.insertBefore(a, t)));
           }, 300);
       }
       lazyLoadSlide(e) {
@@ -8262,21 +8262,21 @@
         const { isRTL: o, isHorizontal: a, axis: r, pages: l } = this,
           c = l.length,
           d = Math.abs(Math.atan2(i, t) / (Math.PI / 180));
-        let h = 0;
-        if (((h = d > 45 && d < 135 ? (a ? 0 : i) : a ? t : 0), !c)) return;
-        let u = this.page,
+        let u = 0;
+        if (((u = d > 45 && d < 135 ? (a ? 0 : i) : a ? t : 0), !c)) return;
+        let h = this.page,
           p = o && a ? 1 : -1;
         const f = e.current[r] * p;
         let { pageIndex: m } = this.getPageFromPosition(f);
-        Math.abs(h) > 5
-          ? (l[u].dim <
+        Math.abs(u) > 5
+          ? (l[h].dim <
               document.documentElement[
                 "client" + (this.isHorizontal ? "Width" : "Height")
               ] -
-                1 && (u = m),
-            (u = o && a ? (h < 0 ? u - 1 : u + 1) : h < 0 ? u + 1 : u - 1))
-          : (u = 0 === n && 0 === s ? u : m),
-          this.slideTo(u, {
+                1 && (h = m),
+            (h = o && a ? (u < 0 ? h - 1 : h + 1) : u < 0 ? h + 1 : h - 1))
+          : (h = 0 === n && 0 === s ? h : m),
+          this.slideTo(h, {
             transition: !1,
             friction: e.option("decelFriction"),
           });
@@ -8357,19 +8357,19 @@
           if ((this.emit("beforeChange", t, e), t.defaultPrevented)) return;
         }
         if (this.transitionTo(e, i)) return;
-        let h = r[n].pos;
+        let u = r[n].pos;
         if (this.isInfinite) {
           const t = this.contentDim,
             i = l.target[s] * d;
           2 === c
-            ? (h += t * Math.floor(parseFloat(e + "") / 2))
-            : (h = [h, h - t, h + t].reduce(function (e, t) {
+            ? (u += t * Math.floor(parseFloat(e + "") / 2))
+            : (u = [u, u - t, u + t].reduce(function (e, t) {
                 return Math.abs(t - i) < Math.abs(e - i) ? t : e;
               }));
         }
-        (h *= d),
-          Math.abs(l.target[s] - h) < 1 ||
-            (l.panTo({ x: o ? h : 0, y: o ? 0 : h, friction: t }),
+        (u *= d),
+          Math.abs(l.target[s] - u) < 1 ||
+            (l.panTo({ x: o ? u : 0, y: o ? 0 : u, friction: t }),
             this.onChange(n));
       }
       slideToClosest(e) {
@@ -8385,7 +8385,7 @@
         this.slideTo(this.page - 1);
       }
       clearTransitions() {
-        this.inTransition.clear(), De(this.container, this.cn("inTransition"));
+        this.inTransition.clear(), Re(this.container, this.cn("inTransition"));
         const e = ["to-prev", "to-next", "from-prev", "from-next"];
         for (const t of this.slides) {
           const i = t.el;
@@ -8411,13 +8411,13 @@
               : n.dim) || 0,
           c = this.contentDim < this.viewportDim;
         let d = Array.isArray(t) ? t : [t];
-        const h = [];
-        for (const e of d) h.push(Ue(e));
-        this.slides.splice(e, 0, ...h);
+        const u = [];
+        for (const e of d) u.push(Ue(e));
+        this.slides.splice(e, 0, ...u);
         for (let e = 0; e < this.slides.length; e++) this.slides[e].index = e;
-        for (const e of h) this.emit("beforeInitSlide", e, e.index);
+        for (const e of u) this.emit("beforeInitSlide", e, e.index);
         if (
-          (this.page >= e && (this.page += h.length), this.updateMetrics(), a)
+          (this.page >= e && (this.page += u.length), this.updateMetrics(), a)
         ) {
           const t =
               (null === (s = this.pages[this.page]) || void 0 === s
@@ -8429,18 +8429,18 @@
                 : o.dim) || 0,
             n = this.pages.length || 1,
             d = this.isRTL ? l - i : i - l,
-            h = this.isRTL ? r - t : t - r;
+            u = this.isRTL ? r - t : t - r;
           c && 1 === n
             ? (e <= this.page &&
                 ((a.current[this.axis] -= d), (a.target[this.axis] -= d)),
               a.panTo({ [this.isHorizontal ? "x" : "y"]: -1 * t }))
-            : h &&
+            : u &&
               e <= this.page &&
-              ((a.target[this.axis] -= h),
-              (a.current[this.axis] -= h),
+              ((a.target[this.axis] -= u),
+              (a.current[this.axis] -= u),
               a.requestTick());
         }
-        for (const e of h) this.emit("initSlide", e, e.index);
+        for (const e of u) this.emit("initSlide", e, e.index);
       }
       prependSlide(e) {
         this.addSlide(0, e);
@@ -8523,10 +8523,10 @@
           !0 !== i &&
           ((c = pe((r - a.pos + o) / (1 * a.dim), 1e3)),
           (d = pe((r - a.pos - o) / (1 * a.dim), 1e3)));
-        let h = [l, c, d].reduce(function (e, t) {
+        let u = [l, c, d].reduce(function (e, t) {
           return Math.abs(t) < Math.abs(e) ? t : e;
         });
-        return t ? h : h > 1 ? 1 : h < -1 ? -1 : h;
+        return t ? u : u > 1 ? 1 : u < -1 ? -1 : u;
       }
       setViewportHeight() {
         const { page: e, pages: t, viewport: i, isHorizontal: n } = this;
@@ -8564,16 +8564,16 @@
                 : t.gap) || 0;
           let l = 0;
           (l =
-            n && n.state !== Le.Init && n.state !== Le.Destroy
+            n && n.state !== Oe.Init && n.state !== Oe.Destroy
               ? -1 * n.current[this.axis]
               : (a[r] && a[r].pos) || 0),
             this.isInfinite && (l -= Math.floor(l / s) * s),
             this.isRTL && this.isHorizontal && (l *= -1);
           const c = l - o * e,
             d = l + o * (e + 1),
-            h = this.isInfinite ? [-1, 0, 1] : [0];
+            u = this.isInfinite ? [-1, 0, 1] : [0];
           for (const e of this.slides)
-            for (const t of h) {
+            for (const t of u) {
               const n = e.pos + t * s,
                 o = n + e.dim + e.gap;
               n < d && o > c && i.add(e);
@@ -8594,8 +8594,8 @@
           l = n[0],
           c = n[r - 1],
           d = this.option("center");
-        let h = 0,
-          u = 0,
+        let u = 0,
+          h = 0,
           p = 0,
           f =
             void 0 === e
@@ -8614,9 +8614,9 @@
           });
         return (
           g || (g = c),
-          (u = this.getPageForSlide(g.index)),
-          (h = u + p * a),
-          { page: h, pageIndex: u }
+          (h = this.getPageForSlide(g.index)),
+          (u = h + p * a),
+          { page: u, pageIndex: h }
         );
       }
       setPageFromPosition() {
@@ -8737,8 +8737,8 @@
         !window.document ||
         !window.document.createElement
       );
-    let ht;
-    const ut = [
+    let ut;
+    const ht = [
         "a[href]",
         "area[href]",
         'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
@@ -8755,14 +8755,14 @@
       ].join(","),
       pt = (e) => {
         if (e && dt) {
-          void 0 === ht &&
+          void 0 === ut &&
             document.createElement("div").focus({
               get preventScroll() {
-                return (ht = !0), !1;
+                return (ut = !0), !1;
               },
             });
           try {
-            if (ht) e.focus({ preventScroll: !0 });
+            if (ut) e.focus({ preventScroll: !0 });
             else {
               const t = window.scrollY || document.body.scrollTop,
                 i = window.scrollX || document.body.scrollLeft;
@@ -8825,7 +8825,7 @@
         commonCaption: !1,
         parentEl: null,
         startIndex: 0,
-        l10n: Object.assign(Object.assign({}, Ae), {
+        l10n: Object.assign(Object.assign({}, ke), {
           CLOSE: "Close",
           NEXT: "Next",
           PREV: "Previous",
@@ -8888,11 +8888,11 @@
     let bt = "",
       yt = !1,
       wt = !1,
-      xt = null;
-    const Et = () => {
+      Ct = null;
+    const xt = () => {
         let e = "",
           t = "";
-        const i = zi.getInstance();
+        const i = Ii.getInstance();
         if (i) {
           const n = i.carousel,
             s = i.getSlide();
@@ -8911,15 +8911,15 @@
         }
         return { hash: e, slug: t, index: 1 };
       },
-      St = () => {
+      Et = () => {
         const e = new URL(document.URL).hash,
           t = e.slice(1).split("-"),
           i = t[t.length - 1],
           n = (i && /^\+?\d+$/.test(i) && parseInt(t.pop() || "1", 10)) || 1;
         return { hash: e, slug: t.join("-"), index: n };
       },
-      Ct = () => {
-        const { slug: e, index: t } = St();
+      St = () => {
+        const { slug: e, index: t } = Et();
         if (!e) return;
         let i = document.querySelector(`[data-slug="${e}"]`);
         if (
@@ -8927,7 +8927,7 @@
             i.dispatchEvent(
               new CustomEvent("click", { bubbles: !0, cancelable: !0 })
             ),
-          zi.getInstance())
+          Ii.getInstance())
         )
           return;
         const n = document.querySelectorAll(`[data-fancybox="${e}"]`);
@@ -8939,31 +8939,31 @@
             ));
       },
       Tt = () => {
-        if (!1 === zi.defaults.Hash) return;
-        const e = zi.getInstance();
+        if (!1 === Ii.defaults.Hash) return;
+        const e = Ii.getInstance();
         if (!1 === (null == e ? void 0 : e.options.Hash)) return;
-        const { slug: t, index: i } = St(),
-          { slug: n } = Et();
-        e && (t === n ? e.jumpTo(i - 1) : ((yt = !0), e.close())), Ct();
+        const { slug: t, index: i } = Et(),
+          { slug: n } = xt();
+        e && (t === n ? e.jumpTo(i - 1) : ((yt = !0), e.close())), St();
       },
-      Mt = () => {
-        xt && clearTimeout(xt),
+      _t = () => {
+        Ct && clearTimeout(Ct),
           queueMicrotask(() => {
             Tt();
           });
       },
-      Pt = () => {
-        window.addEventListener("hashchange", Mt, !1),
+      Mt = () => {
+        window.addEventListener("hashchange", _t, !1),
           setTimeout(() => {
             Tt();
           }, 500);
       };
     dt &&
       (/complete|interactive|loaded/.test(document.readyState)
-        ? Pt()
-        : document.addEventListener("DOMContentLoaded", Pt));
-    const Ot = "is-zooming-in";
-    class Lt extends Ke {
+        ? Mt()
+        : document.addEventListener("DOMContentLoaded", Mt));
+    const Pt = "is-zooming-in";
+    class Ot extends Ke {
       onCreateSlide(e, t, i) {
         const n = this.instance.optionFor(i, "src") || "";
         i.el &&
@@ -8977,7 +8977,7 @@
           (i.imageEl = void 0);
       }
       onChange(e, t, i, n) {
-        De(this.instance.container, Ot);
+        Re(this.instance.container, Pt);
         for (const e of t.slides) {
           const t = e.panzoom;
           t && e.index !== i && t.reset(0.35);
@@ -8996,15 +8996,15 @@
           !o ||
           !a ||
           a.isContentLoading ||
-          a.state === Le.Init ||
-          a.state === Le.Destroy
+          a.state === Oe.Init ||
+          a.state === Oe.Destroy
         )
           return;
         a.updateMetrics();
         let l = this.getZoomInfo(n);
         if (!l) return;
         (this.instance.state = gt.CustomClosing),
-          i.classList.remove(Ot),
+          i.classList.remove(Pt),
           i.classList.add("is-zooming-out"),
           (o.style.backgroundImage = `url('${r}')`);
         const c = i.getBoundingClientRect();
@@ -9022,12 +9022,12 @@
             height: `${c.height}px`,
             overflow: "hidden",
           });
-        const { x: d, y: h, scale: u, opacity: p } = l;
+        const { x: d, y: u, scale: h, opacity: p } = l;
         if (p) {
           const e = ((e, t, i, n) => {
             const s = t - e;
             return (t) => 1 + (((t - e) / s) * -1 || 0);
-          })(a.scale, u);
+          })(a.scale, h);
           a.on("afterTransform", () => {
             o.style.opacity = e(a.scale) + "";
           });
@@ -9035,14 +9035,14 @@
         a.on("endAnimation", () => {
           t.destroy();
         }),
-          (a.target.a = u),
+          (a.target.a = h),
           (a.target.b = 0),
           (a.target.c = 0),
-          (a.target.d = u),
+          (a.target.d = h),
           a.panTo({
             x: d,
-            y: h,
-            scale: u,
+            y: u,
+            scale: h,
             friction: p ? 0.2 : 0.33,
             ignoreBounds: !0,
           }),
@@ -9062,7 +9062,7 @@
                   e.preventDefault();
                 });
                 const e = document.createElement("div");
-                Re(e, "fancybox-protected"), n.appendChild(e);
+                De(e, "fancybox-protected"), n.appendChild(e);
               }
               if (o && r) {
                 const s = t.contentRect,
@@ -9071,12 +9071,12 @@
                 !r.opacity &&
                   a > 1200 &&
                   ((c = document.createElement("img")),
-                  Re(c, "fancybox-ghost"),
+                  De(c, "fancybox-ghost"),
                   (c.src = o),
                   n.appendChild(c));
                 const d = () => {
                   c &&
-                    (Re(c, "f-fadeFastOut"),
+                    (De(c, "f-fadeFastOut"),
                     setTimeout(() => {
                       c && (c.remove(), (c = null));
                     }, 200));
@@ -9167,7 +9167,7 @@
             }
             e.sizes && r.setAttribute("sizes", e.sizes);
           }
-          Re(r, "fancybox-image"),
+          De(r, "fancybox-image"),
             (e.imageEl = r),
             o.setContent(e, r, !1),
             (e.panzoom = new Ge(
@@ -9243,17 +9243,17 @@
           o && o.updateMetrics();
           const l = this.getZoomInfo(e);
           if (!(l && r && a && o && s)) return void i();
-          const { x: c, y: d, scale: h, opacity: u } = l,
+          const { x: c, y: d, scale: u, opacity: h } = l,
             p = () => {
               e.state !== vt.Closing &&
-                (u &&
+                (h &&
                   (a.style.opacity =
-                    Math.max(Math.min(1, 1 - (1 - o.scale) / (1 - h)), 0) + ""),
+                    Math.max(Math.min(1, 1 - (1 - o.scale) / (1 - u)), 0) + ""),
                 o.scale >= 1 && o.scale > o.targetScale - 0.1 && t(o));
             },
             f = (e) => {
               ((e.scale < 0.99 || e.scale > 1.01) && !e.isDragging) ||
-                (De(s, Ot),
+                (Re(s, Pt),
                 (a.style.opacity = ""),
                 e.off("endAnimation", f),
                 e.off("touchStart", f),
@@ -9266,7 +9266,7 @@
             o.on(["error", "destroy"], () => {
               i();
             }),
-            o.panTo({ x: c, y: d, scale: h, friction: 0, ignoreBounds: !0 }),
+            o.panTo({ x: c, y: d, scale: u, friction: 0, ignoreBounds: !0 }),
             o.stop("current");
           const m = {
               event:
@@ -9275,7 +9275,7 @@
                   : void 0,
             },
             g = this.optionFor(e, "initialSize");
-          Re(s, Ot),
+          De(s, Pt),
             n.hideLoading(e),
             "full" === g
               ? o.zoomToFull(m)
@@ -9309,18 +9309,18 @@
             top: l,
             left: c,
             width: d,
-            height: h,
+            height: u,
           } = n.getBoundingClientRect(),
-          { top: u, left: p, fitWidth: f, fitHeight: m } = s.contentRect;
-        if (!(d && h && f && m)) return !1;
+          { top: h, left: p, fitWidth: f, fitHeight: m } = s.contentRect;
+        if (!(d && u && f && m)) return !1;
         const g = s.container.getBoundingClientRect();
-        (p += g.left), (u += g.top);
+        (p += g.left), (h += g.top);
         const v = -1 * (p + 0.5 * f - (c + 0.5 * d)),
-          b = -1 * (u + 0.5 * m - (l + 0.5 * h)),
+          b = -1 * (h + 0.5 * m - (l + 0.5 * u)),
           y = d / f;
         let w = this.option("zoomOpacity") || !1;
         return (
-          "auto" === w && (w = Math.abs(d / h - f / m) > 0.1),
+          "auto" === w && (w = Math.abs(d / u - f / m) > 0.1),
           { x: v, y: b, scale: y, opacity: w }
         );
       }
@@ -9341,7 +9341,7 @@
           t.off("close", e.onClose);
       }
     }
-    Object.defineProperty(Lt, "defaults", {
+    Object.defineProperty(Ot, "defaults", {
       enumerable: !0,
       configurable: !0,
       writable: !0,
@@ -9354,13 +9354,13 @@
       },
     }),
       "function" == typeof SuppressedError && SuppressedError;
-    const kt = "html",
-      At = "image",
-      It = "map",
-      zt = "youtube",
-      _t = "vimeo",
+    const Lt = "html",
+      kt = "image",
+      At = "map",
+      It = "youtube",
+      zt = "vimeo",
       $t = "html5video",
-      Dt = (e, t = {}) => {
+      Rt = (e, t = {}) => {
         const i = new URL(e),
           n = new URLSearchParams(i.search),
           s = new URLSearchParams();
@@ -9379,7 +9379,7 @@
           a = e.match(/#t=((.*)?\d+s)/);
         return a && (o += `#t=${a[1]}`), o;
       },
-      Rt = [
+      Dt = [
         "image",
         "html",
         "ajax",
@@ -9436,9 +9436,9 @@
           return;
         }
         let o;
-        i.type === _t
+        i.type === zt
           ? (o = { method: "pause", value: "true" })
-          : i.type === zt && (o = { event: "command", func: "pauseVideo" }),
+          : i.type === It && (o = { event: "command", func: "pauseVideo" }),
           o &&
             i.iframeEl &&
             i.iframeEl.contentWindow &&
@@ -9563,7 +9563,7 @@
       }
       resizeIframe(e) {
         const { type: t, iframeEl: i } = e;
-        if (t === zt || t === _t) return;
+        if (t === It || t === zt) return;
         const n = null == i ? void 0 : i.parentElement;
         if (!i || !n) return;
         let s = e.autoSize;
@@ -9580,7 +9580,7 @@
               l = i.contentWindow;
             if (l) {
               const e = l.document,
-                i = e.getElementsByTagName(kt)[0],
+                i = e.getElementsByTagName(Lt)[0],
                 n = e.body;
               (r.width = ""),
                 (n.style.overflow = "hidden"),
@@ -9618,21 +9618,21 @@
                   });
             }
           } catch (e) {}
-        if (e.type !== zt && e.type !== _t) return;
+        if (e.type !== It && e.type !== zt) return;
         const i = () => {
           if (e.iframeEl && e.iframeEl.contentWindow) {
             let t;
             if ("true" === e.iframeEl.dataset.ready)
               return (
                 (t =
-                  e.type === zt
+                  e.type === It
                     ? { event: "command", func: "playVideo" }
                     : { method: "play", value: "true" }),
                 t &&
                   e.iframeEl.contentWindow.postMessage(JSON.stringify(t), "*"),
                 void (e.poller = void 0)
               );
-            e.type === zt &&
+            e.type === It &&
               ((t = { event: "listening", id: e.iframeEl.getAttribute("id") }),
               e.iframeEl.contentWindow.postMessage(JSON.stringify(t), "*"));
           }
@@ -9641,7 +9641,7 @@
         i();
       }
       processType(e) {
-        if (e.html) return (e.type = kt), (e.src = e.html), void (e.html = "");
+        if (e.html) return (e.type = Lt), (e.src = e.html), void (e.html = "");
         const t = this.instance.optionFor(e, "src", "");
         if (!t || "string" != typeof t) return;
         let i = e.type,
@@ -9651,7 +9651,7 @@
             /(youtube\.com|youtu\.be|youtube\-nocookie\.com)\/(?:watch\?(?:.*&)?v=|v\/|u\/|shorts\/|embed\/?)?(videoseries\?list=(?:.*)|[\w-]{11}|\?listType=(?:.*)&list=(?:.*))(?:.*)/i
           ))
         ) {
-          const s = this.optionFor(e, zt),
+          const s = this.optionFor(e, It),
             { nocookie: o } = s,
             a = (function (e, t) {
               var i = {};
@@ -9672,30 +9672,30 @@
               return i;
             })(s, ["nocookie"]),
             r = `www.youtube${o ? "-nocookie" : ""}.com`,
-            l = Dt(t, a),
+            l = Rt(t, a),
             c = encodeURIComponent(n[2]);
           (e.videoId = c),
             (e.src = `https://${r}/embed/${c}?${l}`),
             (e.thumbSrc =
               e.thumbSrc || `https://i.ytimg.com/vi/${c}/mqdefault.jpg`),
-            (i = zt);
+            (i = It);
         } else if (
           (n = t.match(
             /^.+vimeo.com\/(?:\/)?([\d]+)((\/|\?h=)([a-z0-9]+))?(.*)?/
           ))
         ) {
-          const s = Dt(t, this.optionFor(e, _t)),
+          const s = Rt(t, this.optionFor(e, zt)),
             o = encodeURIComponent(n[1]),
             a = n[4] || "";
           (e.videoId = o),
             (e.src = `https://player.vimeo.com/video/${o}?${
               a ? `h=${a}${s ? "&" : ""}` : ""
             }${s}`),
-            (i = _t);
+            (i = zt);
         }
         if (!i && e.triggerEl) {
           const t = e.triggerEl.dataset.type;
-          Rt.includes(t) && (i = t);
+          Dt.includes(t) && (i = t);
         }
         i ||
           ("string" == typeof t &&
@@ -9708,7 +9708,7 @@
               : t.match(
                   /(^data:image\/[a-z0-9+\/=]*,)|(\.(jp(e|g|eg)|gif|png|bmp|webp|svg|ico)((\?|#).*)?$)/i
                 )
-              ? (i = At)
+              ? (i = kt)
               : t.match(/\.(pdf)((\?|#).*)?$/i) && (i = "pdf"))),
           (n = t.match(
             /(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:(?:(?:maps\/(?:place\/(?:.*)\/)?\@(.*),(\d+.?\d+?)z))|(?:\?ll=))(.*)?/i
@@ -9722,23 +9722,23 @@
               ).replace(/\?/, "&")}&output=${
                 n[4] && n[4].indexOf("layer=c") > 0 ? "svembed" : "embed"
               }`),
-              (i = It))
+              (i = At))
             : (n = t.match(
                 /(?:maps\.)?google\.([a-z]{2,3}(?:\.[a-z]{2})?)\/(?:maps\/search\/)(.*)/i
               )) &&
               ((e.src = `https://maps.google.${n[1]}/maps?q=${n[2]
                 .replace("query=", "q=")
                 .replace("api=1", "")}&output=embed`),
-              (i = It)),
+              (i = At)),
           (i = i || this.instance.option("defaultType")),
           (e.type = i),
-          i === At && (e.thumbSrc = e.thumbSrc || e.src);
+          i === kt && (e.thumbSrc = e.thumbSrc || e.src);
       }
       setContent(e) {
         const t = this.instance.optionFor(e, "src") || "";
         if (e && e.type && t) {
           switch (e.type) {
-            case kt:
+            case Lt:
               this.instance.setContent(e, t);
               break;
             case $t:
@@ -9763,9 +9763,9 @@
               this.loadAjaxContent(e);
               break;
             case "pdf":
+            case At:
             case It:
             case zt:
-            case _t:
               e.preload = !1;
             case "iframe":
               this.setIframeContent(e);
@@ -9775,7 +9775,7 @@
       }
       setAspectRatio(e) {
         const t = e.contentEl;
-        if (!(e.el && t && e.type && [zt, _t, $t].includes(e.type))) return;
+        if (!(e.el && t && e.type && [It, zt, $t].includes(e.type))) return;
         let i,
           n = e.width || "auto",
           s = e.height || "auto";
@@ -9930,7 +9930,7 @@
           return null;
         const s = document.createElement("div");
         return (
-          Re(s, "f-progress"),
+          De(s, "f-progress"),
           n.prepend(s),
           (this.progressBar = s),
           s.offsetHeight,
@@ -9943,7 +9943,7 @@
         if (t.pages.length < 2) return;
         if (e.timer) return;
         const i = e.option("timeout");
-        (e.state = Ft), Re(t.container, "has-autoplay");
+        (e.state = Ft), De(t.container, "has-autoplay");
         let n = e.createProgressBar();
         n &&
           ((n.style.transitionDuration = `${i}ms`),
@@ -9987,7 +9987,7 @@
             e.onVisibilityChange,
             !1
           ),
-          De(i, "has-autoplay"),
+          Re(i, "has-autoplay"),
           t !== Nt && e.emit("stop");
       }
       pause() {
@@ -10283,7 +10283,7 @@
           a = i.page;
         if (n && s && o) {
           if (n.isDragging) {
-            De(t, this.cn(Vt));
+            Re(t, this.cn(Vt));
             let n =
               (null === (e = s.pages[a]) || void 0 === e ? void 0 : e.pos) || 0;
             n += i.getProgress(a) * (this[Ut] + this.thumbGap);
@@ -10366,16 +10366,16 @@
         let l = null == o ? void 0 : o.querySelector("." + a);
         l ||
           ((l = document.createElement("div")),
-          Re(l, a),
+          De(l, a),
           o ? o.appendChild(l) : i.after(l)),
-          Re(l, `is-${s}`),
-          Re(i, e.cn("hasThumbs")),
+          De(l, `is-${s}`),
+          De(i, e.cn("hasThumbs")),
           (e.container = l),
           e.updateProps();
         let c = l.querySelector("." + r);
         c ||
           ((c = document.createElement("div")),
-          Re(c, e.cn("track")),
+          De(c, e.cn("track")),
           l.appendChild(c)),
           (e.track = c);
         const d = Te(
@@ -10403,20 +10403,20 @@
             e.option("Carousel") || {},
             { Sync: { target: t }, slides: n }
           ),
-          h = new t.constructor(l, d);
-        h.on("createSlide", (t, i) => {
+          u = new t.constructor(l, d);
+        u.on("createSlide", (t, i) => {
           e.setProps(i.index), e.emit("createSlide", i, i.el);
         }),
-          h.on("ready", () => {
+          u.on("ready", () => {
             e.shiftModern(), e.emit("ready");
           }),
-          h.on("refresh", () => {
+          u.on("refresh", () => {
             e.shiftModern();
           }),
-          h.on("Panzoom.click", (t, i, n) => {
+          u.on("Panzoom.click", (t, i, n) => {
             e.onClick(n);
           }),
-          (e.carousel = h),
+          (e.carousel = u),
           (e.state = Gt.Ready);
       }
       onClick(e) {
@@ -10440,17 +10440,17 @@
         const l = this[Ut],
           c = e.clientX,
           d = e.clientY;
-        let [h, u] = o(c - l, d),
+        let [u, h] = o(c - l, d),
           [p, f] = o(c + l, d);
-        u && f
+        h && f
           ? ((a =
-              Math.abs(c - u.getBoundingClientRect().right) <
+              Math.abs(c - h.getBoundingClientRect().right) <
               Math.abs(c - f.getBoundingClientRect().left)
-                ? h
+                ? u
                 : p),
-            a === n && (a = a === h ? p : h))
-          : u
-          ? (a = h)
+            a === n && (a = a === u ? p : u))
+          : h
+          ? (a = u)
           : f && (a = p),
           a > -1 && i[a] && t.slideTo(a);
       }
@@ -10468,23 +10468,23 @@
           return 0;
         const c = 0.5 * (o - a),
           d = n.pages.length - 1;
-        let h = n.getProgress(0),
-          u = n.getProgress(d),
+        let u = n.getProgress(0),
+          h = n.getProgress(d),
           p = n.getProgress(e, !1, !0),
           f = 0,
           m = c + l + r;
-        const g = h < 0 && h > -1,
-          v = u > 0 && u < 1;
+        const g = u < 0 && u > -1,
+          v = h > 0 && h < 1;
         return (
           0 === e
-            ? ((f = m * Math.abs(h)), v && 1 === h && (f -= m * Math.abs(u)))
+            ? ((f = m * Math.abs(u)), v && 1 === u && (f -= m * Math.abs(h)))
             : e === d
-            ? ((f = m * Math.abs(u) * -1),
-              g && -1 === u && (f += m * Math.abs(h)))
+            ? ((f = m * Math.abs(h) * -1),
+              g && -1 === h && (f += m * Math.abs(u)))
             : g || v
             ? ((f = -1 * m),
-              (f += m * Math.abs(h)),
-              (f += m * (1 - Math.abs(u))))
+              (f += m * Math.abs(u)),
+              (f += m * (1 - Math.abs(h))))
             : (f = m * p),
           f
         );
@@ -10512,7 +10512,7 @@
           n = t.panzoom,
           s = e.carousel;
         if (!(t && i && n && s)) return;
-        if (n.state === Le.Init || n.state === Le.Destroy) return;
+        if (n.state === Oe.Init || n.state === Oe.Destroy) return;
         for (const i of t.slides) e.setProps(i.index);
         let o = (e[Ut] + e.thumbGap) * (s.slides.length || 0);
         i.style.setProperty("--width", o + "");
@@ -10526,7 +10526,7 @@
           e.track && e.track.remove(),
           (e.track = null),
           (e.state = Gt.Init),
-          De(e.instance.container, e.cn("hasThumbs"));
+          Re(e.instance.container, e.cn("hasThumbs"));
       }
       attach() {
         const e = this,
@@ -10606,7 +10606,7 @@
           let e = `for-${o}`;
           ["video", "youtube", "vimeo", "html5video"].includes(o) &&
             (e += " for-video"),
-            Re(a, e);
+            De(a, e);
         }
       }
       onInit() {
@@ -10850,12 +10850,12 @@
         if ((o && (r = this.createContainer()), r)) {
           for (const [e, t] of Object.entries(a)) {
             const i = document.createElement("div");
-            Re(i, oi + "__column is-" + e);
+            De(i, oi + "__column is-" + e);
             for (const e of t) i.appendChild(e);
             "auto" !== n || "middle" !== e || t.length || (n = !0),
               r.appendChild(i);
           }
-          !0 === n && Re(r, "is-absolute"),
+          !0 === n && De(r, "is-absolute"),
             (this.state = ii.Ready),
             this.onRefresh();
         } else this.state = ii.Disabled;
@@ -10955,12 +10955,12 @@
         const t = this.option("parentEl") || e;
         let i = t.querySelector("." + oi);
         return (
-          i || ((i = document.createElement("div")), Re(i, oi), t.prepend(i)),
+          i || ((i = document.createElement("div")), De(i, oi), t.prepend(i)),
           i.addEventListener("click", this.onClick, {
             passive: !1,
             capture: !0,
           }),
-          e && Re(e, si),
+          e && De(e, si),
           (this.container = i),
           i
         );
@@ -10993,7 +10993,7 @@
               "title",
               this.instance.localize(`{{${e.toUpperCase()}}}`)
             ),
-            Re(n, "f-button"),
+            De(n, "f-button"),
             t.action && (n.dataset.panzoomAction = t.action),
             t.change && (n.dataset.panzoomChange = JSON.stringify(t.change)),
             n.appendChild(ge(this.instance.localize(t.icon)));
@@ -11018,7 +11018,7 @@
         const e = this.container;
         e && e.remove(), (this.container = null), (this.state = ii.Disabled);
         const t = this.instance.container;
-        t && De(t, si);
+        t && Re(t, si);
       }
       attach() {
         const e = this,
@@ -11084,14 +11084,14 @@
             yt = !1;
           }
           onChange(e) {
-            xt && clearTimeout(xt);
-            const { hash: t } = Et(),
-              { hash: i } = St(),
+            Ct && clearTimeout(Ct);
+            const { hash: t } = xt(),
+              { hash: i } = Et(),
               n = e.isOpeningSlide(e.getSlide());
             n && (bt = i === t ? "" : i),
               t &&
                 t !== i &&
-                (xt = setTimeout(() => {
+                (Ct = setTimeout(() => {
                   try {
                     if (e.state === gt.Ready) {
                       let e = "replaceState";
@@ -11106,7 +11106,7 @@
                 }, 300));
           }
           onClose(e) {
-            if ((xt && clearTimeout(xt), !yt && wt))
+            if ((Ct && clearTimeout(Ct), !yt && wt))
               return (wt = !1), (yt = !1), void window.history.back();
             if (!yt)
               try {
@@ -11130,17 +11130,17 @@
               e.off("close", this.onClose);
           }
           static parseURL() {
-            return St();
+            return Et();
           }
           static startFromUrl() {
-            Ct();
+            St();
           }
           static destroy() {
-            window.removeEventListener("hashchange", Mt, !1);
+            window.removeEventListener("hashchange", _t, !1);
           }
         },
         Html: Bt,
-        Images: Lt,
+        Images: Ot,
         Slideshow: qt,
         Thumbs: ei,
         Toolbar: ai,
@@ -11148,8 +11148,8 @@
       li = "with-fancybox",
       ci = "hide-scrollbar",
       di = "--fancybox-scrollbar-compensate",
-      hi = "--fancybox-body-margin",
-      ui = "aria-hidden",
+      ui = "--fancybox-body-margin",
+      hi = "aria-hidden",
       pi = "is-using-tab",
       fi = "is-animated",
       mi = "is-compact",
@@ -11158,22 +11158,22 @@
       bi = "has-caption",
       yi = "disabled",
       wi = "tabindex",
-      xi = "download",
-      Ei = "href",
-      Si = "src",
-      Ci = (e) => "string" == typeof e,
+      Ci = "download",
+      xi = "href",
+      Ei = "src",
+      Si = (e) => "string" == typeof e,
       Ti = function () {
         var e = window.getSelection();
         return !!e && "Range" === e.type;
       };
-    let Mi,
+    let _i,
+      Mi = null,
       Pi = null,
-      Oi = null,
-      Li = 0,
-      ki = 0;
-    const Ai = new Map();
-    let Ii = 0;
-    class zi extends Oe {
+      Oi = 0,
+      Li = 0;
+    const ki = new Map();
+    let Ai = 0;
+    class Ii extends Pe {
       get isIdle() {
         return this.idle;
       }
@@ -11278,9 +11278,9 @@
             writable: !0,
             value: void 0,
           }),
-          Mi || (Mi = ft()),
-          (this.id = t.id || ++Ii),
-          Ai.set(this.id, this),
+          _i || (_i = ft()),
+          (this.id = t.id || ++Ai),
+          ki.set(this.id, this),
           (this.userSlides = e),
           (this.userPlugins = i),
           queueMicrotask(() => {
@@ -11291,7 +11291,7 @@
         if (this.state === gt.Destroy) return;
         (this.state = gt.Init),
           this.attachPlugins(
-            Object.assign(Object.assign({}, zi.Plugins), this.userPlugins)
+            Object.assign(Object.assign({}, Ii.Plugins), this.userPlugins)
           ),
           this.emit("init"),
           this.emit("attachPlugins"),
@@ -11306,7 +11306,7 @@
               const s = parseFloat(window.getComputedStyle(t).marginRight);
               n < 0 && (n = 0),
                 i.style.setProperty(di, `${n}px`),
-                s && t.style.setProperty(hi, `${s}px`),
+                s && t.style.setProperty(ui, `${s}px`),
                 t.classList.add(ci);
             })(),
           this.initLayout(),
@@ -11317,11 +11317,12 @@
             this.attachEvents(),
             this.emit("ready"),
             setTimeout(() => {
-              this.container && this.container.setAttribute(ui, "false");
+              this.container && this.container.setAttribute(hi, "false");
             }, 16);
         };
-        this.option("Fullscreen.autoStart") && Mi && !Mi.isFullscreen()
-          ? Mi.request()
+        this.option("Fullscreen.autoStart") && _i && !_i.isFullscreen()
+          ? _i
+              .request()
               .then(() => {
                 (this.startedFs = !0), e();
               })
@@ -11336,30 +11337,30 @@
           (n.setAttribute("id", `fancybox-${this.id}`),
           n.setAttribute("aria-label", this.localize("{{MODAL}}")),
           n.classList.toggle(mi, this.isCompact),
-          Re(n, this.option("mainClass") || ""),
-          Re(n, vi),
+          De(n, this.option("mainClass") || ""),
+          De(n, vi),
           (this.container = n),
           (this.footer = n.querySelector(".fancybox__footer")),
           i.appendChild(n),
-          Re(document.documentElement, li),
-          (Pi && Oi) ||
-            ((Pi = document.createElement("span")),
-            Re(Pi, "fancybox-focus-guard"),
-            Pi.setAttribute(wi, "0"),
-            Pi.setAttribute(ui, "true"),
-            Pi.setAttribute("aria-label", "Focus guard"),
-            (Oi = Pi.cloneNode()),
+          De(document.documentElement, li),
+          (Mi && Pi) ||
+            ((Mi = document.createElement("span")),
+            De(Mi, "fancybox-focus-guard"),
+            Mi.setAttribute(wi, "0"),
+            Mi.setAttribute(hi, "true"),
+            Mi.setAttribute("aria-label", "Focus guard"),
+            (Pi = Mi.cloneNode()),
             null === (e = n.parentElement) ||
               void 0 === e ||
-              e.insertBefore(Pi, n),
-            null === (t = n.parentElement) || void 0 === t || t.append(Oi)),
+              e.insertBefore(Mi, n),
+            null === (t = n.parentElement) || void 0 === t || t.append(Pi)),
           n.addEventListener("mousedown", (e) => {
-            (Li = e.pageX), (ki = e.pageY), De(n, pi);
+            (Oi = e.pageX), (Li = e.pageY), Re(n, pi);
           }),
           this.option("animated") &&
-            (Re(n, fi),
+            (De(n, fi),
             setTimeout(() => {
-              this.isClosing() || De(n, fi);
+              this.isClosing() || Re(n, fi);
             }, 350)),
           this.emit("initLayout"));
       }
@@ -11495,19 +11496,19 @@
             const i = this.getSlide();
             if (!i) return;
             let n = i.downloadSrc || "";
-            n || "image" !== i.type || i.error || !Ci(i[Si]) || (n = i[Si]);
+            n || "image" !== i.type || i.error || !Si(i[Ei]) || (n = i[Ei]);
             for (const e of t.querySelectorAll("[data-fancybox-download]")) {
               const t = i.downloadFilename;
               n
                 ? (e.removeAttribute(yi),
                   e.removeAttribute(wi),
-                  e.setAttribute(Ei, n),
-                  e.setAttribute(xi, t || n),
+                  e.setAttribute(xi, n),
+                  e.setAttribute(Ci, t || n),
                   e.setAttribute("target", "_blank"))
                 : (e.setAttribute(yi, ""),
                   e.setAttribute(wi, "-1"),
-                  e.removeAttribute(Ei),
-                  e.removeAttribute(xi));
+                  e.removeAttribute(xi),
+                  e.removeAttribute(Ci));
             }
           }),
           this.emit("initCarousel");
@@ -11598,7 +11599,7 @@
         if (s.closest("[data-fancybox-next]"))
           return e.preventDefault(), void this.next();
         if ("click" === e.type && 0 === e.detail) return;
-        if (Math.abs(e.pageX - Li) > 30 || Math.abs(e.pageY - ki) > 30) return;
+        if (Math.abs(e.pageX - Oi) > 30 || Math.abs(e.pageY - Li) > 30) return;
         const o = document.activeElement;
         if (Ti() && o && i.contains(o)) return;
         if (
@@ -11616,13 +11617,13 @@
         if (s.closest(".fancybox__content")) {
           if (o) {
             if (o.closest("[contenteditable]")) return;
-            s.matches(ut) || o.blur();
+            s.matches(ht) || o.blur();
           }
           if (Ti()) return;
           a = this.option("contentClick");
         } else
           s.closest(".fancybox__carousel") &&
-            !s.matches(ut) &&
+            !s.matches(ht) &&
             (a = this.option("backdropClick"));
         "close" === a
           ? (e.preventDefault(), this.close(e))
@@ -11681,7 +11682,7 @@
         )
           return;
         if (
-          ("Tab" === e.key ? Re(this.container, pi) : De(this.container, pi),
+          ("Tab" === e.key ? De(this.container, pi) : Re(this.container, pi),
           e.ctrlKey || e.altKey || e.shiftKey)
         )
           return;
@@ -11723,7 +11724,7 @@
         if (i) {
           const t = ge(this.localize(i));
           (e.closeBtnEl = e.contentEl.appendChild(t)),
-            e.el && Re(e.el, "has-close-btn");
+            e.el && De(e.el, "has-close-btn");
         }
       }
       manageCaption(e = void 0) {
@@ -11731,7 +11732,7 @@
         const n = "fancybox__caption",
           s = this.container;
         if (!s) return;
-        De(s, bi);
+        Re(s, bi);
         const o = this.isCompact || this.option("commonCaption"),
           a = !o;
         if (
@@ -11745,7 +11746,7 @@
             e.captionEl &&
               (e.captionEl.remove(),
               (e.captionEl = void 0),
-              De(e.el, bi),
+              Re(e.el, bi),
               null === (i = e.el) ||
                 void 0 === i ||
                 i.removeAttribute("aria-labelledby"));
@@ -11766,10 +11767,10 @@
           if (((c = e.captionEl || null), r && !c)) {
             const t = n + `_${this.id}_${e.index}`;
             (c = document.createElement("div")),
-              Re(c, n),
+              De(c, n),
               c.setAttribute("id", t),
               (e.captionEl = r.appendChild(c)),
-              Re(r, bi),
+              De(r, bi),
               r.setAttribute("aria-labelledby", t);
           }
         } else
@@ -11778,13 +11779,13 @@
             c ||
               ((c = document.createElement("div")),
               (c.dataset.fancyboxCaption = ""),
-              Re(c, n),
+              De(c, n),
               (this.footer || s).prepend(c)),
-            Re(s, bi),
+            De(s, bi),
             (this.caption = c);
         c &&
           ((c.innerHTML = ""),
-          Ci(l) || "number" == typeof l
+          Si(l) || "number" == typeof l
             ? (c.innerHTML = l + "")
             : l instanceof HTMLElement && c.appendChild(l));
       }
@@ -11805,7 +11806,7 @@
           r = a && a.state === vt.Ready ? a.el : null;
         if (!r || r.contains(i) || s === i) return;
         e && e.cancelable && e.preventDefault(), (this.ignoreFocusChange = !0);
-        const l = Array.from(s.querySelectorAll(ut));
+        const l = Array.from(s.querySelectorAll(ht));
         let c = [],
           d = null;
         for (let e of l) {
@@ -11826,16 +11827,16 @@
             t && (e.dataset.origTabindex = t), (e.tabIndex = -1);
           }
         }
-        let h = null;
+        let u = null;
         e
           ? (!n || c.indexOf(n) < 0) &&
-            ((h = d || s),
+            ((u = d || s),
             c.length &&
-              (i === Oi
-                ? (h = c[0])
-                : (this.lastFocus !== s && i !== Pi) || (h = c[c.length - 1])))
-          : (h = a && "image" === a.type ? s : d || s),
-          h && pt(h),
+              (i === Pi
+                ? (u = c[0])
+                : (this.lastFocus !== s && i !== Mi) || (u = c[c.length - 1])))
+          : (u = a && "image" === a.type ? s : d || s),
+          u && pt(u),
           (this.lastFocus = document.activeElement),
           (this.ignoreFocusChange = !1);
       }
@@ -11853,7 +11854,7 @@
       isTopmost() {
         var e;
         return (
-          (null === (e = zi.getInstance()) || void 0 === e ? void 0 : e.id) ==
+          (null === (e = Ii.getInstance()) || void 0 === e ? void 0 : e.id) ==
           this.id
         );
       }
@@ -11866,11 +11867,11 @@
             (e.removeEventListener("animationend", n),
             delete e.dataset.animationName,
             i && i(),
-            De(e, t));
+            Re(e, t));
         };
         (e.dataset.animationName = t),
           e.addEventListener("animationend", n),
-          Re(e, t);
+          De(e, t);
       }
       stop(e) {
         e &&
@@ -11902,7 +11903,7 @@
         }
         $e(s) && e.filter && !e.error && (s = s.querySelector(e.filter)),
           s && $e(s)
-            ? (Re(s, "fancybox__content"),
+            ? (De(s, "fancybox__content"),
               e.id && s.setAttribute("id", e.id),
               ("none" !== s.style.display &&
                 "none" !== getComputedStyle(s).getPropertyValue("display")) ||
@@ -11938,7 +11939,7 @@
         this.isClosing() ||
           ((e.state = vt.Ready),
           this.emit("done", e),
-          Re(e.el, "is-done"),
+          De(e.el, "is-done"),
           this.isCurrentSlide(e) &&
             this.option("autoFocus") &&
             queueMicrotask(() => {
@@ -11947,7 +11948,7 @@
                 this.option("autoFocus") && this.focus();
             }),
           this.isOpeningSlide(e) &&
-            (De(this.container, vi),
+            (Re(this.container, vi),
             !this.isCompact && this.option("idle") && this.setIdle()));
       }
       isCurrentSlide(e) {
@@ -11970,13 +11971,13 @@
         e.state = vt.Loading;
         const t = e.el;
         t &&
-          (Re(t, gi),
+          (De(t, gi),
           this.emit("loading", e),
           e.spinnerEl ||
             setTimeout(() => {
               if (!this.isClosing() && !e.spinnerEl && e.state === vt.Loading) {
-                let i = ge(_e);
-                Re(i, "fancybox-spinner"),
+                let i = ge(ze);
+                De(i, "fancybox-spinner"),
                   (e.spinnerEl = i),
                   t.prepend(i),
                   this.animate(i, "f-fadeIn");
@@ -11989,7 +11990,7 @@
         const i = e.spinnerEl;
         this.isClosing()
           ? null == i || i.remove()
-          : (De(t, gi),
+          : (Re(t, gi),
             i &&
               this.animate(i, "f-fadeOut", () => {
                 i.remove();
@@ -12013,9 +12014,9 @@
           e.contentEl && (e.contentEl.remove(), (e.contentEl = void 0));
         const t = e.el;
         t &&
-          (De(t, "has-error"),
-          De(t, "has-unknown"),
-          De(t, `has-${e.type || "unknown"}`)),
+          (Re(t, "has-error"),
+          Re(t, "has-unknown"),
+          Re(t, `has-${e.type || "unknown"}`)),
           e.closeBtnEl && e.closeBtnEl.remove(),
           (e.closeBtnEl = void 0),
           e.captionEl && e.captionEl.remove(),
@@ -12042,8 +12043,8 @@
         const n = () => {
           this.proceedClose(e, t);
         };
-        this.startedFs && Mi && Mi.isFullscreen()
-          ? Promise.resolve(Mi.exit()).then(() => n())
+        this.startedFs && _i && _i.isFullscreen()
+          ? Promise.resolve(_i.exit()).then(() => n())
           : n();
       }
       clearIdle() {
@@ -12053,7 +12054,7 @@
         const t = () => {
           this.clearIdle(),
             (this.idle = !0),
-            Re(this.container, "is-idle"),
+            De(this.container, "is-idle"),
             this.emit("setIdle");
         };
         if ((this.clearIdle(), !this.isClosing()))
@@ -12068,7 +12069,7 @@
           this.idle &&
             !this.isClosing() &&
             ((this.idle = !1),
-            De(this.container, "is-idle"),
+            Re(this.container, "is-idle"),
             this.emit("endIdle"));
       }
       resetIdle() {
@@ -12078,10 +12079,10 @@
         this.idle ? this.endIdle() : this.setIdle(!0);
       }
       toggleFullscreen() {
-        Mi &&
-          (Mi.isFullscreen()
-            ? Mi.exit()
-            : Mi.request().then(() => {
+        _i &&
+          (_i.isFullscreen()
+            ? _i.exit()
+            : _i.request().then(() => {
                 this.startedFs = !0;
               }));
       }
@@ -12101,10 +12102,10 @@
         if (
           (r && (ct(r) ? pt(r) : r.focus()),
           s &&
-            (De(s, vi),
-            Re(s, "is-closing"),
-            s.setAttribute(ui, "true"),
-            this.option("animated") && Re(s, fi),
+            (Re(s, vi),
+            De(s, "is-closing"),
+            s.setAttribute(hi, "true"),
+            this.option("animated") && De(s, fi),
             (s.style.pointerEvents = "none")),
           o)
         ) {
@@ -12141,19 +12142,19 @@
         (this.state = gt.Destroy),
           null === (e = this.carousel) || void 0 === e || e.destroy();
         const t = this.container;
-        t && t.remove(), Ai.delete(this.id);
-        const i = zi.getInstance();
+        t && t.remove(), ki.delete(this.id);
+        const i = Ii.getInstance();
         i
           ? i.focus()
-          : (Pi && (Pi.remove(), (Pi = null)),
-            Oi && (Oi.remove(), (Oi = null)),
-            De(document.documentElement, li),
+          : (Mi && (Mi.remove(), (Mi = null)),
+            Pi && (Pi.remove(), (Pi = null)),
+            Re(document.documentElement, li),
             (() => {
               if (!dt) return;
               const e = document,
                 t = e.body;
               t.classList.remove(ci),
-                t.style.setProperty(hi, ""),
+                t.style.setProperty(ui, ""),
                 e.documentElement.style.setProperty(di, "");
             })(),
             this.emit("destroy"));
@@ -12166,42 +12167,42 @@
         if (
           (void 0 === e
             ? (n = document.body)
-            : Ci(e)
+            : Si(e)
             ? ((n = document.body),
               (s = e),
               "object" == typeof t && (o = t || {}))
             : ((n = e),
-              Ci(t) && (s = t),
+              Si(t) && (s = t),
               "object" == typeof i && (o = i || {})),
           !n || !$e(n))
         )
           return;
         s = s || "[data-fancybox]";
-        const a = zi.openers.get(n) || new Map();
+        const a = Ii.openers.get(n) || new Map();
         a.set(s, o),
-          zi.openers.set(n, a),
-          1 === a.size && n.addEventListener("click", zi.fromEvent);
+          Ii.openers.set(n, a),
+          1 === a.size && n.addEventListener("click", Ii.fromEvent);
       }
       static unbind(e, t) {
         let i,
           n = "";
         if (
-          (Ci(e) ? ((i = document.body), (n = e)) : ((i = e), Ci(t) && (n = t)),
+          (Si(e) ? ((i = document.body), (n = e)) : ((i = e), Si(t) && (n = t)),
           !i)
         )
           return;
-        const s = zi.openers.get(i);
+        const s = Ii.openers.get(i);
         s && n && s.delete(n),
           (n && s) ||
-            (zi.openers.delete(i),
-            i.removeEventListener("click", zi.fromEvent));
+            (Ii.openers.delete(i),
+            i.removeEventListener("click", Ii.fromEvent));
       }
       static destroy() {
         let e;
-        for (; (e = zi.getInstance()); ) e.destroy();
-        for (const e of zi.openers.keys())
-          e.removeEventListener("click", zi.fromEvent);
-        zi.openers = new Map();
+        for (; (e = Ii.getInstance()); ) e.destroy();
+        for (const e of Ii.openers.keys())
+          e.removeEventListener("click", Ii.fromEvent);
+        Ii.openers = new Map();
       }
       static fromEvent(e) {
         if (e.defaultPrevented) return;
@@ -12218,7 +12219,7 @@
         if (!(t && t instanceof Element)) return;
         let n, s, o, a;
         if (
-          ([...zi.openers].reverse().find(
+          ([...Ii.openers].reverse().find(
             ([e, i]) =>
               !(
                 !e.contains(t) ||
@@ -12237,40 +12238,40 @@
         (l.event = e), (l.triggerEl = t), (l.delegate = i);
         const c = l.groupAll,
           d = l.groupAttr,
-          h = d && t ? t.getAttribute(`${d}`) : "";
+          u = d && t ? t.getAttribute(`${d}`) : "";
         if (
-          ((!t || h || c) && (r = [].slice.call(n.querySelectorAll(s))),
+          ((!t || u || c) && (r = [].slice.call(n.querySelectorAll(s))),
           t &&
             !c &&
-            (r = h ? r.filter((e) => e.getAttribute(`${d}`) === h) : [t]),
+            (r = u ? r.filter((e) => e.getAttribute(`${d}`) === u) : [t]),
           !r.length)
         )
           return;
-        const u = zi.getInstance();
-        return u && u.options.triggerEl && r.indexOf(u.options.triggerEl) > -1
+        const h = Ii.getInstance();
+        return h && h.options.triggerEl && r.indexOf(h.options.triggerEl) > -1
           ? void 0
-          : (t && (l.startIndex = r.indexOf(t)), zi.fromNodes(r, l));
+          : (t && (l.startIndex = r.indexOf(t)), Ii.fromNodes(r, l));
       }
       static fromSelector(e, t, i) {
         let n = null,
           s = "",
           o = {};
         if (
-          (Ci(e)
+          (Si(e)
             ? ((n = document.body),
               (s = e),
               "object" == typeof t && (o = t || {}))
             : e instanceof HTMLElement &&
-              Ci(t) &&
+              Si(t) &&
               ((n = e), (s = t), "object" == typeof i && (o = i || {})),
           !n || !s)
         )
           return !1;
-        const a = zi.openers.get(n);
+        const a = Ii.openers.get(n);
         return (
           !!a &&
           ((o = Te({}, a.get(s) || {}, o)),
-          !!o && zi.fromNodes(Array.from(n.querySelectorAll(s)), o))
+          !!o && Ii.fromNodes(Array.from(n.querySelectorAll(s)), o))
         );
       }
       static fromNodes(e, t) {
@@ -12279,10 +12280,10 @@
         for (const n of e) {
           const e = n.dataset || {},
             s =
-              e[Si] ||
-              n.getAttribute(Ei) ||
+              e[Ei] ||
+              n.getAttribute(xi) ||
               n.getAttribute("currentSrc") ||
-              n.getAttribute(Si) ||
+              n.getAttribute(Ei) ||
               void 0;
           let o;
           const a = t.delegate;
@@ -12299,10 +12300,10 @@
                   ? n
                   : n.querySelector("img:not([aria-hidden])")),
             o &&
-              ((r = o.currentSrc || o[Si] || void 0),
+              ((r = o.currentSrc || o[Ei] || void 0),
               !r &&
                 o.dataset &&
-                (r = o.dataset.lazySrc || o.dataset[Si] || void 0));
+                (r = o.dataset.lazySrc || o.dataset[Ei] || void 0));
           const l = {
             src: s,
             triggerEl: n,
@@ -12316,66 +12317,446 @@
           }
           i.push(l);
         }
-        return new zi(i, t);
+        return new Ii(i, t);
       }
       static getInstance(e) {
         return e
-          ? Ai.get(e)
-          : Array.from(Ai.values())
+          ? ki.get(e)
+          : Array.from(ki.values())
               .reverse()
               .find((e) => !e.isClosing() && e) || null;
       }
       static getSlide() {
         var e;
         return (
-          (null === (e = zi.getInstance()) || void 0 === e
+          (null === (e = Ii.getInstance()) || void 0 === e
             ? void 0
             : e.getSlide()) || null
         );
       }
       static show(e = [], t = {}) {
-        return new zi(e, t);
+        return new Ii(e, t);
       }
       static next() {
-        const e = zi.getInstance();
+        const e = Ii.getInstance();
         e && e.next();
       }
       static prev() {
-        const e = zi.getInstance();
+        const e = Ii.getInstance();
         e && e.prev();
       }
       static close(e = !0, ...t) {
-        if (e) for (const e of Ai.values()) e.close(...t);
+        if (e) for (const e of ki.values()) e.close(...t);
         else {
-          const e = zi.getInstance();
+          const e = Ii.getInstance();
           e && e.close(...t);
         }
       }
     }
-    Object.defineProperty(zi, "version", {
+    Object.defineProperty(Ii, "version", {
       enumerable: !0,
       configurable: !0,
       writable: !0,
       value: "5.0.32",
     }),
-      Object.defineProperty(zi, "defaults", {
+      Object.defineProperty(Ii, "defaults", {
         enumerable: !0,
         configurable: !0,
         writable: !0,
         value: mt,
       }),
-      Object.defineProperty(zi, "Plugins", {
+      Object.defineProperty(Ii, "Plugins", {
         enumerable: !0,
         configurable: !0,
         writable: !0,
         value: ri,
       }),
-      Object.defineProperty(zi, "openers", {
+      Object.defineProperty(Ii, "openers", {
         enumerable: !0,
         configurable: !0,
         writable: !0,
         value: new Map(),
-      }),
+      });
+    const zi = document.querySelectorAll(".phone-input"),
+      $i = [
+        { name: "None Country", code: "NA", dialCode: "", mask: "" },
+        {
+          name: "Russia",
+          code: "RU",
+          dialCode: "+7",
+          mask: "+7 (___) ___-__-__",
+        },
+        {
+          name: "Kazakhstan",
+          code: "KZ",
+          dialCode: "+7",
+          mask: "+7 (___) ___-__-__",
+        },
+        {
+          name: "Ukraine",
+          code: "UA",
+          dialCode: "+380",
+          mask: "+380 (__) ___-__-__",
+        },
+        {
+          name: "Moldova",
+          code: "MD",
+          dialCode: "+373",
+          mask: "+373 (__) ___-___",
+        },
+        {
+          name: "Belarus",
+          code: "BY",
+          dialCode: "+375",
+          mask: "+375 (__) ___-__-__",
+        },
+        {
+          name: "Uzbekistan",
+          code: "UZ",
+          dialCode: "+998",
+          mask: "+998 (__) ___-__-__",
+        },
+        {
+          name: "Azerbaijan",
+          code: "AZ",
+          dialCode: "+994",
+          mask: "+994 (__) ___-__-__",
+        },
+        {
+          name: "Germany",
+          code: "DE",
+          dialCode: "+49",
+          mask: "+49 (____) __________",
+        },
+        {
+          name: "Greece",
+          code: "GR",
+          dialCode: "+30",
+          mask: "+30 ___ ________",
+        },
+        {
+          name: "United States",
+          code: "US",
+          dialCode: "+1",
+          mask: "+1 (___) ___-____",
+        },
+        {
+          name: "United Arab Emirates",
+          code: "AE",
+          dialCode: "+971",
+          mask: "+971-__-___-____",
+        },
+        {
+          name: "Australia",
+          code: "AU",
+          dialCode: "+61",
+          mask: "+61 _ ____ ____",
+        },
+        {
+          name: "Israel",
+          code: "IL",
+          dialCode: "+972",
+          mask: "+972-____-____",
+        },
+        { name: "Latvia", code: "LV", dialCode: "+371", mask: "+371 ___ ____" },
+        {
+          name: "Turkey",
+          code: "TR",
+          dialCode: "+90",
+          mask: "+90 (___) ___ ____",
+        },
+        {
+          name: "France",
+          code: "FR",
+          dialCode: "+33",
+          mask: "+33 _ __ __ __ __",
+        },
+        {
+          name: "Austria",
+          code: "AT",
+          dialCode: "+43",
+          mask: "+43 ___ ___ ____",
+        },
+        {
+          name: "Armenia",
+          code: "AM",
+          dialCode: "+374",
+          mask: "+374 (__) ___-___",
+        },
+        {
+          name: "United Kingdom",
+          code: "GB",
+          dialCode: "+44",
+          mask: "+44 ____ ______",
+        },
+        {
+          name: "Czech Republic",
+          code: "CZ",
+          dialCode: "+420",
+          mask: "+420 ___ ___ ___",
+        },
+        {
+          name: "Switzerland",
+          code: "CH",
+          dialCode: "+41",
+          mask: "+41 __ ___ __ __",
+        },
+        { name: "Egypt", code: "EG", dialCode: "+20", mask: "+20 ___ _______" },
+        {
+          name: "Cambodia",
+          code: "KH",
+          dialCode: "+855",
+          mask: "+855 __ ___ ___",
+        },
+        {
+          name: "Cyprus",
+          code: "CY",
+          dialCode: "+357",
+          mask: "+357 __ ______",
+        },
+        {
+          name: "Kyrgyzstan",
+          code: "KG",
+          dialCode: "+996",
+          mask: "+996 (___) ___-___",
+        },
+        {
+          name: "Lebanon",
+          code: "LB",
+          dialCode: "+961",
+          mask: "+961 __ ___ ___",
+        },
+        {
+          name: "Lithuania",
+          code: "LT",
+          dialCode: "+370",
+          mask: "+370 ___ ____",
+        },
+        {
+          name: "Monaco",
+          code: "MC",
+          dialCode: "+377",
+          mask: "+377 __ ___ ___",
+        },
+        {
+          name: "Poland",
+          code: "PL",
+          dialCode: "+48",
+          mask: "+48 ___ ___ ___",
+        },
+        {
+          name: "Romania",
+          code: "RO",
+          dialCode: "+40",
+          mask: "+40 ___ ___ ___",
+        },
+        {
+          name: "Turkmenistan",
+          code: "TM",
+          dialCode: "+993",
+          mask: "+993 _ ____ ____",
+        },
+        {
+          name: "Croatia",
+          code: "HR",
+          dialCode: "+385",
+          mask: "+385 __ ___ ___",
+        },
+        {
+          name: "Estonia",
+          code: "EE",
+          dialCode: "+372",
+          mask: "+372 ____ ____",
+        },
+      ];
+    zi.forEach((e) => {
+      !(function ({
+        container: e,
+        countries: t,
+        spritePath: i = "./icons/sprite.svg",
+        apiKey: n,
+        defaultCountry: s,
+      }) {
+        const o = document.createElement("div");
+        o.className = "phone-input-wrapper";
+        const a = document.createElement("div");
+        a.className = "country-dropdown";
+        const r = document.createElement("button");
+        (r.className = "current-country"), (r.type = "button");
+        const l = document.createElement("div");
+        l.className = "country-options";
+        const c = e.dataset.name,
+          d = e.dataset.id,
+          u = e.dataset.clue,
+          h = (e.dataset.value || "").trim();
+        let p;
+        function f(e) {
+          return (e || "").replace(/\D/g, "");
+        }
+        function m(e, t) {
+          let i = "",
+            n = 0;
+          for (let s = 0; s < t.length; s++)
+            "_" === t[s]
+              ? n < e.length
+                ? (i += e[n++])
+                : (i += "_")
+              : (i += t[s]);
+          return i;
+        }
+        u &&
+          ((p = document.createElement("div")),
+          p.classList.add("clue-input"),
+          (p.innerHTML = u),
+          o.appendChild(p));
+        const g = f(h),
+          v = (function () {
+            if (s) {
+              const e = t.find((e) => e.code === s);
+              if (e) return { country: e, source: "default" };
+            }
+            if (g) {
+              const e = (function (e) {
+                let i,
+                  n = 0;
+                for (const s of t) {
+                  const t = f(s.dialCode);
+                  t &&
+                    e.startsWith(t) &&
+                    t.length > n &&
+                    ((i = s), (n = t.length));
+                }
+                return i;
+              })(g);
+              if (e) return { country: e, source: "value" };
+            }
+            return {
+              country: t.find((e) => "NA" === e.code) || t[0],
+              source: "fallback",
+            };
+          })();
+        let b = v.country,
+          y = b.mask,
+          w = b.dialCode,
+          C = "" !== y;
+        function x() {
+          (l.innerHTML = ""),
+            t.forEach((e) => {
+              const t = document.createElement("button");
+              (t.type = "button"),
+                (t.className = "country-option"),
+                (t.dataset.code = e.code),
+                (t.dataset.mask = e.mask),
+                (t.dataset.dialCode = e.dialCode),
+                (t.innerHTML = `\n                <svg><use href="${i}#${e.code}" /></svg>\n                <span>${e.name}</span>\n            `),
+                t.classList.toggle("selected", e.code === b.code),
+                l.appendChild(t);
+            });
+        }
+        function E() {
+          r.innerHTML = `\n            <svg><use href="${i}#${b.code}" /></svg>\n            <span>${b.code}</span>\n        `;
+        }
+        a.appendChild(r), a.appendChild(l), o.appendChild(a);
+        const S = document.createElement("input");
+        if (
+          ((S.type = "tel"),
+          (S.placeholder = y),
+          c && (S.name = c),
+          d && (S.id = d),
+          h)
+        ) {
+          let e = g;
+          if ("value" === v.source) {
+            const t = f(w);
+            t && e.startsWith(t) && (e = e.slice(t.length));
+          }
+          S.value = y ? m(e, y) : e;
+        } else S.value = C ? y : "";
+        o.appendChild(S), e.appendChild(o);
+        let T = y,
+          _ = w;
+        function M(e, t, i = !0) {
+          e.setSelectionRange && (i && e.focus(), e.setSelectionRange(t, t));
+        }
+        let P = null;
+        S.addEventListener("keydown", (e) => {
+          P = e.key;
+        }),
+          S.addEventListener("input", () => {
+            const e = S.selectionStart || 0;
+            let t = f(S.value);
+            const i = f(_);
+            i && t.startsWith(i) && (t = t.slice(i.length));
+            let n = T ? m(t, T) : t;
+            S.value = n;
+            let s = e;
+            if ("Backspace" === P)
+              for (; s > 0 && "_" !== n[s - 1] && /\D/.test(n[s - 1]); ) s--;
+            else for (; s < n.length && "_" !== n[s] && /\D/.test(n[s]); ) s++;
+            M(S, s);
+          }),
+          r.addEventListener("click", () => {
+            l.classList.toggle("visible");
+          }),
+          l.addEventListener("click", (e) => {
+            const i = e.target.closest(".country-option");
+            if (!i) return;
+            l
+              .querySelectorAll(".country-option")
+              .forEach((e) => e.classList.remove("selected")),
+              i.classList.add("selected");
+            const n = i.dataset.code,
+              s = i.dataset.mask,
+              o = i.dataset.dialCode;
+            (b = t.find((e) => e.code === n)),
+              (y = s),
+              (w = o),
+              (C = "" !== s),
+              (T = y),
+              (_ = w),
+              (S.placeholder = C ? s : ""),
+              (S.value = C ? y : ""),
+              E(),
+              l.classList.remove("visible");
+            const a = S.value.indexOf("_", f(_).length);
+            M(S, -1 === a ? S.value.length : a, !0);
+          }),
+          x(),
+          E(),
+          "fallback" === v.source &&
+            (async function (e) {
+              try {
+                let i = "https://ipinfo.io/country";
+                e && (i += `?token=${e}`);
+                const n = await fetch(i);
+                if (!n.ok) throw new Error(`HTTP error! status: ${n.status}`);
+                const s = (await n.text()).trim().toUpperCase(),
+                  o = t.find((e) => e.code === s);
+                if (!o) return;
+                (b = o),
+                  (y = o.mask),
+                  (w = o.dialCode),
+                  (C = "" !== o.mask),
+                  (T = y),
+                  (_ = w),
+                  h || ((S.placeholder = y), (S.value = C ? y : "")),
+                  E(),
+                  x();
+                const a = S.value.indexOf("_", f(_).length);
+                M(S, -1 === a ? S.value.length : a, !1);
+              } catch (e) {
+                console.error("Geo detection failed:", e);
+              }
+            })(n);
+      })({
+        container: e,
+        countries: $i,
+        spritePath:
+          "/local/templates/antiage_redesign_v2_new/verstka_vlad_1/dist/images/sprite2.svg",
+        apiKey: "",
+        defaultCountry: "RU",
+      });
+    }),
       document
         .querySelector(".header-burger")
         ?.addEventListener("click", () => {
@@ -12479,7 +12860,7 @@
             : e.closest(".model-slide").classList.add("active");
         });
       });
-    const _i = new IntersectionObserver(
+    const Ri = new IntersectionObserver(
       (e) => {
         e.forEach((e) => {
           e.isIntersecting && console.log(e.target.classList.add("active"));
@@ -12489,8 +12870,8 @@
     );
     if (
       (document.querySelector(".art-flex") &&
-        _i.observe(document.querySelector(".art-flex")),
-      document.querySelectorAll(".concept-item").forEach((e) => _i.observe(e)),
+        Ri.observe(document.querySelector(".art-flex")),
+      document.querySelectorAll(".concept-item").forEach((e) => Ri.observe(e)),
       (function () {
         if (document.querySelector(".accordion-header")) {
           document.querySelectorAll(".accordion-header").forEach((e) => {
@@ -12507,7 +12888,7 @@
           });
         }
       })(),
-      zi.bind("[data-fancybox]", {}),
+      Ii.bind("[data-fancybox]", {}),
       document.querySelector(".button-schema") &&
         document.querySelectorAll(".button-schema").forEach((e) => {
           e.addEventListener("click", function () {
@@ -12561,6 +12942,14 @@
           });
       });
     }
+    function Di(e) {
+      const t = document.cookie.match(
+        new RegExp(
+          "(?:^|; )" + e.replace(/([.$?*|{}()[\]\\/+^])/g, "\\$1") + "=([^;]*)"
+        )
+      );
+      return t ? decodeURIComponent(t[1]) : null;
+    }
     !(function () {
       const e = document.querySelectorAll(".format-block-clicker-trigger"),
         t = document.querySelectorAll(".format-block__column");
@@ -12577,6 +12966,48 @@
         });
       });
     })(),
+      (function () {
+        const e = document.querySelector("header"),
+          t = (t, i = !0) => {
+            const n =
+              t.getBoundingClientRect().top +
+              window.pageYOffset -
+              (() => {
+                if (!e) return 0;
+                const t = getComputedStyle(e);
+                return "fixed" === t.position || "sticky" === t.position
+                  ? e.getBoundingClientRect().height
+                  : 0;
+              })() -
+              8;
+            window.scrollTo({ top: n, behavior: i ? "smooth" : "auto" });
+          },
+          i = (e = !1) => {
+            const i = window.location.hash;
+            if (!i) return;
+            const n = document.querySelector(i);
+            n && t(n, e);
+          };
+        document.addEventListener("click", (e) => {
+          if (!(e.target instanceof Element)) return;
+          const i = e.target.closest(".anchor");
+          if (!i) return;
+          const n = i.getAttribute("href");
+          if (!n || !n.startsWith("#")) return;
+          const s = document.querySelector(n);
+          s &&
+            (e.preventDefault(),
+            document.body.classList.remove("menu-active"),
+            history.pushState(null, "", n),
+            requestAnimationFrame(() => t(s, !0)));
+        }),
+          window.addEventListener("load", () => {
+            setTimeout(() => i(!1), 0);
+          }),
+          window.addEventListener("hashchange", () => {
+            i(!1);
+          });
+      })(),
       window.addEventListener("load", function () {
         const e = "modal_doctor_shown";
         (function (e) {
@@ -12605,6 +13036,29 @@
             };
           }, 1e4);
       }),
+      (function () {
+        const e = window.location.pathname.toLowerCase();
+        return (
+          e.includes("/blog/") ||
+          e.endsWith("/blog") ||
+          e.endsWith("/blog.html")
+        );
+      })() &&
+        (Di("blog") ||
+          setTimeout(function () {
+            Di("blog") ||
+              (window.flsModules &&
+                window.flsModules.popup &&
+                (window.flsModules.popup.open("#modal-model"),
+                (function (e, t, i) {
+                  document.cookie =
+                    encodeURIComponent(e) +
+                    "=" +
+                    encodeURIComponent(t) +
+                    "; path=/; max-age=" +
+                    i;
+                })("blog", "shown", 365)));
+          }, 1e4)),
       (window.FLS = !0),
       (function (e) {
         let t = new Image();
