@@ -71,7 +71,7 @@ let swiperResult = new Swiper('.swiper-result', {
         nextEl: ".swiper-result .arrow-right",
         prevEl: ".swiper-result .arrow-left",
     },
-    loop: true,
+    loop: false,
     slidesPerView: 3,
     breakpoints: {
         320: {

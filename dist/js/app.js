@@ -4931,7 +4931,7 @@
           nextEl: ".swiper-result .arrow-right",
           prevEl: ".swiper-result .arrow-left",
         },
-        loop: !0,
+        loop: !1,
         slidesPerView: 3,
         breakpoints: {
           320: { spaceBetween: 20, slidesPerView: 1 },
