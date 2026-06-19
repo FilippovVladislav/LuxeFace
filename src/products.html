@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="ru">
+@@include('html/_head.htm',{
+"title":"Страница товара"
+})
+
+<body>
+<div class="wrapper">
+    @@include('html/_header.htm',{})
+    <main class="page">
+        <section class="section">
+            <div class="container">
+                <nav class="breadcrumbs mb-10 fw-500">
+                    <ul class="breadcrumb-items">
+                        <li class="breadcrumb-item">
+                            <a href="#" class="breadcrumb-link">Главная</a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <span>Карточка товара</span>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+        <div class="kinds">
+            <div class="container">
+                <div class="kinds-block">
+                    <div class="swiper-arrow-container">
+                        <div class="swiper-arrow arrow-left icon"
+                             style="--icon: url('../img/icon/icon-arrow-left.svg');">
+
+                        </div>
+                        <div class="swiper-arrow arrow-right icon"
+                             style="--icon: url('../img/icon/icon-arrow-right.svg');">
+
+                        </div>
+                    </div>
+                    <div class="kinds-content">
+                        <div class="kinds-content__items">
+                            <div class="kinds-content__item active" data-element="item-1">
+                                <div class="kinds-title">
+                                    <b>
+                                        DERMA SPRING
+                                        CLASSIC
+                                    </b> <br>
+                                    PDO
+                                </div>
+                                <div class="line">
+                                        <span class="icon icon-plus"
+                                              style="--icon: url('../img/icon/icon-plus.svg');"></span>
+                                </div>
+                                <div class="kinds-options">
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Калибр иглы</div>
+                                        <div class="kinds-option__value">27 G</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина иглы</div>
+                                        <div class="kinds-option__value">40 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина нити</div>
+                                        <div class="kinds-option__value">190 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">UPS</div>
+                                        <div class="kinds-option__value">6-0</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">кол-во в упаковке</div>
+                                        <div class="kinds-option__value">10 ЕА</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Материал</div>
+                                        <div class="kinds-option__value">
+                                            PDO <span>(Полидиоксанон)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
+                            </div>
+                            <div class="kinds-content__item" data-element="item-2">
+                                <div class="kinds-title">
+                                    <b>
+                                        SPRING EYE PDO
+                                    </b>
+                                </div>
+                                <div class="line">
+                                        <span class="icon icon-plus"
+                                              style="--icon: url('../img/icon/icon-plus.svg');"></span>
+                                </div>
+                                <div class="kinds-options">
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Калибр иглы</div>
+                                        <div class="kinds-option__value">30 G</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина иглы</div>
+                                        <div class="kinds-option__value">40 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина нити</div>
+                                        <div class="kinds-option__value">60 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">UPS</div>
+                                        <div class="kinds-option__value">7-0</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">кол-во в упаковке</div>
+                                        <div class="kinds-option__value">10 ЕА</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Материал</div>
+                                        <div class="kinds-option__value">
+                                            PDO <span>(Полидиоксанон)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
+                            </div>
+                            <div class="kinds-content__item" data-element="item-3">
+                                <div class="kinds-title">
+                                    <b>
+                                        SPRING EYE PDO
+                                    </b>
+                                </div>
+                                <div class="line">
+                                        <span class="icon icon-plus"
+                                              style="--icon: url('../img/icon/icon-plus.svg');"></span>
+                                </div>
+                                <div class="kinds-options">
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Калибр иглы</div>
+                                        <div class="kinds-option__value">30 G</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина иглы</div>
+                                        <div class="kinds-option__value">40 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина нити</div>
+                                        <div class="kinds-option__value">60 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">UPS</div>
+                                        <div class="kinds-option__value">7-0</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">кол-во в упаковке</div>
+                                        <div class="kinds-option__value">10 ЕА</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Материал</div>
+                                        <div class="kinds-option__value">
+                                            PDO <span>(Полидиоксанон)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
+                            </div>
+                            <div class="kinds-content__item" data-element="item-4">
+                                <div class="kinds-title">
+                                    <b>
+                                        SPRING EYE PDO
+                                    </b>
+                                </div>
+                                <div class="line">
+                                        <span class="icon icon-plus"
+                                              style="--icon: url('../img/icon/icon-plus.svg');"></span>
+                                </div>
+                                <div class="kinds-options">
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Калибр иглы</div>
+                                        <div class="kinds-option__value">30 G</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина иглы</div>
+                                        <div class="kinds-option__value">40 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Длина нити</div>
+                                        <div class="kinds-option__value">60 мм</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">UPS</div>
+                                        <div class="kinds-option__value">7-0</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">кол-во в упаковке</div>
+                                        <div class="kinds-option__value">10 ЕА</div>
+                                    </div>
+                                    <div class="kinds-option">
+                                        <div class="kinds-option__label">Материал</div>
+                                        <div class="kinds-option__value">
+                                            PDO <span>(Полидиоксанон)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper kinds-slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="kind-slide">
+                                    <div class="kind-slide__circle">
+                                        <img src="img/kind-1.png" alt="">
+                                    </div>
+                                    <div class="kind-slide-mobile">
+                                        <div class="kinds-title">
+                                            <b>
+                                                DERMA SPRING CLASSIC
+                                            </b>
+                                            PDO
+                                        </div>
+                                        <div class="kinds-options">
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Калибр иглы</div>
+                                                <div class="kinds-option__value">30 G</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина иглы</div>
+                                                <div class="kinds-option__value">40 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина нити</div>
+                                                <div class="kinds-option__value">60 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">UPS</div>
+                                                <div class="kinds-option__value">7-0</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">кол-во в упаковке</div>
+                                                <div class="kinds-option__value">10 ЕА</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Материал</div>
+                                                <div class="kinds-option__value">
+                                                    PDO <span>(Полидиоксанон)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="kind-slide">
+                                    <div class="kind-slide__circle">
+                                        <img src="img/kind-2.png" alt="">
+                                        <div class="kind-slide__text">
+                                            SPRING EYE PDO
+                                        </div>
+                                    </div>
+                                    <div class="kind-slide-mobile">
+                                        <div class="kinds-title">
+                                            <b>
+                                                DERMA SPRING CLASSIC
+                                            </b>
+                                        </div>
+                                        <div class="kinds-options">
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Калибр иглы</div>
+                                                <div class="kinds-option__value">30 G</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина иглы</div>
+                                                <div class="kinds-option__value">40 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина нити</div>
+                                                <div class="kinds-option__value">60 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">UPS</div>
+                                                <div class="kinds-option__value">7-0</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">кол-во в упаковке</div>
+                                                <div class="kinds-option__value">10 ЕА</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Материал</div>
+                                                <div class="kinds-option__value">
+                                                    PDO <span>(Полидиоксанон)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="kind-slide">
+                                    <div class="kind-slide__circle">
+                                        <img src="img/kind-2.png" alt="">
+                                        <div class="kind-slide__text">
+                                            SPRING EYE PDO
+                                        </div>
+                                    </div>
+                                    <div class="kind-slide-mobile">
+                                        <div class="kinds-title">
+                                            <b>
+                                                DERMA SPRING CLASSIC
+                                            </b>
+                                        </div>
+                                        <div class="kinds-options">
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Калибр иглы</div>
+                                                <div class="kinds-option__value">30 G</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина иглы</div>
+                                                <div class="kinds-option__value">40 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина нити</div>
+                                                <div class="kinds-option__value">60 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">UPS</div>
+                                                <div class="kinds-option__value">7-0</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">кол-во в упаковке</div>
+                                                <div class="kinds-option__value">10 ЕА</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Материал</div>
+                                                <div class="kinds-option__value">
+                                                    PDO <span>(Полидиоксанон)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="kind-slide">
+                                    <div class="kind-slide__circle">
+                                        <img src="img/kind-2.png" alt="">
+                                        <div class="kind-slide__text">
+                                            SPRING EYE PDO
+                                        </div>
+                                    </div>
+                                    <div class="kind-slide-mobile">
+                                        <div class="kinds-title">
+                                            <b>
+                                                DERMA SPRING CLASSIC
+                                            </b>
+                                        </div>
+                                        <div class="kinds-options">
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Калибр иглы</div>
+                                                <div class="kinds-option__value">30 G</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина иглы</div>
+                                                <div class="kinds-option__value">40 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Длина нити</div>
+                                                <div class="kinds-option__value">60 мм</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">UPS</div>
+                                                <div class="kinds-option__value">7-0</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">кол-во в упаковке</div>
+                                                <div class="kinds-option__value">10 ЕА</div>
+                                            </div>
+                                            <div class="kinds-option">
+                                                <div class="kinds-option__label">Материал</div>
+                                                <div class="kinds-option__value">
+                                                    PDO <span>(Полидиоксанон)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="art">
+            <div class="container">
+                <div class="art-container">
+                    <h2 class="title-54">
+                        Искусство <br> <span> нитевого лифтинга</span>
+                    </h2>
+                    <div class="art-flex">
+                        <div class="line">
+                            <span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
+                        </div>
+                        <div class="art-content">
+                            <p>
+                                <span class="line">
+                                    <span class="icon icon-plus"
+                                          style="--icon: url('../img/icon/icon-plus.svg');"></span>
+                                </span>
+                                <span>
+                                    Превосходные результаты методики Luxeface & Luxebody возможны благодаря высококлассным
+                                специалистам, применяющим авторскую технику введения и нашу эксклюзивную продукцию. Линия
+                                нитей <b>Luxeface & Luxebody</b> предназначена только для сертифицированных врачей, освоивших
+                                тонкости методики введения нитей. Именно поэтому репутация нашего бренда безупречна уже 10
+                                лет.
+                                </span>
+                            </p>
+                            <a href="#" data-popup-modal="#modal-get-production" class="button button-white">
+                                Как получить нити?
+                            </a>
+                        </div>
+                    </div>
+                    <div class="art-pic">
+                        <img src="img/art-pic.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="similar-products">
+            <div class="container">
+                <div class="similar-products__head">
+                    <h2 class="title-54">Товары</h2>
+                    <div class="swiper-arrow-container">
+                        <div class="swiper-arrow arrow-left icon"
+                             style="--icon: url('../img/icon/icon-arrow-left.svg');">
+
+                        </div>
+                        <div class="swiper-arrow arrow-right icon"
+                             style="--icon: url('../img/icon/icon-arrow-right.svg');">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper similar-products-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="similar-product-card">
+                                <a href="#" class="similar-product-card__pic">
+                                    <img src="img/kind-1.png" alt="">
+                                </a>
+                                <div class="similar-product-card__content">
+                                    <a href="#" class="similar-product-card__title">DERMA SPRING CLASSIC PDO</a>
+                                    <a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="similar-product-card">
+                                <a href="#" class="similar-product-card__pic">
+                                    <img src="img/kind-2.png" alt="">
+                                </a>
+                                <div class="similar-product-card__content">
+                                    <a href="#" class="similar-product-card__title">SPRING EYE PDO</a>
+                                    <a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="similar-product-card">
+                                <a href="#" class="similar-product-card__pic">
+                                    <img src="img/kind-1.png" alt="">
+                                </a>
+                                <div class="similar-product-card__content">
+                                    <a href="#" class="similar-product-card__title">DERMA SPRING CLASSIC PDO</a>
+                                    <a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="similar-product-card">
+                                <a href="#" class="similar-product-card__pic">
+                                    <img src="img/kind-2.png" alt="">
+                                </a>
+                                <div class="similar-product-card__content">
+                                    <a href="#" class="similar-product-card__title">SPRING EYE PDO</a>
+                                    <a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="similar-product-card">
+                                <a href="#" class="similar-product-card__pic">
+                                    <img src="img/kind-1.png" alt="">
+                                </a>
+                                <div class="similar-product-card__content">
+                                    <a href="#" class="similar-product-card__title">DERMA SPRING CLASSIC PDO</a>
+                                    <a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    @@include('html/_footer.htm',{})
+</div>
+@@include('html/_popup.htm',{})
+@@include('html/_js.htm',{})
+</body>
+
+</html>

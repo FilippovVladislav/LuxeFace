@@ -4957,6 +4957,20 @@
           1441: { slidesPerView: 3, spaceBetween: 60 },
         },
       }),
+      new ae(".similar-products-slider", {
+        modules: [le, ue],
+        navigation: {
+          nextEl: ".similar-products__head .arrow-right",
+          prevEl: ".similar-products__head .arrow-left",
+        },
+        loop: !1,
+        breakpoints: {
+          320: { slidesPerView: 1, spaceBetween: 20 },
+          600: { slidesPerView: 2, spaceBetween: 20 },
+          991: { slidesPerView: 3, spaceBetween: 20 },
+          1441: { slidesPerView: 4, spaceBetween: 0 },
+        },
+      }),
       new ae(".kinds-slider", {
         modules: [le, ue],
         navigation: {

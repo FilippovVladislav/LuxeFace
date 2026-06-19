@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20260529094342">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260619102825">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -1762,6 +1762,46 @@
 			</div>
 		</div>
 	</div>
+	<div id="modal-callback2" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close icon" style="--icon: url('../img/icon/icon-close.svg');"></button>
+
+				<div class="popup-title">
+					<b>Связаться</b> <br>
+					с нами
+				</div>
+				<form action="#">
+					<fieldset class="form-item">
+						<input type="text" placeholder="ФИО" class="form-input">
+					</fieldset>
+					<fieldset class="form-item">
+						<input type="text" placeholder="e-mail" class="form-input">
+					</fieldset>
+					<fieldset class="form-item">
+						<textarea class="form-input" placeholder="Задайте ваш вопрос"></textarea>
+					</fieldset>
+					<button type="submit" class="button button-model" data-popup-modal="#modal-callback-success">отправить
+						заявку
+					</button>
+					<div class="check-element agreed-message">
+						<input type="checkbox" id="check13" class="input-absolute">
+						<label for="check13" class="size-14 text-center">
+							<span class="check-main icon" style="--icon: url('../img/icon/check.svg')"></span>
+							<span>Я согласен с <a href="#" class="link-green text-underline fw-500">Политикой обработки персональных данных</a></span>
+						</label>
+					</div>
+					<div class="check-element agreed-message">
+						<input type="checkbox" id="check103" class="input-absolute">
+						<label for="check103" class="size-14 text-center">
+							<span class="check-main icon" style="--icon: url('../img/icon/check.svg')"></span>
+							<span>Я хочу <a href="#" class="link-green text-underline fw-500">получать рекламную рассылку</a></span>
+						</label>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
 	<div id="modal-callback-success" aria-hidden="true" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -1968,7 +2008,7 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20260529094342"></script>
+	<script src="js/app.min.js?_v=20260619102825"></script>
 </body>
 
 </html>
