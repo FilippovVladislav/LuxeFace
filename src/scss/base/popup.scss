@@ -110,6 +110,7 @@ body.popup-show::after {
   outline: none;
   position: absolute;
   top: rem(80);
+  z-index: 2;
   right: rem(100);
   cursor: pointer;
 

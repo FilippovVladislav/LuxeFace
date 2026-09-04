@@ -843,34 +843,39 @@
           "" !== e.trim() &&
           (this.previousOpen.selector = e),
           this.isOpen &&
-            t &&
-            (this.options.on.beforeClose(this),
-            this.targetOpen.element.hasAttribute(
-              this.options.youtubeAttribute
-            ) &&
-              this.targetOpen.element.querySelector(
-                `[${this.options.youtubePlaceAttribute}]`
-              ) &&
-              (this.targetOpen.element.querySelector(
-                `[${this.options.youtubePlaceAttribute}]`
-              ).innerHTML = ""),
-            this.previousOpen.element.classList.remove(
-              this.options.classes.popupActive
-            ),
-            this.previousOpen.element.setAttribute("aria-hidden", "true"),
-            this._reopen ||
-              (document.body.classList.remove(this.options.classes.bodyActive),
-              n(),
-              (this.isOpen = !1)),
-            this._removeHash(),
-            this._selectorOpen &&
-              ((this.lastClosed.selector = this.previousOpen.selector),
-              (this.lastClosed.element = this.previousOpen.element)),
-            this.options.on.afterClose(this),
-            setTimeout(() => {
-              this._focusTrap();
-            }, 50),
-            this.popupLogging("Закрыл попап"));
+            (t
+              ? (this.options.on.beforeClose(this),
+                this.targetOpen.element.hasAttribute(
+                  this.options.youtubeAttribute
+                ) &&
+                  this.targetOpen.element.querySelector(
+                    `[${this.options.youtubePlaceAttribute}]`
+                  ) &&
+                  (this.targetOpen.element.querySelector(
+                    `[${this.options.youtubePlaceAttribute}]`
+                  ).innerHTML = ""),
+                this.previousOpen.element.classList.remove(
+                  this.options.classes.popupActive
+                ),
+                this.previousOpen.element.setAttribute("aria-hidden", "true"),
+                this._reopen ||
+                  (document.body.classList.remove(
+                    this.options.classes.bodyActive
+                  ),
+                  n(),
+                  (this.isOpen = !1)),
+                this._removeHash(),
+                this._selectorOpen &&
+                  ((this.lastClosed.selector = this.previousOpen.selector),
+                  (this.lastClosed.element = this.previousOpen.element)),
+                this.options.on.afterClose(this),
+                setTimeout(() => {
+                  this._focusTrap();
+                }, 50),
+                this.popupLogging("Закрыл попап"))
+              : setTimeout(() => {
+                  this.close(e);
+                }, this.options.bodyLockDelay));
       }
       _getHash() {
         this.options.hashSettings.location &&
@@ -4948,6 +4953,20 @@
         navigation: {
           nextEl: ".news-head .arrow-right",
           prevEl: ".news-head .arrow-left",
+        },
+        loop: !1,
+        breakpoints: {
+          320: { slidesPerView: 1, spaceBetween: 20 },
+          600: { slidesPerView: 2, spaceBetween: 20 },
+          991: { slidesPerView: 3, spaceBetween: 20 },
+          1441: { slidesPerView: 3, spaceBetween: 60 },
+        },
+      }),
+      new ae(".swiper-blog", {
+        modules: [le, ue],
+        navigation: {
+          nextEl: ".main-blog__head .arrow-right",
+          prevEl: ".main-blog__head .arrow-left",
         },
         loop: !1,
         breakpoints: {

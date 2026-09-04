@@ -753,6 +753,74 @@
   }
 }
 
+.main-blog {
+  margin-top: rem(120);
+  margin-bottom: rem(250);
+  font-family: Montserrat;
+
+  @media(max-width: 1400px) {
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+
+  @media(max-width: $mobile) {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+.main-blog__head {
+  display: flex;
+  align-items: center;
+  margin-bottom: rem(50);
+
+  .title-54 {
+    flex-shrink: 0;
+    margin-right: rem(40);
+    margin-bottom: 0;
+  }
+
+  .line {
+    width: 100%;
+    margin-bottom: 0;
+  }
+
+  .swiper-arrow-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    width: rem(170);
+    margin-top: 0;
+    margin-left: rem(20);
+    padding: 0;
+  }
+
+  .arrow-left {
+    margin-right: rem(10);
+  }
+
+  @media(max-width: $mobile) {
+    margin-bottom: 30px;
+
+    .title-54 {
+      margin-right: 20px;
+    }
+
+    .swiper-arrow-container {
+      display: none;
+    }
+  }
+}
+
+.swiper-blog {
+  @media(max-width: $mobile) {
+    padding-right: 80px;
+    margin-right: -20px;
+  }
+}
+
 .news-item__pic {
   padding-bottom: rem(340);
   position: relative;

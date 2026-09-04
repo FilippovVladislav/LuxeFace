@@ -249,7 +249,13 @@ class Popup {
 		if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
 			this.previousOpen.selector = selectorValue;
 		}
-		if (!this.isOpen || !bodyLockStatus) {
+		if (!this.isOpen) {
+			return;
+		}
+		if (!bodyLockStatus) {
+			setTimeout(() => {
+				this.close(selectorValue);
+			}, this.options.bodyLockDelay);
 			return;
 		}
 		// До закрытия

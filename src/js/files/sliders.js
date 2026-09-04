@@ -128,6 +128,33 @@ let swiperNews = new Swiper('.swiper-news', {
     },
 })
 
+let swiperBlog = new Swiper('.swiper-blog', {
+    modules: [Navigation, A11y],
+    navigation: {
+        nextEl: ".main-blog__head .arrow-right",
+        prevEl: ".main-blog__head .arrow-left",
+    },
+    loop: false,
+    breakpoints: {
+        320: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+        },
+        600: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        991: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1441: {
+            slidesPerView: 3,
+            spaceBetween: 60,
+        },
+    },
+})
+
 let swiperSimilarProducts = new Swiper('.similar-products-slider', {
     modules: [Navigation, A11y],
     navigation: {
