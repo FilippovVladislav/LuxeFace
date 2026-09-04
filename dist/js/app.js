@@ -13062,6 +13062,12 @@
           return null;
         })(e) ||
           setTimeout(() => {
+            if (
+              !window.flsModules ||
+              !window.flsModules.popup ||
+              window.flsModules.popup.isOpen
+            )
+              return;
             window.flsModules.popup.open("#modal-doctor");
             const t = window.flsModules.popup,
               i = t.options.on.afterClose;
@@ -13090,15 +13096,16 @@
             Di("blog") ||
               (window.flsModules &&
                 window.flsModules.popup &&
-                (window.flsModules.popup.open("#modal-model"),
-                (function (e, t, i) {
-                  document.cookie =
-                    encodeURIComponent(e) +
-                    "=" +
-                    encodeURIComponent(t) +
-                    "; path=/; max-age=" +
-                    i;
-                })("blog", "shown", 365)));
+                (window.flsModules.popup.isOpen ||
+                  (window.flsModules.popup.open("#modal-model"),
+                  (function (e, t, i) {
+                    document.cookie =
+                      encodeURIComponent(e) +
+                      "=" +
+                      encodeURIComponent(t) +
+                      "; path=/; max-age=" +
+                      i;
+                  })("blog", "shown", 365))));
           }, 1e4)),
       (window.FLS = !0),
       (function (e) {

@@ -39,6 +39,7 @@ function initBlogPopupByTimer() {
         if (getCookie("blog")) return;
         if (!window.flsModules || !window.flsModules.popup) return;
 
+        if (window.flsModules.popup.isOpen) return;
         window.flsModules.popup.open("#modal-model");
         setCookie("blog", "shown", 365);
     }, 10000);

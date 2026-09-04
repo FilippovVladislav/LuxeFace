@@ -263,6 +263,7 @@ function showDoctorModal() {
     if (!getCookie(cookieName)) {
         setTimeout(() => {
             // Открываем попап
+            if (!window.flsModules || !window.flsModules.popup || window.flsModules.popup.isOpen) return;
             window.flsModules.popup.open('#modal-doctor');
 
             // Подписываемся на закрытие попапа, чтобы ставить куки
