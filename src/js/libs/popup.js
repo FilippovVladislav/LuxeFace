@@ -248,6 +248,7 @@ class Popup {
 	close(selectorValue) {
 		if (selectorValue && typeof (selectorValue) === "string" && selectorValue.trim() !== "") {
 			this.previousOpen.selector = selectorValue;
+			this.previousOpen.element = document.querySelector(selectorValue);
 		}
 		if (!this.isOpen) {
 			return;
@@ -258,16 +259,24 @@ class Popup {
 			}, this.options.bodyLockDelay);
 			return;
 		}
+		const popupElement = this.previousOpen.element || this.targetOpen.element;
+		if (!popupElement) {
+			this.isOpen = false;
+			this._reopen = false;
+			this._selectorOpen = false;
+			document.body.classList.remove(this.options.classes.bodyActive);
+			return;
+		}
 		// До закрытия
 		this.options.on.beforeClose(this);
 		// YouTube
-		if (this.targetOpen.element.hasAttribute(this.options.youtubeAttribute)) {
-			if (this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`))
-				this.targetOpen.element.querySelector(`[${this.options.youtubePlaceAttribute}]`).innerHTML = '';
+		if (popupElement.hasAttribute(this.options.youtubeAttribute)) {
+			const youtubePlace = popupElement.querySelector(`[${this.options.youtubePlaceAttribute}]`);
+			if (youtubePlace) youtubePlace.innerHTML = '';
 		}
-		this.previousOpen.element.classList.remove(this.options.classes.popupActive);
+		popupElement.classList.remove(this.options.classes.popupActive);
 		// aria-hidden
-		this.previousOpen.element.setAttribute('aria-hidden', 'true');
+		popupElement.setAttribute('aria-hidden', 'true');
 		if (!this._reopen) {
 			document.body.classList.remove(this.options.classes.bodyActive);
 			bodyLockToggle();
@@ -277,7 +286,7 @@ class Popup {
 		this._removeHash();
 		if (this._selectorOpen) {
 			this.lastClosed.selector = this.previousOpen.selector;
-			this.lastClosed.element = this.previousOpen.element;
+			this.lastClosed.element = popupElement;
 
 		}
 		// После закрытия
@@ -327,10 +336,13 @@ class Popup {
 		}
 	}
 	_focusTrap() {
-		const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
 		if (!this.isOpen && this.lastFocusEl) {
 			this.lastFocusEl.focus();
-		} else {
+			return;
+		}
+		if (this.previousOpen.element) {
+			const focusable = this.previousOpen.element.querySelectorAll(this._focusEl);
+			if (!focusable.length) return;
 			focusable[0].focus();
 		}
 	}

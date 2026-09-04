@@ -838,44 +838,49 @@
           );
       }
       close(e) {
-        e &&
-          "string" == typeof e &&
-          "" !== e.trim() &&
-          (this.previousOpen.selector = e),
-          this.isOpen &&
-            (t
-              ? (this.options.on.beforeClose(this),
-                this.targetOpen.element.hasAttribute(
-                  this.options.youtubeAttribute
-                ) &&
-                  this.targetOpen.element.querySelector(
-                    `[${this.options.youtubePlaceAttribute}]`
-                  ) &&
-                  (this.targetOpen.element.querySelector(
-                    `[${this.options.youtubePlaceAttribute}]`
-                  ).innerHTML = ""),
-                this.previousOpen.element.classList.remove(
-                  this.options.classes.popupActive
-                ),
-                this.previousOpen.element.setAttribute("aria-hidden", "true"),
-                this._reopen ||
-                  (document.body.classList.remove(
-                    this.options.classes.bodyActive
-                  ),
-                  n(),
-                  (this.isOpen = !1)),
-                this._removeHash(),
-                this._selectorOpen &&
-                  ((this.lastClosed.selector = this.previousOpen.selector),
-                  (this.lastClosed.element = this.previousOpen.element)),
-                this.options.on.afterClose(this),
-                setTimeout(() => {
-                  this._focusTrap();
-                }, 50),
-                this.popupLogging("Закрыл попап"))
-              : setTimeout(() => {
-                  this.close(e);
-                }, this.options.bodyLockDelay));
+        if (
+          (e &&
+            "string" == typeof e &&
+            "" !== e.trim() &&
+            ((this.previousOpen.selector = e),
+            (this.previousOpen.element = document.querySelector(e))),
+          !this.isOpen)
+        )
+          return;
+        if (!t)
+          return void setTimeout(() => {
+            this.close(e);
+          }, this.options.bodyLockDelay);
+        const i = this.previousOpen.element || this.targetOpen.element;
+        if (!i)
+          return (
+            (this.isOpen = !1),
+            (this._reopen = !1),
+            (this._selectorOpen = !1),
+            void document.body.classList.remove(this.options.classes.bodyActive)
+          );
+        if (
+          (this.options.on.beforeClose(this),
+          i.hasAttribute(this.options.youtubeAttribute))
+        ) {
+          const e = i.querySelector(`[${this.options.youtubePlaceAttribute}]`);
+          e && (e.innerHTML = "");
+        }
+        i.classList.remove(this.options.classes.popupActive),
+          i.setAttribute("aria-hidden", "true"),
+          this._reopen ||
+            (document.body.classList.remove(this.options.classes.bodyActive),
+            n(),
+            (this.isOpen = !1)),
+          this._removeHash(),
+          this._selectorOpen &&
+            ((this.lastClosed.selector = this.previousOpen.selector),
+            (this.lastClosed.element = i)),
+          this.options.on.afterClose(this),
+          setTimeout(() => {
+            this._focusTrap();
+          }, 50),
+          this.popupLogging("Закрыл попап");
       }
       _getHash() {
         this.options.hashSettings.location &&
@@ -913,10 +918,13 @@
             (i[0].focus(), e.preventDefault());
       }
       _focusTrap() {
-        const e = this.previousOpen.element.querySelectorAll(this._focusEl);
-        !this.isOpen && this.lastFocusEl
-          ? this.lastFocusEl.focus()
-          : e[0].focus();
+        if (this.isOpen || !this.lastFocusEl) {
+          if (this.previousOpen.element) {
+            const e = this.previousOpen.element.querySelectorAll(this._focusEl);
+            if (!e.length) return;
+            e[0].focus();
+          }
+        } else this.lastFocusEl.focus();
       }
       popupLogging(e) {
         this.options.logging && a();
