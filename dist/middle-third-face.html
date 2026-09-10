@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20260910134232">
+	<link rel="stylesheet" href="css/style.min.css?_v=20260910144614">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1, user-scalable=no">
@@ -1954,6 +1954,42 @@
 			</div>
 		</div>
 	</div>
+	<div id="modal-seminar" aria-hidden="true" class="popup">
+		<div class="popup__wrapper">
+			<div class="popup__content">
+				<button data-close type="button" class="popup__close icon" style="--icon: url('../img/icon/icon-close.svg');"></button>
+				<div class="seminar-modal">
+					<div class="seminar-modal__media">
+						<picture><source srcset="img/seminar-modal/bg.webp" type="image/webp"><img class="seminar-modal__bg" src="img/seminar-modal/bg.png" alt=""></picture>
+						<picture><source srcset="img/seminar-modal/doctor.webp" type="image/webp"><img class="seminar-modal__doctor" src="img/seminar-modal/doctor.png" alt=""></picture>
+					</div>
+					<div class="seminar-modal__content">
+						<div class="seminar-modal__title">
+							<span>Нити LUXEFACE</span>: авторский метод — от знакомства до результата
+						</div>
+						<div class="seminar-modal__date">
+							<time datetime="2026-09-28" class="seminar-modal__day">
+								<span>28</span>
+								<small>сентября</small>
+							</time>
+							<div class="seminar-modal__date-text">
+								Практический семинар <br>
+								для врачей-косметологов
+							</div>
+						</div>
+						<div class="seminar-modal__text">
+							Теория, демонстрация авторских методик <br>
+							на моделях и разбор клинической логики <br>
+							работы с нитевыми методиками.
+						</div>
+						<a href="#" data-popup-modal="#modal-send-application" class="button seminar-modal__button">
+							Зарегистрироваться на семинар
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 	<div id="modal-get-production" aria-hidden="true" class="popup">
 		<div class="popup__wrapper">
 			<div class="popup__content">
@@ -2146,7 +2182,8 @@
 			</div>
 		</div>
 	</div>
-	<script src="js/app.min.js?_v=20260910134232"></script>
+
+	<script src="js/app.min.js?_v=20260910144614"></script>
 </body>
 
 </html>

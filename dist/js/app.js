@@ -13075,6 +13075,16 @@
       });
     }
     function Ni(e) {
+      const t = e + "=",
+        i = document.cookie.split(";");
+      for (let e = 0; e < i.length; e++) {
+        let n = i[e];
+        for (; " " == n.charAt(0); ) n = n.substring(1, n.length);
+        if (0 == n.indexOf(t)) return n.substring(t.length, n.length);
+      }
+      return null;
+    }
+    function Hi(e) {
       const t = document.cookie.match(
         new RegExp(
           "(?:^|; )" + e.replace(/([.$?*|{}()[\]\\/+^])/g, "\\$1") + "=([^;]*)"
@@ -13141,38 +13151,32 @@
           });
       })(),
       window.addEventListener("load", function () {
-        const e = "modal_doctor_shown";
-        (function (e) {
-          const t = e + "=",
-            i = document.cookie.split(";");
-          for (let e = 0; e < i.length; e++) {
-            let n = i[e];
-            for (; " " == n.charAt(0); ) n = n.substring(1, n.length);
-            if (0 == n.indexOf(t)) return n.substring(t.length, n.length);
-          }
-          return null;
-        })(e) ||
-          setTimeout(() => {
-            if (
-              !window.flsModules ||
-              !window.flsModules.popup ||
-              window.flsModules.popup.isOpen
-            )
-              return;
-            window.flsModules.popup.open("#modal-doctor");
-            const t = window.flsModules.popup,
-              i = t.options.on.afterClose;
-            t.options.on.afterClose = function (t) {
-              "#modal-doctor" === t.previousOpen.selector &&
+        const e = "modal_seminar_shown",
+          t = "#modal-seminar";
+        if (Ni(e)) return;
+        const i = () => {
+            const i = window.flsModules.popup,
+              n = i.options.on.afterClose;
+            i.options.on.afterClose = function (i) {
+              i.previousOpen.selector === t &&
                 (function (e, t, i) {
                   const n = new Date();
                   n.setTime(n.getTime() + 24 * i * 60 * 60 * 1e3);
                   const s = "expires=" + n.toUTCString();
                   document.cookie = e + "=" + t + ";" + s + ";path=/";
-                })(e, "true", 365),
-                i && i(t);
+                })(e, "true", 1),
+                n && n(i);
             };
-          }, 1e4);
+          },
+          n = () => {
+            Ni(e) ||
+              (window.flsModules &&
+                window.flsModules.popup &&
+                (window.flsModules.popup.isOpen
+                  ? setTimeout(n, 1e3)
+                  : (window.flsModules.popup.open(t), i())));
+          };
+        setTimeout(n, 4e4);
       }),
       (function () {
         const e = window.location.pathname.toLowerCase();
@@ -13182,9 +13186,9 @@
           e.endsWith("/blog.html")
         );
       })() &&
-        (Ni("blog") ||
+        (Hi("blog") ||
           setTimeout(function () {
-            Ni("blog") ||
+            Hi("blog") ||
               (window.flsModules &&
                 window.flsModules.popup &&
                 (window.flsModules.popup.isOpen ||

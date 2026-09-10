@@ -256,29 +256,40 @@ function getCookie(name) {
     return null;
 }
 
-// Функция для показа модалки "Доктор"
-function showDoctorModal() {
-    const cookieName = 'modal_doctor_shown';
+// Функция для показа модалки семинара раз в сутки
+function showSeminarModal() {
+    const cookieName = 'modal_seminar_shown';
+    const popupSelector = '#modal-seminar';
+    const showDelay = 40 * 1000;
 
-    if (!getCookie(cookieName)) {
-        setTimeout(() => {
-            // Открываем попап
-            if (!window.flsModules || !window.flsModules.popup || window.flsModules.popup.isOpen) return;
-            window.flsModules.popup.open('#modal-doctor');
+    if (getCookie(cookieName)) return;
 
-            // Подписываемся на закрытие попапа, чтобы ставить куки
-            const popup = window.flsModules.popup;
-            const originalAfterClose = popup.options.on.afterClose;
+    const markShownAfterClose = () => {
+        const popup = window.flsModules.popup;
+        const originalAfterClose = popup.options.on.afterClose;
 
-            popup.options.on.afterClose = function(p) {
-                if (p.previousOpen.selector === '#modal-doctor') {
-                    setCookie(cookieName, 'true', 365); // сохраняем на год
-                }
-                // Вызываем оригинальный обработчик, если был
-                if (originalAfterClose) originalAfterClose(p);
-            };
-        }, 10000); // 10 секунд
-    }
+        popup.options.on.afterClose = function(p) {
+            if (p.previousOpen.selector === popupSelector) {
+                setCookie(cookieName, 'true', 1);
+            }
+            if (originalAfterClose) originalAfterClose(p);
+        };
+    };
+
+    const openWhenAvailable = () => {
+        if (getCookie(cookieName)) return;
+        if (!window.flsModules || !window.flsModules.popup) return;
+
+        if (window.flsModules.popup.isOpen) {
+            setTimeout(openWhenAvailable, 1000);
+            return;
+        }
+
+        window.flsModules.popup.open(popupSelector);
+        markShownAfterClose();
+    };
+
+    setTimeout(openWhenAvailable, showDelay);
 }
 
 function initAnchor() {
@@ -340,4 +351,4 @@ function initAnchor() {
 }
 initAnchor();
 // Вызываем функцию при загрузке страницы
-window.addEventListener('load', showDoctorModal);
+window.addEventListener('load', showSeminarModal);
