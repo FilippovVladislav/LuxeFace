@@ -7353,12 +7353,14 @@ footer {
   transition: all 0.2s ease;
   width: 220px;
   z-index: 10;
+  display: none;
 }
 
 .country-options.visible {
   opacity: 1;
   pointer-events: auto;
   transform: scaleY(1);
+  display: block;
 }
 
 .country-option {

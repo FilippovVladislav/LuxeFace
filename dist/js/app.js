@@ -93,11 +93,11 @@
             y = "native",
             w = "data-",
             C = "ll-status",
-            x = function (e, t) {
+            E = function (e, t) {
               return e.getAttribute(w + t);
             },
-            E = function (e) {
-              return x(e, C);
+            x = function (e) {
+              return E(e, C);
             },
             S = function (e, t) {
               return (function (e, t, i) {
@@ -109,18 +109,18 @@
               return S(e, null);
             },
             _ = function (e) {
-              return null === E(e);
+              return null === x(e);
             },
             M = function (e) {
-              return E(e) === y;
+              return x(e) === y;
             },
             P = [m, g, v, b],
-            O = function (e, t, i, n) {
+            L = function (e, t, i, n) {
               e &&
                 "function" == typeof e &&
                 (void 0 === n ? (void 0 === i ? e(t) : e(t, i)) : e(t, i, n));
             },
-            L = function (e, t) {
+            O = function (e, t) {
               s
                 ? e.classList.add(t)
                 : (e.className += (e.className ? " " : "") + t);
@@ -145,20 +145,20 @@
             z = function (e, t) {
               e && (e.loadingCount += t);
             },
-            $ = function (e, t) {
+            R = function (e, t) {
               e && (e.toLoadCount = t);
             },
-            R = function (e) {
+            $ = function (e) {
               for (var t, i = [], n = 0; (t = e.children[n]); n += 1)
                 "SOURCE" === t.tagName && i.push(t);
               return i;
             },
             D = function (e, t) {
               var i = e.parentNode;
-              i && "PICTURE" === i.tagName && R(i).forEach(t);
+              i && "PICTURE" === i.tagName && $(i).forEach(t);
             },
             B = function (e, t) {
-              R(e).forEach(t);
+              $(e).forEach(t);
             },
             F = [c],
             j = [c, h],
@@ -193,24 +193,24 @@
               }
             },
             Y = function (e, t, i) {
-              L(e, t.class_applied),
+              O(e, t.class_applied),
                 S(e, v),
                 i &&
                   (t.unobserve_completed && I(e, t),
-                  O(t.callback_applied, e, i));
+                  L(t.callback_applied, e, i));
             },
             U = function (e, t, i) {
-              L(e, t.class_loading),
+              O(e, t.class_loading),
                 S(e, m),
-                i && (z(i, 1), O(t.callback_loading, e, i));
+                i && (z(i, 1), L(t.callback_loading, e, i));
             },
             Z = function (e, t, i) {
               i && e.setAttribute(t, i);
             },
             K = function (e, t) {
-              Z(e, u, x(e, t.data_sizes)),
-                Z(e, d, x(e, t.data_srcset)),
-                Z(e, c, x(e, t.data_src));
+              Z(e, u, E(e, t.data_sizes)),
+                Z(e, d, E(e, t.data_srcset)),
+                Z(e, c, E(e, t.data_src));
             },
             J = {
               IMG: function (e, t) {
@@ -221,19 +221,19 @@
                   K(e, t);
               },
               IFRAME: function (e, t) {
-                V(e, F), Z(e, c, x(e, t.data_src));
+                V(e, F), Z(e, c, E(e, t.data_src));
               },
               VIDEO: function (e, t) {
                 B(e, function (e) {
-                  V(e, F), Z(e, c, x(e, t.data_src));
+                  V(e, F), Z(e, c, E(e, t.data_src));
                 }),
                   V(e, j),
-                  Z(e, h, x(e, t.data_poster)),
-                  Z(e, c, x(e, t.data_src)),
+                  Z(e, h, E(e, t.data_poster)),
+                  Z(e, c, E(e, t.data_src)),
                   e.load();
               },
               OBJECT: function (e, t) {
-                V(e, H), Z(e, f, x(e, t.data_src));
+                V(e, H), Z(e, f, E(e, t.data_src));
               },
             },
             Q = ["IMG", "IFRAME", "VIDEO", "OBJECT"],
@@ -245,7 +245,7 @@
                 (function (e) {
                   return e.toLoadCount > 0;
                 })(t) ||
-                O(e.callback_finish, t);
+                L(e.callback_finish, t);
             },
             te = function (e, t, i) {
               e.addEventListener(t, i), (e.llEvLisnrs[t] = i);
@@ -290,9 +290,9 @@
                     !(function (e, t, i, n) {
                       var s = M(t);
                       oe(t, i, n),
-                        L(t, i.class_loaded),
+                        O(t, i.class_loaded),
                         S(t, g),
-                        O(i.callback_loaded, t, n),
+                        L(i.callback_loaded, t, n),
                         s || ee(i, n);
                     })(0, e, t, i),
                       se(n);
@@ -301,9 +301,9 @@
                     !(function (e, t, i, n) {
                       var s = M(t);
                       oe(t, i, n),
-                        L(t, i.class_error),
+                        O(t, i.class_error),
                         S(t, b),
-                        O(i.callback_error, t, n),
+                        L(i.callback_error, t, n),
                         i.restore_on_error && X(t, N),
                         s || ee(i, n);
                     })(0, e, t, i),
@@ -325,8 +325,8 @@
                           (e[p] = { backgroundImage: e.style.backgroundImage });
                       })(e),
                       (function (e, t, i) {
-                        var n = x(e, t.data_bg),
-                          s = x(e, t.data_bg_hidpi),
+                        var n = E(e, t.data_bg),
+                          s = E(e, t.data_bg_hidpi),
                           a = o && s ? s : n;
                         a &&
                           ((e.style.backgroundImage = 'url("'.concat(a, '")')),
@@ -334,13 +334,13 @@
                           U(e, t, i));
                       })(e, t, i),
                       (function (e, t, i) {
-                        var n = x(e, t.data_bg_multi),
-                          s = x(e, t.data_bg_multi_hidpi),
+                        var n = E(e, t.data_bg_multi),
+                          s = E(e, t.data_bg_multi_hidpi),
                           a = o && s ? s : n;
                         a && ((e.style.backgroundImage = a), Y(e, t, i));
                       })(e, t, i),
                       (function (e, t, i) {
-                        var n = x(e, t.data_bg_set);
+                        var n = E(e, t.data_bg_set);
                         if (n) {
                           var s = n.split("|"),
                             o = s.map(function (e) {
@@ -425,24 +425,24 @@
                 })(e)
                   ? (function (e, t, i, n) {
                       var s = (function (e) {
-                        return P.indexOf(E(e)) >= 0;
+                        return P.indexOf(x(e)) >= 0;
                       })(e);
                       S(e, "entered"),
-                        L(e, i.class_entered),
+                        O(e, i.class_entered),
                         k(e, i.class_exited),
                         (function (e, t, i) {
                           t.unobserve_entered && I(e, i);
                         })(e, i, n),
-                        O(i.callback_enter, e, t, n),
+                        L(i.callback_enter, e, t, n),
                         s || re(e, i, n);
                     })(e.target, e, t, i)
                   : (function (e, t, i, n) {
                       _(e) ||
-                        (L(e, i.class_exited),
+                        (O(e, i.class_exited),
                         (function (e, t, i, n) {
                           i.cancel_on_exit &&
                             (function (e) {
-                              return E(e) === m;
+                              return x(e) === m;
                             })(e) &&
                             "IMG" === e.tagName &&
                             (se(e),
@@ -456,9 +456,9 @@
                             k(e, i.class_loading),
                             z(n, -1),
                             T(e),
-                            O(i.callback_cancel, e, t, n));
+                            L(i.callback_cancel, e, t, n));
                         })(e, t, i, n),
-                        O(i.callback_exit, e, t, n));
+                        L(i.callback_exit, e, t, n));
                     })(e.target, e, t, i);
               });
             },
@@ -470,7 +470,7 @@
             },
             ve = function (e) {
               return (function (e) {
-                return E(e) === b;
+                return x(e) === b;
               })(e);
             },
             be = function (e, t) {
@@ -519,7 +519,7 @@
                   s,
                   o = this._settings,
                   a = be(e, o);
-                $(this, a.length),
+                R(this, a.length),
                   !i && n
                     ? pe(o)
                       ? (function (e, t, i) {
@@ -535,7 +535,7 @@
                                   S(e, y);
                               })(e, t, i);
                           }),
-                            $(i, 0);
+                            R(i, 0);
                         })(a, o, this)
                       : ((s = a),
                         (function (e) {
@@ -1535,10 +1535,10 @@
       Object.defineProperty(v.fn, e, { value: w[e], writable: !0 });
     });
     const C = v;
-    function x(e, t = 0) {
+    function E(e, t = 0) {
       return setTimeout(e, t);
     }
-    function E() {
+    function x() {
       return Date.now();
     }
     function S(e, t = "x") {
@@ -1659,11 +1659,11 @@
         };
       d();
     }
-    let O, L, k;
+    let L, O, k;
     function A() {
       return (
-        O ||
-          (O = (function () {
+        L ||
+          (L = (function () {
             const e = p(),
               t = u();
             return {
@@ -1689,13 +1689,13 @@
               gestures: "ongesturestart" in e,
             };
           })()),
-        O
+        L
       );
     }
     function I(e = {}) {
       return (
-        L ||
-          (L = (function ({ userAgent: e } = {}) {
+        O ||
+          (O = (function ({ userAgent: e } = {}) {
             const t = A(),
               i = p(),
               n = i.navigator.platform,
@@ -1735,7 +1735,7 @@
               o
             );
           })(e)),
-        L
+        O
       );
     }
     function z() {
@@ -1760,7 +1760,7 @@
         k
       );
     }
-    const $ = {
+    const R = {
       on(e, t, i) {
         const n = this;
         if (!n.eventsListeners || n.destroyed) return n;
@@ -1844,7 +1844,7 @@
         );
       },
     };
-    const R = {
+    const $ = {
       updateSize: function () {
         const e = this;
         let t, i;
@@ -1912,7 +1912,7 @@
         let y = n.spaceBetween,
           w = -m,
           C = 0,
-          x = 0;
+          E = 0;
         if (void 0 === o) return;
         "string" == typeof y &&
           y.indexOf("%") >= 0 &&
@@ -1925,9 +1925,9 @@
             n.cssMode &&
             (M(e.wrapperEl, "--swiper-centered-offset-before", ""),
             M(e.wrapperEl, "--swiper-centered-offset-after", ""));
-        const E = n.grid && n.grid.rows > 1 && e.grid;
+        const x = n.grid && n.grid.rows > 1 && e.grid;
         let S;
-        E && e.grid.initSlides(u);
+        x && e.grid.initSlides(u);
         const T =
           "auto" === n.slidesPerView &&
           n.breakpoints &&
@@ -1938,7 +1938,7 @@
           S = 0;
           const a = d.eq(s);
           if (
-            (E && e.grid.updateSlide(s, a, u, t), "none" !== a.css("display"))
+            (x && e.grid.updateSlide(s, a, u, t), "none" !== a.css("display"))
           ) {
             if ("auto" === n.slidesPerView) {
               T && (d[s].style[t("width")] = "");
@@ -1979,17 +1979,17 @@
                   0 === s && (w = w - o / 2 - y),
                   Math.abs(w) < 0.001 && (w = 0),
                   n.roundLengths && (w = Math.floor(w)),
-                  x % n.slidesPerGroup == 0 && h.push(w),
+                  E % n.slidesPerGroup == 0 && h.push(w),
                   p.push(w))
                 : (n.roundLengths && (w = Math.floor(w)),
-                  (x - Math.min(e.params.slidesPerGroupSkip, x)) %
+                  (E - Math.min(e.params.slidesPerGroupSkip, E)) %
                     e.params.slidesPerGroup ==
                     0 && h.push(w),
                   p.push(w),
                   (w = w + S + y)),
               (e.virtualSize += S + y),
               (C = S),
-              (x += 1);
+              (E += 1);
           }
         }
         if (
@@ -2000,7 +2000,7 @@
             s.css({ width: `${e.virtualSize + n.spaceBetween}px` }),
           n.setWrapperSize &&
             s.css({ [t("width")]: `${e.virtualSize + n.spaceBetween}px` }),
-          E && e.grid.updateWrapperSize(S, h, t),
+          x && e.grid.updateWrapperSize(S, h, t),
           !n.centeredSlides)
         ) {
           const t = [];
@@ -2722,7 +2722,7 @@
                     )
                     .eq(0)
                     .index()),
-                  x(() => {
+                  E(() => {
                     e.slideTo(o);
                   }))
                 : e.slideTo(o)
@@ -2734,7 +2734,7 @@
                   )
                   .eq(0)
                   .index()),
-                x(() => {
+                E(() => {
                   e.slideTo(o);
                 }))
               : e.slideTo(o);
@@ -2888,7 +2888,7 @@
         }),
         (a.startX = g),
         (a.startY = v),
-        (s.touchStartTime = E()),
+        (s.touchStartTime = x()),
         (t.allowClick = !0),
         t.updateSize(),
         (t.swipeDirection = void 0),
@@ -2947,7 +2947,7 @@
               currentX: d,
               currentY: h,
             }),
-            (n.touchStartTime = E()))
+            (n.touchStartTime = x()))
           )
         );
       if (n.isTouchEvent && s.touchReleaseOnEdges && !s.loop)
@@ -3107,7 +3107,7 @@
         i.isTouched &&
         (!0 === t.allowSlideNext || !0 === t.allowSlidePrev) &&
         t.setGrabCursor(!1);
-      const c = E(),
+      const c = x(),
         d = c - i.touchStartTime;
       if (t.allowClick) {
         const e = l.path || (l.composedPath && l.composedPath());
@@ -3118,8 +3118,8 @@
             t.emit("doubleTap doubleClick", l);
       }
       if (
-        ((i.lastClickTime = E()),
-        x(() => {
+        ((i.lastClickTime = x()),
+        E(() => {
           t.destroyed || (t.allowClick = !0);
         }),
         !i.isTouched ||
@@ -3590,8 +3590,8 @@
       };
     }
     const ne = {
-        eventsEmitter: $,
-        update: R,
+        eventsEmitter: R,
+        update: $,
         translate: D,
         transition: {
           setTransition: function (e, t) {
@@ -3766,7 +3766,7 @@
               startTranslate: void 0,
               allowThresholdMove: void 0,
               focusableElements: n.params.focusableElements,
-              lastClickTime: E(),
+              lastClickTime: x(),
               clickTimeout: void 0,
               velocities: [],
               allowMomentumBounce: void 0,
@@ -5412,7 +5412,7 @@
           window.removeEventListener("blur", this.onWindowBlur);
       }
     }
-    function xe(e, t) {
+    function Ee(e, t) {
       return t
         ? Math.sqrt(
             Math.pow(t.clientX - e.clientX, 2) +
@@ -5420,7 +5420,7 @@
           )
         : 0;
     }
-    function Ee(e, t) {
+    function xe(e, t) {
       return t
         ? {
             clientX: (e.clientX + t.clientX) / 2,
@@ -5590,7 +5590,7 @@
         return this.emit("detachPlugins"), this;
       }
     }
-    var Oe;
+    var Le;
     !(function (e) {
       (e[(e.Init = 0)] = "Init"),
         (e[(e.Error = 1)] = "Error"),
@@ -5598,8 +5598,8 @@
         (e[(e.Panning = 3)] = "Panning"),
         (e[(e.Mousemove = 4)] = "Mousemove"),
         (e[(e.Destroy = 5)] = "Destroy");
-    })(Oe || (Oe = {}));
-    const Le = ["a", "b", "c", "d", "e", "f"],
+    })(Le || (Le = {}));
+    const Oe = ["a", "b", "c", "d", "e", "f"],
       ke = {
         PANUP: "Move up",
         PANDOWN: "Move down",
@@ -5666,8 +5666,8 @@
         Ie +
         Ie +
         "</svg></div>",
-      $e = (e) => e && null !== e && e instanceof Element && "nodeType" in e,
-      Re = (e, t) => {
+      Re = (e) => e && null !== e && e instanceof Element && "nodeType" in e,
+      $e = (e, t) => {
         e &&
           ve(t).forEach((t) => {
             e.classList.remove(t);
@@ -5757,7 +5757,7 @@
       }
       get isResting() {
         if (this.isBouncingX || this.isBouncingY) return !1;
-        for (const e of Le) {
+        for (const e of Oe) {
           const t = "e" == e || "f" === e ? 1e-4 : 1e-5;
           if (Math.abs(this.target[e] - this.current[e]) > t) return !1;
         }
@@ -5861,7 +5861,7 @@
             enumerable: !0,
             configurable: !0,
             writable: !0,
-            value: Oe.Init,
+            value: Le.Init,
           }),
           Object.defineProperty(this, "isDragging", {
             enumerable: !0,
@@ -5995,14 +5995,14 @@
         e && (e.remove(), (this.spinner = null)),
           this.option("spinner") && t.classList.remove(this.cn("isLoading")),
           this.emit("afterLoad"),
-          i === Oe.Init ? this.enable() : this.updateMetrics();
+          i === Le.Init ? this.enable() : this.updateMetrics();
       }
       onError() {
-        this.state !== Oe.Destroy &&
+        this.state !== Le.Destroy &&
           (this.spinner && (this.spinner.remove(), (this.spinner = null)),
           this.stop(),
           this.detachEvents(),
-          (this.state = Oe.Error),
+          (this.state = Le.Error),
           this.emit("error"));
       }
       attachObserver() {
@@ -6067,7 +6067,7 @@
         this.setTargetForce();
         const e = this.friction,
           t = this.option("maxVelocity");
-        for (const i of Le)
+        for (const i of Oe)
           e
             ? ((this.velocity[i] *= 1 - e),
               t &&
@@ -6085,7 +6085,7 @@
             : this.stop("current");
       }
       setTargetForce() {
-        for (const e of Le)
+        for (const e of Oe)
           ("e" === e && this.isBouncingX) ||
             ("f" === e && this.isBouncingY) ||
             (this.velocity[e] =
@@ -6191,11 +6191,11 @@
       enable() {
         const { content: e } = this,
           t = new DOMMatrixReadOnly(window.getComputedStyle(e).transform);
-        for (const e of Le) this.current[e] = this.target[e] = t[e];
+        for (const e of Oe) this.current[e] = this.target[e] = t[e];
         this.updateMetrics(),
           this.attachObserver(),
           this.attachEvents(),
-          (this.state = Oe.Ready),
+          (this.state = Le.Ready),
           this.emit("ready");
       }
       onClick(e) {
@@ -6222,7 +6222,7 @@
         const n = i.closest("[data-panzoom-action]"),
           s = i.closest("[data-panzoom-change]"),
           o = n || s,
-          a = o && $e(o) ? o.dataset : null;
+          a = o && Re(o) ? o.dataset : null;
         if (a) {
           const t = a.panzoomChange,
             i = a.panzoomAction;
@@ -6343,8 +6343,8 @@
         if ((this.emit("touchMove", e), e.defaultPrevented)) return;
         this.addTrackingPoint(t[0]);
         const { content: n } = this,
-          s = Ee(i[0], i[1]),
-          o = Ee(t[0], t[1]);
+          s = xe(i[0], i[1]),
+          o = xe(t[0], t[1]);
         let a = 0,
           r = 0;
         if (t.length > 1) {
@@ -6352,8 +6352,8 @@
           (a = s.clientX - e.left - 0.5 * e.width),
             (r = s.clientY - e.top - 0.5 * e.height);
         }
-        const l = xe(i[0], i[1]),
-          c = xe(t[0], t[1]);
+        const l = Ee(i[0], i[1]),
+          c = Ee(t[0], t[1]);
         let d = l ? c / l : 1,
           u = o.clientX - s.clientX,
           h = o.clientY - s.clientY;
@@ -6440,7 +6440,7 @@
             this.emit("touchEnd", e),
             (this.isDragging = !1),
             (this.lockedAxis = !1),
-            this.state !== Oe.Destroy &&
+            this.state !== Le.Destroy &&
               (e.defaultPrevented || this.startDecelAnim()));
       }
       startDecelAnim() {
@@ -6449,11 +6449,11 @@
         this.rAF && (cancelAnimationFrame(this.rAF), (this.rAF = null)),
           (this.isBouncingX = !1),
           (this.isBouncingY = !1);
-        for (const e of Le) this.velocity[e] = 0;
+        for (const e of Oe) this.velocity[e] = 0;
         (this.target.e = this.current.e),
           (this.target.f = this.current.f),
-          Re(this.container, "is-scaling"),
-          Re(this.container, "is-animating"),
+          $e(this.container, "is-scaling"),
+          $e(this.container, "is-animating"),
           (this.isTicking = !1);
         const { trackingPoints: i } = this,
           n = i[0],
@@ -6541,7 +6541,7 @@
         this.emit("beforeTransform");
         const { current: e, target: t, content: i, contentRect: n } = this,
           s = Object.assign({}, Be);
-        for (const i of Le) {
+        for (const i of Oe) {
           const n = "e" == i || "f" === i ? Fe : 1e5;
           (s[i] = pe(e[i], n)),
             Math.abs(t[i] - e[i]) < ("e" == i || "f" === i ? 0.51 : 0.001) &&
@@ -6563,7 +6563,7 @@
       }
       updateMetrics(e = !1) {
         var t;
-        if (!this || this.state === Oe.Destroy) return;
+        if (!this || this.state === Le.Destroy) return;
         if (this.isContentLoading) return;
         const i = Math.max(
             1,
@@ -6668,7 +6668,7 @@
               ? this.zoomTo(this.minScale, { friction: 0 })
               : this.targetScale > this.maxScale
               ? this.zoomTo(this.maxScale, { friction: 0 })
-              : this.state === Oe.Init ||
+              : this.state === Le.Init ||
                 this.checkBounds().inBounds ||
                 this.requestTick()),
           this.updateControls();
@@ -6786,7 +6786,7 @@
         flipY: l = !1,
         ignoreBounds: c = !1,
       }) {
-        this.state !== Oe.Destroy &&
+        this.state !== Le.Destroy &&
           this.applyChange({
             panX: e - this.target.e,
             panY: t - this.target.f,
@@ -6814,7 +6814,7 @@
         bounce: d = this.option("bounce"),
       }) {
         const u = this.state;
-        if (u === Oe.Destroy) return;
+        if (u === Le.Destroy) return;
         this.rAF && (cancelAnimationFrame(this.rAF), (this.rAF = null)),
           (this.friction = a || 0),
           (this.ignoreBounds = c);
@@ -6836,7 +6836,7 @@
           n && (g = g.rotate(n)),
           r && (g = g.scale(-1, 1)),
           l && (g = g.scale(1, -1));
-        for (const e of Le)
+        for (const e of Oe)
           "e" !== e &&
           "f" !== e &&
           (g[e] > this.minScale + 1e-5 || g[e] < this.minScale - 1e-5)
@@ -6848,26 +6848,26 @@
           !1 === d) &&
           !c &&
           this.clampTargetBounds(),
-          u === Oe.Init
+          u === Le.Init
             ? this.animate()
-            : this.isResting || ((this.state = Oe.Panning), this.requestTick());
+            : this.isResting || ((this.state = Le.Panning), this.requestTick());
       }
       stop(e = !1) {
-        if (this.state === Oe.Init || this.state === Oe.Destroy) return;
+        if (this.state === Le.Init || this.state === Le.Destroy) return;
         const t = this.isTicking;
         this.rAF && (cancelAnimationFrame(this.rAF), (this.rAF = null)),
           (this.isBouncingX = !1),
           (this.isBouncingY = !1);
-        for (const t of Le)
+        for (const t of Oe)
           (this.velocity[t] = 0),
             "current" === e
               ? (this.current[t] = this.target[t])
               : "target" === e && (this.target[t] = this.current[t]);
         this.setTransform(),
-          Re(this.container, "is-scaling"),
-          Re(this.container, "is-animating"),
+          $e(this.container, "is-scaling"),
+          $e(this.container, "is-animating"),
           (this.isTicking = !1),
-          (this.state = Oe.Ready),
+          (this.state = Le.Ready),
           t && (this.emit("endAnimation"), this.updateControls());
       }
       requestTick() {
@@ -6905,7 +6905,7 @@
           });
       }
       zoomWithWheel(e) {
-        if (this.state === Oe.Destroy || this.state === Oe.Init) return;
+        if (this.state === Le.Destroy || this.state === Le.Init) return;
         const t = Date.now();
         if (t - this.pwt < 45) return void e.preventDefault();
         this.pwt = t;
@@ -6993,7 +6993,7 @@
           event: s,
         } = {}
       ) {
-        if (this.isContentLoading || this.state === Oe.Destroy) return;
+        if (this.isContentLoading || this.state === Le.Destroy) return;
         const { targetScale: o } = this;
         this.stop();
         let a = 1;
@@ -7079,21 +7079,21 @@
         return new DOMMatrix([t, i, n, s, o, a]);
       }
       reset(e) {
-        if (this.state !== Oe.Init && this.state !== Oe.Destroy) {
+        if (this.state !== Le.Init && this.state !== Le.Destroy) {
           this.stop("current");
-          for (const e of Le) this.target[e] = Be[e];
+          for (const e of Oe) this.target[e] = Be[e];
           (this.target.a = this.minScale),
             (this.target.d = this.minScale),
             this.clampTargetBounds(),
             this.isResting ||
               ((this.friction = void 0 === e ? this.option("friction") : e),
-              (this.state = Oe.Panning),
+              (this.state = Le.Panning),
               this.requestTick());
         }
       }
       destroy() {
         this.stop(),
-          (this.state = Oe.Destroy),
+          (this.state = Le.Destroy),
           this.detachEvents(),
           this.detachObserver();
         const { container: e, content: t } = this,
@@ -7242,7 +7242,7 @@
               void 0 === e ||
               e.setAttribute("aria-selected", i ? "true" : "false");
           for (const e of ["isBeforePrev", "isPrev", "isNext", "isAfterNext"])
-            Re(t, this.cn(e));
+            $e(t, this.cn(e));
           c++;
         }
         if (((l = l || r.firstChild), o && l)) {
@@ -7275,7 +7275,7 @@
       cleanup() {
         this.list && (this.list.remove(), (this.list = null)),
           (this.isDynamic = !1),
-          Re(this.instance.container, this.cn("hasDots"));
+          $e(this.instance.container, this.cn("hasDots"));
       }
       attach() {
         this.instance.on(["refresh", "change"], this.onRefresh);
@@ -7704,7 +7704,7 @@
             value: 0,
           }),
           "string" == typeof e && (e = document.querySelector(e)),
-          !e || !$e(e))
+          !e || !Re(e))
         )
           throw new Error("No Element found");
         (this.container = e),
@@ -7791,7 +7791,7 @@
         const t = [...this.slides],
           i = [];
         [...Xe(e, `.${this.cn(rt)}`)].forEach((e) => {
-          if ($e(e)) {
+          if (Re(e)) {
             const t = Ue({ el: e, isDom: !0, index: this.slides.length });
             i.push(t);
           }
@@ -8101,7 +8101,7 @@
         if (!i || !i.parentNode) return;
         const n = this.cn(at);
         if (
-          (i.classList.contains(n) && (Re(i, n), this.emit("unselectSlide", e)),
+          (i.classList.contains(n) && ($e(i, n), this.emit("unselectSlide", e)),
           e.isDom && !t)
         )
           return (
@@ -8199,7 +8199,7 @@
                     (De(n, t), this.emit("selectSlide", i)),
                   n.removeAttribute(e))
                 : (n.classList.contains(t) &&
-                    (Re(n, t), this.emit("unselectSlide", i)),
+                    ($e(n, t), this.emit("unselectSlide", i)),
                   n.setAttribute(e, "true")));
           }
       }
@@ -8233,11 +8233,11 @@
           o ||
             ((o = !0),
             a && (a.remove(), (a = null)),
-            Re(t, s),
+            $e(t, s),
             t.complete &&
               (De(t, n),
               setTimeout(() => {
-                Re(t, n);
+                $e(t, n);
               }, 350)),
             this.option("adaptiveHeight") &&
               e.el &&
@@ -8324,7 +8324,7 @@
       }
       onClick(e) {
         const t = e.target,
-          i = t && $e(t) ? t.dataset : null;
+          i = t && Re(t) ? t.dataset : null;
         let n, s;
         i &&
           (void 0 !== i.carouselPage
@@ -8426,7 +8426,7 @@
         this.slideTo(this.page - 1);
       }
       clearTransitions() {
-        this.inTransition.clear(), Re(this.container, this.cn("inTransition"));
+        this.inTransition.clear(), $e(this.container, this.cn("inTransition"));
         const e = ["to-prev", "to-next", "from-prev", "from-next"];
         for (const t of this.slides) {
           const i = t.el;
@@ -8605,7 +8605,7 @@
                 : t.gap) || 0;
           let l = 0;
           (l =
-            n && n.state !== Oe.Init && n.state !== Oe.Destroy
+            n && n.state !== Le.Init && n.state !== Le.Destroy
               ? -1 * n.current[this.axis]
               : (a[r] && a[r].pos) || 0),
             this.isInfinite && (l -= Math.floor(l / s) * s),
@@ -8757,7 +8757,7 @@
         value: st,
       });
     const ct = function (e) {
-        if (!$e(e)) return 0;
+        if (!Re(e)) return 0;
         const t = window.scrollY,
           i = window.innerHeight,
           n = t + i,
@@ -8930,7 +8930,7 @@
       yt = !1,
       wt = !1,
       Ct = null;
-    const xt = () => {
+    const Et = () => {
         let e = "",
           t = "";
         const i = Ii.getInstance();
@@ -8952,7 +8952,7 @@
         }
         return { hash: e, slug: t, index: 1 };
       },
-      Et = () => {
+      xt = () => {
         const e = new URL(document.URL).hash,
           t = e.slice(1).split("-"),
           i = t[t.length - 1],
@@ -8960,7 +8960,7 @@
         return { hash: e, slug: t.join("-"), index: n };
       },
       St = () => {
-        const { slug: e, index: t } = Et();
+        const { slug: e, index: t } = xt();
         if (!e) return;
         let i = document.querySelector(`[data-slug="${e}"]`);
         if (
@@ -8983,8 +8983,8 @@
         if (!1 === Ii.defaults.Hash) return;
         const e = Ii.getInstance();
         if (!1 === (null == e ? void 0 : e.options.Hash)) return;
-        const { slug: t, index: i } = Et(),
-          { slug: n } = xt();
+        const { slug: t, index: i } = xt(),
+          { slug: n } = Et();
         e && (t === n ? e.jumpTo(i - 1) : ((yt = !0), e.close())), St();
       },
       _t = () => {
@@ -9004,7 +9004,7 @@
         ? Mt()
         : document.addEventListener("DOMContentLoaded", Mt));
     const Pt = "is-zooming-in";
-    class Ot extends Ke {
+    class Lt extends Ke {
       onCreateSlide(e, t, i) {
         const n = this.instance.optionFor(i, "src") || "";
         i.el &&
@@ -9018,7 +9018,7 @@
           (i.imageEl = void 0);
       }
       onChange(e, t, i, n) {
-        Re(this.instance.container, Pt);
+        $e(this.instance.container, Pt);
         for (const e of t.slides) {
           const t = e.panzoom;
           t && e.index !== i && t.reset(0.35);
@@ -9037,8 +9037,8 @@
           !o ||
           !a ||
           a.isContentLoading ||
-          a.state === Oe.Init ||
-          a.state === Oe.Destroy
+          a.state === Le.Init ||
+          a.state === Le.Destroy
         )
           return;
         a.updateMetrics();
@@ -9185,7 +9185,7 @@
             a = e.el;
           o.clearContent(e), o.showLoading(e);
           let r = this.optionFor(e, "content");
-          if (("string" == typeof r && (r = ge(r)), !r || !$e(r))) {
+          if (("string" == typeof r && (r = ge(r)), !r || !Re(r))) {
             if (
               ((r = document.createElement("img")),
               r instanceof HTMLImageElement)
@@ -9294,7 +9294,7 @@
             },
             f = (e) => {
               ((e.scale < 0.99 || e.scale > 1.01) && !e.isDragging) ||
-                (Re(s, Pt),
+                ($e(s, Pt),
                 (a.style.opacity = ""),
                 e.off("endAnimation", f),
                 e.off("touchStart", f),
@@ -9382,7 +9382,7 @@
           t.off("close", e.onClose);
       }
     }
-    Object.defineProperty(Ot, "defaults", {
+    Object.defineProperty(Lt, "defaults", {
       enumerable: !0,
       configurable: !0,
       writable: !0,
@@ -9395,13 +9395,13 @@
       },
     }),
       "function" == typeof SuppressedError && SuppressedError;
-    const Lt = "html",
+    const Ot = "html",
       kt = "image",
       At = "map",
       It = "youtube",
       zt = "vimeo",
-      $t = "html5video",
-      Rt = (e, t = {}) => {
+      Rt = "html5video",
+      $t = (e, t = {}) => {
         const i = new URL(e),
           n = new URLSearchParams(i.search),
           s = new URLSearchParams();
@@ -9464,7 +9464,7 @@
       }
       onUnselectSlide(e, t, i) {
         var n, s;
-        if (i.type === $t) {
+        if (i.type === Rt) {
           try {
             null ===
               (s =
@@ -9545,7 +9545,7 @@
       }
       setInlineContent(e) {
         let t = null;
-        if ($e(e.src)) t = e.src;
+        if (Re(e.src)) t = e.src;
         else if ("string" == typeof e.src) {
           const i = e.src.split("#", 2).pop();
           t = i ? document.getElementById(i) : null;
@@ -9621,7 +9621,7 @@
               l = i.contentWindow;
             if (l) {
               const e = l.document,
-                i = e.getElementsByTagName(Lt)[0],
+                i = e.getElementsByTagName(Ot)[0],
                 n = e.body;
               (r.width = ""),
                 (n.style.overflow = "hidden"),
@@ -9646,7 +9646,7 @@
         const { el: t } = e;
         if (!t || !t.offsetParent) return;
         if (!this.optionFor(e, "videoAutoplay")) return;
-        if (e.type === $t)
+        if (e.type === Rt)
           try {
             const e = t.querySelector("video");
             if (e) {
@@ -9682,7 +9682,7 @@
         i();
       }
       processType(e) {
-        if (e.html) return (e.type = Lt), (e.src = e.html), void (e.html = "");
+        if (e.html) return (e.type = Ot), (e.src = e.html), void (e.html = "");
         const t = this.instance.optionFor(e, "src", "");
         if (!t || "string" != typeof t) return;
         let i = e.type,
@@ -9713,7 +9713,7 @@
               return i;
             })(s, ["nocookie"]),
             r = `www.youtube${o ? "-nocookie" : ""}.com`,
-            l = Rt(t, a),
+            l = $t(t, a),
             c = encodeURIComponent(n[2]);
           (e.videoId = c),
             (e.src = `https://${r}/embed/${c}?${l}`),
@@ -9725,7 +9725,7 @@
             /^.+vimeo.com\/(?:\/)?([\d]+)((\/|\?h=)([a-z0-9]+))?(.*)?/
           ))
         ) {
-          const s = Rt(t, this.optionFor(e, zt)),
+          const s = $t(t, this.optionFor(e, zt)),
             o = encodeURIComponent(n[1]),
             a = n[4] || "";
           (e.videoId = o),
@@ -9743,7 +9743,7 @@
             ("#" === t.charAt(0)
               ? (i = "inline")
               : (n = t.match(/\.(mp4|mov|ogv|webm)((\?|#).*)?$/i))
-              ? ((i = $t),
+              ? ((i = Rt),
                 (e.videoFormat =
                   e.videoFormat || "video/" + ("ogv" === n[1] ? "ogg" : n[1])))
               : t.match(
@@ -9779,10 +9779,10 @@
         const t = this.instance.optionFor(e, "src") || "";
         if (e && e.type && t) {
           switch (e.type) {
-            case Lt:
+            case Ot:
               this.instance.setContent(e, t);
               break;
-            case $t:
+            case Rt:
               const i = this.option("videoTpl");
               i &&
                 this.instance.setContent(
@@ -9816,7 +9816,7 @@
       }
       setAspectRatio(e) {
         const t = e.contentEl;
-        if (!(e.el && t && e.type && [It, zt, $t].includes(e.type))) return;
+        if (!(e.el && t && e.type && [It, zt, Rt].includes(e.type))) return;
         let i,
           n = e.width || "auto",
           s = e.height || "auto";
@@ -10028,7 +10028,7 @@
             e.onVisibilityChange,
             !1
           ),
-          Re(i, "has-autoplay"),
+          $e(i, "has-autoplay"),
           t !== Nt && e.emit("stop");
       }
       pause() {
@@ -10324,7 +10324,7 @@
           a = i.page;
         if (n && s && o) {
           if (n.isDragging) {
-            Re(t, this.cn(Vt));
+            $e(t, this.cn(Vt));
             let n =
               (null === (e = s.pages[a]) || void 0 === e ? void 0 : e.pos) || 0;
             n += i.getProgress(a) * (this[Ut] + this.thumbGap);
@@ -10553,7 +10553,7 @@
           n = t.panzoom,
           s = e.carousel;
         if (!(t && i && n && s)) return;
-        if (n.state === Oe.Init || n.state === Oe.Destroy) return;
+        if (n.state === Le.Init || n.state === Le.Destroy) return;
         for (const i of t.slides) e.setProps(i.index);
         let o = (e[Ut] + e.thumbGap) * (s.slides.length || 0);
         i.style.setProperty("--width", o + "");
@@ -10567,7 +10567,7 @@
           e.track && e.track.remove(),
           (e.track = null),
           (e.state = Gt.Init),
-          Re(e.instance.container, e.cn("hasThumbs"));
+          $e(e.instance.container, e.cn("hasThumbs"));
       }
       attach() {
         const e = this,
@@ -10907,7 +10907,7 @@
           s = n.getSlide(),
           o = null == s ? void 0 : s.panzoom,
           a = e.target,
-          r = a && $e(a) ? a.dataset : null;
+          r = a && Re(a) ? a.dataset : null;
         if (!r) return;
         if (void 0 !== r.fancyboxToggleThumbs)
           return (
@@ -11059,7 +11059,7 @@
         const e = this.container;
         e && e.remove(), (this.container = null), (this.state = ii.Disabled);
         const t = this.instance.container;
-        t && Re(t, si);
+        t && $e(t, si);
       }
       attach() {
         const e = this,
@@ -11126,8 +11126,8 @@
           }
           onChange(e) {
             Ct && clearTimeout(Ct);
-            const { hash: t } = xt(),
-              { hash: i } = Et(),
+            const { hash: t } = Et(),
+              { hash: i } = xt(),
               n = e.isOpeningSlide(e.getSlide());
             n && (bt = i === t ? "" : i),
               t &&
@@ -11171,7 +11171,7 @@
               e.off("close", this.onClose);
           }
           static parseURL() {
-            return Et();
+            return xt();
           }
           static startFromUrl() {
             St();
@@ -11181,7 +11181,7 @@
           }
         },
         Html: Bt,
-        Images: Ot,
+        Images: Lt,
         Slideshow: qt,
         Thumbs: ei,
         Toolbar: ai,
@@ -11200,8 +11200,8 @@
       yi = "disabled",
       wi = "tabindex",
       Ci = "download",
-      xi = "href",
-      Ei = "src",
+      Ei = "href",
+      xi = "src",
       Si = (e) => "string" == typeof e,
       Ti = function () {
         var e = window.getSelection();
@@ -11210,8 +11210,8 @@
     let _i,
       Mi = null,
       Pi = null,
-      Oi = 0,
-      Li = 0;
+      Li = 0,
+      Oi = 0;
     const ki = new Map();
     let Ai = 0;
     class Ii extends Pe {
@@ -11396,12 +11396,12 @@
               e.insertBefore(Mi, n),
             null === (t = n.parentElement) || void 0 === t || t.append(Pi)),
           n.addEventListener("mousedown", (e) => {
-            (Oi = e.pageX), (Li = e.pageY), Re(n, pi);
+            (Li = e.pageX), (Oi = e.pageY), $e(n, pi);
           }),
           this.option("animated") &&
             (De(n, fi),
             setTimeout(() => {
-              this.isClosing() || Re(n, fi);
+              this.isClosing() || $e(n, fi);
             }, 350)),
           this.emit("initLayout"));
       }
@@ -11537,18 +11537,18 @@
             const i = this.getSlide();
             if (!i) return;
             let n = i.downloadSrc || "";
-            n || "image" !== i.type || i.error || !Si(i[Ei]) || (n = i[Ei]);
+            n || "image" !== i.type || i.error || !Si(i[xi]) || (n = i[xi]);
             for (const e of t.querySelectorAll("[data-fancybox-download]")) {
               const t = i.downloadFilename;
               n
                 ? (e.removeAttribute(yi),
                   e.removeAttribute(wi),
-                  e.setAttribute(xi, n),
+                  e.setAttribute(Ei, n),
                   e.setAttribute(Ci, t || n),
                   e.setAttribute("target", "_blank"))
                 : (e.setAttribute(yi, ""),
                   e.setAttribute(wi, "-1"),
-                  e.removeAttribute(xi),
+                  e.removeAttribute(Ei),
                   e.removeAttribute(Ci));
             }
           }),
@@ -11640,7 +11640,7 @@
         if (s.closest("[data-fancybox-next]"))
           return e.preventDefault(), void this.next();
         if ("click" === e.type && 0 === e.detail) return;
-        if (Math.abs(e.pageX - Oi) > 30 || Math.abs(e.pageY - Li) > 30) return;
+        if (Math.abs(e.pageX - Li) > 30 || Math.abs(e.pageY - Oi) > 30) return;
         const o = document.activeElement;
         if (Ti() && o && i.contains(o)) return;
         if (
@@ -11714,7 +11714,7 @@
         if (
           "Escape" !== t &&
           !o &&
-          $e(n) &&
+          Re(n) &&
           (n.isContentEditable ||
             -1 !==
               ["TEXTAREA", "OPTION", "INPUT", "SELECT", "VIDEO"].indexOf(
@@ -11723,7 +11723,7 @@
         )
           return;
         if (
-          ("Tab" === e.key ? De(this.container, pi) : Re(this.container, pi),
+          ("Tab" === e.key ? De(this.container, pi) : $e(this.container, pi),
           e.ctrlKey || e.altKey || e.shiftKey)
         )
           return;
@@ -11773,7 +11773,7 @@
         const n = "fancybox__caption",
           s = this.container;
         if (!s) return;
-        Re(s, bi);
+        $e(s, bi);
         const o = this.isCompact || this.option("commonCaption"),
           a = !o;
         if (
@@ -11787,7 +11787,7 @@
             e.captionEl &&
               (e.captionEl.remove(),
               (e.captionEl = void 0),
-              Re(e.el, bi),
+              $e(e.el, bi),
               null === (i = e.el) ||
                 void 0 === i ||
                 i.removeAttribute("aria-labelledby"));
@@ -11908,7 +11908,7 @@
             (e.removeEventListener("animationend", n),
             delete e.dataset.animationName,
             i && i(),
-            Re(e, t));
+            $e(e, t));
         };
         (e.dataset.animationName = t),
           e.addEventListener("animationend", n),
@@ -11930,10 +11930,10 @@
         if (!n) return;
         let s = null;
         if (
-          ($e(t)
+          (Re(t)
             ? (s = t)
             : ((s = ge(t + "")),
-              $e(s) ||
+              Re(s) ||
                 ((s = document.createElement("div")), (s.innerHTML = t + ""))),
           ["img", "picture", "iframe", "video", "audio"].includes(
             s.nodeName.toLowerCase()
@@ -11942,8 +11942,8 @@
           const e = document.createElement("div");
           e.appendChild(s), (s = e);
         }
-        $e(s) && e.filter && !e.error && (s = s.querySelector(e.filter)),
-          s && $e(s)
+        Re(s) && e.filter && !e.error && (s = s.querySelector(e.filter)),
+          s && Re(s)
             ? (De(s, "fancybox__content"),
               e.id && s.setAttribute("id", e.id),
               ("none" !== s.style.display &&
@@ -11989,7 +11989,7 @@
                 this.option("autoFocus") && this.focus();
             }),
           this.isOpeningSlide(e) &&
-            (Re(this.container, vi),
+            ($e(this.container, vi),
             !this.isCompact && this.option("idle") && this.setIdle()));
       }
       isCurrentSlide(e) {
@@ -12031,7 +12031,7 @@
         const i = e.spinnerEl;
         this.isClosing()
           ? null == i || i.remove()
-          : (Re(t, gi),
+          : ($e(t, gi),
             i &&
               this.animate(i, "f-fadeOut", () => {
                 i.remove();
@@ -12055,9 +12055,9 @@
           e.contentEl && (e.contentEl.remove(), (e.contentEl = void 0));
         const t = e.el;
         t &&
-          (Re(t, "has-error"),
-          Re(t, "has-unknown"),
-          Re(t, `has-${e.type || "unknown"}`)),
+          ($e(t, "has-error"),
+          $e(t, "has-unknown"),
+          $e(t, `has-${e.type || "unknown"}`)),
           e.closeBtnEl && e.closeBtnEl.remove(),
           (e.closeBtnEl = void 0),
           e.captionEl && e.captionEl.remove(),
@@ -12110,7 +12110,7 @@
           this.idle &&
             !this.isClosing() &&
             ((this.idle = !1),
-            Re(this.container, "is-idle"),
+            $e(this.container, "is-idle"),
             this.emit("endIdle"));
       }
       resetIdle() {
@@ -12143,7 +12143,7 @@
         if (
           (r && (ct(r) ? pt(r) : r.focus()),
           s &&
-            (Re(s, vi),
+            ($e(s, vi),
             De(s, "is-closing"),
             s.setAttribute(hi, "true"),
             this.option("animated") && De(s, fi),
@@ -12189,7 +12189,7 @@
           ? i.focus()
           : (Mi && (Mi.remove(), (Mi = null)),
             Pi && (Pi.remove(), (Pi = null)),
-            Re(document.documentElement, li),
+            $e(document.documentElement, li),
             (() => {
               if (!dt) return;
               const e = document,
@@ -12215,7 +12215,7 @@
             : ((n = e),
               Si(t) && (s = t),
               "object" == typeof i && (o = i || {})),
-          !n || !$e(n))
+          !n || !Re(n))
         )
           return;
         s = s || "[data-fancybox]";
@@ -12321,10 +12321,10 @@
         for (const n of e) {
           const e = n.dataset || {},
             s =
-              e[Ei] ||
-              n.getAttribute(xi) ||
-              n.getAttribute("currentSrc") ||
+              e[xi] ||
               n.getAttribute(Ei) ||
+              n.getAttribute("currentSrc") ||
+              n.getAttribute(xi) ||
               void 0;
           let o;
           const a = t.delegate;
@@ -12341,10 +12341,10 @@
                   ? n
                   : n.querySelector("img:not([aria-hidden])")),
             o &&
-              ((r = o.currentSrc || o[Ei] || void 0),
+              ((r = o.currentSrc || o[xi] || void 0),
               !r &&
                 o.dataset &&
-                (r = o.dataset.lazySrc || o.dataset[Ei] || void 0));
+                (r = o.dataset.lazySrc || o.dataset[xi] || void 0));
           const l = {
             src: s,
             triggerEl: n,
@@ -12418,8 +12418,277 @@
         writable: !0,
         value: new Map(),
       });
-    const zi = document.querySelectorAll(".phone-input"),
-      $i = [
+    function zi(e) {
+      return (e || "").replace(/\D/g, "");
+    }
+    function Ri(e, t) {
+      let i = "",
+        n = 0;
+      for (let s = 0; s < t.length; s++)
+        "_" === t[s]
+          ? n < e.length
+            ? (i += e[n++])
+            : (i += "_")
+          : (i += t[s]);
+      return i + e.slice(n);
+    }
+    function $i(e, t, i) {
+      if ("NONE" === i) return;
+      const n = document.createElementNS("http://www.w3.org/2000/svg", "svg"),
+        s = document.createElementNS("http://www.w3.org/2000/svg", "use");
+      s.setAttribute("href", `${t}#${i}`), n.appendChild(s), e.appendChild(n);
+    }
+    function Di({
+      container: e,
+      countries: t,
+      spritePath: i = "./icons/sprite.svg",
+      apiKey: n,
+      defaultCountry: s,
+    }) {
+      const o = document.createElement("div");
+      o.className = "phone-input-wrapper";
+      const a = document.createElement("div");
+      a.className = "country-dropdown";
+      const r = document.createElement("button");
+      (r.className = "current-country"), (r.type = "button");
+      const l = document.createElement("div");
+      l.className = "country-options";
+      const c = e.dataset.name,
+        d = e.dataset.id,
+        u = e.dataset.clue,
+        h = (e.dataset.value || "").trim();
+      let p;
+      u &&
+        ((p = document.createElement("div")),
+        p.classList.add("clue-input"),
+        (p.textContent = u),
+        o.appendChild(p));
+      const f = zi(h),
+        m = (function () {
+          if (s) {
+            const e = t.find((e) => e.code.toUpperCase() === s.toUpperCase());
+            if (e) return { country: e, source: "default" };
+          }
+          if (f) {
+            const e = (function (e, t) {
+              let i,
+                n = 0;
+              for (const s of t) {
+                const t = zi(s.dialCode);
+                t &&
+                  e.startsWith(t) &&
+                  t.length > n &&
+                  ((i = s), (n = t.length));
+              }
+              return i;
+            })(f, t);
+            if (e) return { country: e, source: "value" };
+          }
+          return {
+            country:
+              t.find((e) => "NONE" === e.code) ||
+              t.find((e) => "NA" === e.code) ||
+              t[0],
+            source: "fallback",
+          };
+        })();
+      let g = m.country,
+        v = g.mask,
+        b = g.dialCode,
+        y = "" !== v;
+      function w() {
+        (l.textContent = ""),
+          t.forEach((e) => {
+            const t = document.createElement("button");
+            (t.type = "button"),
+              (t.className = "country-option"),
+              (t.dataset.code = e.code),
+              (t.dataset.mask = e.mask),
+              (t.dataset.dialCode = e.dialCode),
+              $i(t, i, e.code);
+            const n = document.createElement("span");
+            (n.textContent = e.name),
+              t.appendChild(n),
+              t.classList.toggle("selected", e.code === g.code),
+              l.appendChild(t);
+          });
+      }
+      function C() {
+        (r.textContent = ""), $i(r, i, g.code);
+        const e = document.createElement("span");
+        (e.textContent = "NONE" === g.code ? "" : g.code), r.appendChild(e);
+      }
+      a.appendChild(r), a.appendChild(l), o.appendChild(a);
+      const E = document.createElement("input");
+      if (
+        ((E.type = "tel"),
+        (E.placeholder = v),
+        c && (E.name = c),
+        d && (E.id = d),
+        h)
+      ) {
+        let e = f;
+        if ("value" === m.source) {
+          const t = zi(b);
+          t && e.startsWith(t) && (e = e.slice(t.length));
+        }
+        E.value = v ? Ri(e, v) : e;
+      } else E.value = y ? v : "";
+      o.appendChild(E), e.appendChild(o);
+      let x = v,
+        S = b;
+      function T() {
+        if (!x || !S) return 0;
+        const e = x.indexOf("_", zi(S).length);
+        if (-1 !== e) return e;
+        if (x.startsWith(S)) return S.length;
+        const t = zi(S);
+        if (!t) return 0;
+        let i = 0;
+        for (let e = 0; e < x.length; e++)
+          if (/\d/.test(x[e]) && (i++, i === t.length)) return e + 1;
+        return 0;
+      }
+      function _(e, t, i = !0) {
+        e.setSelectionRange && (i && e.focus(), e.setSelectionRange(t, t));
+      }
+      let M = null;
+      const P = (e) => {
+          var t, i;
+          M = e.key;
+          const n = T();
+          if (!n) return;
+          const s = null !== (t = E.selectionStart) && void 0 !== t ? t : 0,
+            o = null !== (i = E.selectionEnd) && void 0 !== i ? i : s;
+          if (
+            1 !== e.key.length ||
+            e.ctrlKey ||
+            e.metaKey ||
+            e.altKey ||
+            !(s < n)
+          )
+            return "Home" === e.key ||
+              ("ArrowLeft" === e.key && s <= n) ||
+              ("Backspace" === e.key && s <= n) ||
+              ("Delete" === e.key && s < n)
+              ? (e.preventDefault(), void _(E, n))
+              : void (
+                  ("Backspace" === e.key || "Delete" === e.key) &&
+                  s < n &&
+                  o > s &&
+                  (e.preventDefault(), _(E, n))
+                );
+          E.setSelectionRange(n, Math.max(n, o));
+        },
+        L = () => {
+          const e = E.selectionStart || 0;
+          let t = zi(E.value);
+          const i = zi(S);
+          i && t.startsWith(i) && (t = t.slice(i.length));
+          const n = x ? Ri(t, x) : t;
+          E.value = n;
+          let s = e;
+          if ("Backspace" === M)
+            for (; s > 0 && "_" !== n[s - 1] && /\D/.test(n[s - 1]); ) s--;
+          else for (; s < n.length && "_" !== n[s] && /\D/.test(n[s]); ) s++;
+          _(E, Math.max(s, T()));
+        },
+        O = () => {
+          var e;
+          const t = T(),
+            i = null !== (e = E.selectionStart) && void 0 !== e ? e : 0;
+          t && i < t && _(E, t, !1);
+        },
+        k = () => (null == p ? void 0 : p.classList.add("active")),
+        A = () => (null == p ? void 0 : p.classList.remove("active"));
+      E.addEventListener("keydown", P),
+        E.addEventListener("input", L),
+        E.addEventListener("click", O),
+        E.addEventListener("keyup", O),
+        E.addEventListener("focus", k),
+        E.addEventListener("blur", A);
+      const I = () => {
+          l.classList.toggle("visible");
+        },
+        z = (e) => {
+          const i = e.target.closest(".country-option");
+          if (!i) return;
+          const n = i.dataset.code,
+            s = i.dataset.mask,
+            o = i.dataset.dialCode,
+            a = t.find((e) => e.code === n);
+          if (!a) return;
+          l
+            .querySelectorAll(".country-option")
+            .forEach((e) => e.classList.remove("selected")),
+            i.classList.add("selected"),
+            (g = a),
+            (v = s),
+            (b = o),
+            (y = "" !== s),
+            (x = v),
+            (S = b),
+            (E.placeholder = y ? s : ""),
+            (E.value = y ? v : ""),
+            C(),
+            l.classList.remove("visible");
+          const r = E.value.indexOf("_", zi(S).length);
+          _(E, -1 === r ? E.value.length : r, !0);
+        };
+      return (
+        r.addEventListener("click", I),
+        l.addEventListener("click", z),
+        w(),
+        C(),
+        "fallback" === m.source &&
+          (async function (e) {
+            try {
+              let i = "https://ipinfo.io/country";
+              e && (i += `?token=${e}`);
+              const n = await fetch(i);
+              if (!n.ok) throw new Error(`HTTP error! status: ${n.status}`);
+              const s = (await n.text()).trim().toUpperCase(),
+                o = t.find((e) => e.code === s);
+              if (!o) return;
+              (g = o),
+                (v = o.mask),
+                (b = o.dialCode),
+                (y = "" !== o.mask),
+                (x = v),
+                (S = b),
+                h || ((E.placeholder = v), (E.value = y ? v : "")),
+                C(),
+                w();
+              const a = E.value.indexOf("_", zi(S).length);
+              _(E, -1 === a ? E.value.length : a, !1);
+            } catch (e) {
+              console.error("Geo detection failed:", e);
+            }
+          })(n),
+        {
+          addCountries: function (e) {
+            const i = new Set(t.map((e) => e.code));
+            e.forEach((e) => {
+              i.has(e.code) || (t.push(e), i.add(e.code));
+            }),
+              w();
+          },
+          destroy: function () {
+            E.removeEventListener("keydown", P),
+              E.removeEventListener("input", L),
+              E.removeEventListener("click", O),
+              E.removeEventListener("keyup", O),
+              E.removeEventListener("focus", k),
+              E.removeEventListener("blur", A),
+              r.removeEventListener("click", I),
+              l.removeEventListener("click", z),
+              o.remove();
+          },
+        }
+      );
+    }
+    const Bi = document.querySelectorAll(".phone-input"),
+      Fi = [
         { name: "None Country", code: "NA", dialCode: "", mask: "" },
         {
           name: "Russia",
@@ -12610,188 +12879,10 @@
           mask: "+372 ____ ____",
         },
       ];
-    zi.forEach((e) => {
-      !(function ({
+    Bi.forEach((e) => {
+      Di({
         container: e,
-        countries: t,
-        spritePath: i = "./icons/sprite.svg",
-        apiKey: n,
-        defaultCountry: s,
-      }) {
-        const o = document.createElement("div");
-        o.className = "phone-input-wrapper";
-        const a = document.createElement("div");
-        a.className = "country-dropdown";
-        const r = document.createElement("button");
-        (r.className = "current-country"), (r.type = "button");
-        const l = document.createElement("div");
-        l.className = "country-options";
-        const c = e.dataset.name,
-          d = e.dataset.id,
-          u = e.dataset.clue,
-          h = (e.dataset.value || "").trim();
-        let p;
-        function f(e) {
-          return (e || "").replace(/\D/g, "");
-        }
-        function m(e, t) {
-          let i = "",
-            n = 0;
-          for (let s = 0; s < t.length; s++)
-            "_" === t[s]
-              ? n < e.length
-                ? (i += e[n++])
-                : (i += "_")
-              : (i += t[s]);
-          return i;
-        }
-        u &&
-          ((p = document.createElement("div")),
-          p.classList.add("clue-input"),
-          (p.innerHTML = u),
-          o.appendChild(p));
-        const g = f(h),
-          v = (function () {
-            if (s) {
-              const e = t.find((e) => e.code === s);
-              if (e) return { country: e, source: "default" };
-            }
-            if (g) {
-              const e = (function (e) {
-                let i,
-                  n = 0;
-                for (const s of t) {
-                  const t = f(s.dialCode);
-                  t &&
-                    e.startsWith(t) &&
-                    t.length > n &&
-                    ((i = s), (n = t.length));
-                }
-                return i;
-              })(g);
-              if (e) return { country: e, source: "value" };
-            }
-            return {
-              country: t.find((e) => "NA" === e.code) || t[0],
-              source: "fallback",
-            };
-          })();
-        let b = v.country,
-          y = b.mask,
-          w = b.dialCode,
-          C = "" !== y;
-        function x() {
-          (l.innerHTML = ""),
-            t.forEach((e) => {
-              const t = document.createElement("button");
-              (t.type = "button"),
-                (t.className = "country-option"),
-                (t.dataset.code = e.code),
-                (t.dataset.mask = e.mask),
-                (t.dataset.dialCode = e.dialCode),
-                (t.innerHTML = `\n                <svg><use href="${i}#${e.code}" /></svg>\n                <span>${e.name}</span>\n            `),
-                t.classList.toggle("selected", e.code === b.code),
-                l.appendChild(t);
-            });
-        }
-        function E() {
-          r.innerHTML = `\n            <svg><use href="${i}#${b.code}" /></svg>\n            <span>${b.code}</span>\n        `;
-        }
-        a.appendChild(r), a.appendChild(l), o.appendChild(a);
-        const S = document.createElement("input");
-        if (
-          ((S.type = "tel"),
-          (S.placeholder = y),
-          c && (S.name = c),
-          d && (S.id = d),
-          h)
-        ) {
-          let e = g;
-          if ("value" === v.source) {
-            const t = f(w);
-            t && e.startsWith(t) && (e = e.slice(t.length));
-          }
-          S.value = y ? m(e, y) : e;
-        } else S.value = C ? y : "";
-        o.appendChild(S), e.appendChild(o);
-        let T = y,
-          _ = w;
-        function M(e, t, i = !0) {
-          e.setSelectionRange && (i && e.focus(), e.setSelectionRange(t, t));
-        }
-        let P = null;
-        S.addEventListener("keydown", (e) => {
-          P = e.key;
-        }),
-          S.addEventListener("input", () => {
-            const e = S.selectionStart || 0;
-            let t = f(S.value);
-            const i = f(_);
-            i && t.startsWith(i) && (t = t.slice(i.length));
-            let n = T ? m(t, T) : t;
-            S.value = n;
-            let s = e;
-            if ("Backspace" === P)
-              for (; s > 0 && "_" !== n[s - 1] && /\D/.test(n[s - 1]); ) s--;
-            else for (; s < n.length && "_" !== n[s] && /\D/.test(n[s]); ) s++;
-            M(S, s);
-          }),
-          r.addEventListener("click", () => {
-            l.classList.toggle("visible");
-          }),
-          l.addEventListener("click", (e) => {
-            const i = e.target.closest(".country-option");
-            if (!i) return;
-            l
-              .querySelectorAll(".country-option")
-              .forEach((e) => e.classList.remove("selected")),
-              i.classList.add("selected");
-            const n = i.dataset.code,
-              s = i.dataset.mask,
-              o = i.dataset.dialCode;
-            (b = t.find((e) => e.code === n)),
-              (y = s),
-              (w = o),
-              (C = "" !== s),
-              (T = y),
-              (_ = w),
-              (S.placeholder = C ? s : ""),
-              (S.value = C ? y : ""),
-              E(),
-              l.classList.remove("visible");
-            const a = S.value.indexOf("_", f(_).length);
-            M(S, -1 === a ? S.value.length : a, !0);
-          }),
-          x(),
-          E(),
-          "fallback" === v.source &&
-            (async function (e) {
-              try {
-                let i = "https://ipinfo.io/country";
-                e && (i += `?token=${e}`);
-                const n = await fetch(i);
-                if (!n.ok) throw new Error(`HTTP error! status: ${n.status}`);
-                const s = (await n.text()).trim().toUpperCase(),
-                  o = t.find((e) => e.code === s);
-                if (!o) return;
-                (b = o),
-                  (y = o.mask),
-                  (w = o.dialCode),
-                  (C = "" !== o.mask),
-                  (T = y),
-                  (_ = w),
-                  h || ((S.placeholder = y), (S.value = C ? y : "")),
-                  E(),
-                  x();
-                const a = S.value.indexOf("_", f(_).length);
-                M(S, -1 === a ? S.value.length : a, !1);
-              } catch (e) {
-                console.error("Geo detection failed:", e);
-              }
-            })(n);
-      })({
-        container: e,
-        countries: $i,
+        countries: Fi,
         spritePath:
           "/local/templates/antiage_redesign_v2_new/verstka_vlad_1/dist/images/sprite2.svg",
         apiKey: "",
@@ -12901,7 +12992,7 @@
             : e.closest(".model-slide").classList.add("active");
         });
       });
-    const Ri = new IntersectionObserver(
+    const ji = new IntersectionObserver(
       (e) => {
         e.forEach((e) => {
           e.isIntersecting && console.log(e.target.classList.add("active"));
@@ -12911,8 +13002,8 @@
     );
     if (
       (document.querySelector(".art-flex") &&
-        Ri.observe(document.querySelector(".art-flex")),
-      document.querySelectorAll(".concept-item").forEach((e) => Ri.observe(e)),
+        ji.observe(document.querySelector(".art-flex")),
+      document.querySelectorAll(".concept-item").forEach((e) => ji.observe(e)),
       (function () {
         if (document.querySelector(".accordion-header")) {
           document.querySelectorAll(".accordion-header").forEach((e) => {
@@ -12983,7 +13074,7 @@
           });
       });
     }
-    function Di(e) {
+    function Ni(e) {
       const t = document.cookie.match(
         new RegExp(
           "(?:^|; )" + e.replace(/([.$?*|{}()[\]\\/+^])/g, "\\$1") + "=([^;]*)"
@@ -13091,9 +13182,9 @@
           e.endsWith("/blog.html")
         );
       })() &&
-        (Di("blog") ||
+        (Ni("blog") ||
           setTimeout(function () {
-            Di("blog") ||
+            Ni("blog") ||
               (window.flsModules &&
                 window.flsModules.popup &&
                 (window.flsModules.popup.isOpen ||
