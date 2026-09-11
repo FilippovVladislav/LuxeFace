@@ -13176,7 +13176,7 @@
                   ? setTimeout(n, 1e3)
                   : (window.flsModules.popup.open(t), i())));
           };
-        setTimeout(n, 4e4);
+        setTimeout(n, 15e3);
       }),
       (function () {
         const e = window.location.pathname.toLowerCase();

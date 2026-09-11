@@ -260,7 +260,7 @@ function getCookie(name) {
 function showSeminarModal() {
     const cookieName = 'modal_seminar_shown';
     const popupSelector = '#modal-seminar';
-    const showDelay = 40 * 1000;
+    const showDelay = 15 * 1000;
 
     if (getCookie(cookieName)) return;
 
