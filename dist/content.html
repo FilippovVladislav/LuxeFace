@@ -2,7 +2,7 @@
 <html lang="ru">
 
 <head>
-	<title>Страница товара</title>
+	<title>Контентная страница</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
@@ -67,488 +67,90 @@
 			</div>
 		</header>
 		<main class="page">
-			<section class="section">
+			<section class="content-page pb-160">
 				<div class="container">
-					<nav class="breadcrumbs mb-10 fw-500">
+					<nav class="breadcrumbs mb-60 fw-500" aria-label="Хлебные крошки">
 						<ul class="breadcrumb-items">
-							<li class="breadcrumb-item">
-								<a href="#" class="breadcrumb-link">Главная</a>
-							</li>
-							<li class="breadcrumb-item">
-								<span>Карточка товара</span>
-							</li>
+							<li class="breadcrumb-item"><a href="home.html" class="breadcrumb-link">Главная</a></li>
+							<li class="breadcrumb-item"><span>Контентная страница</span></li>
 						</ul>
 					</nav>
+
+					<article class="content">
+						<h1>Заголовок страницы</h1>
+						<p class="content-lead">Вводный текст помогает коротко раскрыть тему страницы и задать спокойный, экспертный тон материала.</p>
+						<p>Методика Luxeface &amp; Luxebody объединяет комплексный подход и внимательное отношение к деталям. В тексте можно выделить <strong>важную мысль</strong>, добавить <em>акцент</em> или разместить <a href="#">ссылку на дополнительную информацию</a>.</p>
+
+						<hr>
+
+						<h2>Заголовок второго уровня</h2>
+						<p>Основной текст легко читается на широком экране и остаётся комфортным на мобильных устройствах. Материал можно разделять на небольшие логические блоки, чтобы читатель быстро находил главное.</p>
+
+						<figure>
+							<picture><source srcset="img/art-pic.webp" type="image/webp"><img src="img/art-pic.png" alt="Пример изображения в контентной статье"></picture>
+							<figcaption>Подпись к изображению: краткое пояснение к фотографии или иллюстрации.</figcaption>
+						</figure>
+
+						<h3>Маркированный список</h3>
+						<ul>
+							<li>Индивидуальный подход к каждому пациенту.</li>
+							<li>Понятные рекомендации и сопровождение специалиста.</li>
+							<li>Современные методики и бережное отношение к естественной красоте.
+								<ul>
+									<li>Подходит для вложенных пунктов списка.</li>
+									<li>Сохраняет аккуратную иерархию текста.</li>
+								</ul>
+							</li>
+						</ul>
+
+						<h3>Нумерованный список</h3>
+						<ol>
+							<li>Запишитесь на консультацию к специалисту.</li>
+							<li>Обсудите задачи, ожидаемый результат и противопоказания.</li>
+							<li>Получите персональный план процедур и рекомендации по уходу.</li>
+						</ol>
+
+						<blockquote>
+							<p>«Эстетическая коррекция начинается с уважения к индивидуальности человека и его естественным чертам».</p>
+						</blockquote>
+
+						<h2>Заголовок с таблицей</h2>
+						<table>
+							<thead>
+								<tr>
+									<th>Этап</th>
+									<th>Что включает</th>
+									<th>Результат</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Консультация</td>
+									<td>Диагностика и определение задач</td>
+									<td>Персональные рекомендации</td>
+								</tr>
+								<tr>
+									<td>Подготовка</td>
+									<td>Подбор методики и плана коррекции</td>
+									<td>Понятный маршрут процедуры</td>
+								</tr>
+								<tr>
+									<td>Сопровождение</td>
+									<td>Контроль и рекомендации по уходу</td>
+									<td>Комфортное восстановление</td>
+								</tr>
+							</tbody>
+						</table>
+
+						<h4>Заголовок четвёртого уровня</h4>
+						<p>Этот уровень подходит для небольших тематических акцентов внутри раздела. Ниже можно разместить второе изображение без подписи.</p>
+						<p><picture><source srcset="img/art-1.webp" type="image/webp"><img src="img/art-1.png" alt="Дополнительная иллюстрация к статье"></picture></p>
+
+						<hr>
+						<p>Завершающий абзац. Страница готова для заполнения материалами из визуального редактора: текстом, заголовками, списками, таблицами, изображениями, подписями и разделителями.</p>
+					</article>
 				</div>
 			</section>
-			<div class="kinds">
-				<div class="container">
-					<div class="kinds-block">
-						<div class="swiper-arrow-container">
-							<div class="swiper-arrow arrow-left icon" style="--icon: url('../img/icon/icon-arrow-left.svg');">
-
-							</div>
-							<div class="swiper-arrow arrow-right icon" style="--icon: url('../img/icon/icon-arrow-right.svg');">
-
-							</div>
-						</div>
-						<div class="kinds-content">
-							<div class="kinds-content__items">
-								<div class="kinds-content__item active" data-element="item-1">
-									<div class="kinds-title">
-										<b>
-											DERMA SPRING
-											CLASSIC
-										</b> <br>
-										PDO
-									</div>
-									<div class="line">
-										<span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
-									</div>
-									<div class="kinds-options">
-										<div class="kinds-option">
-											<div class="kinds-option__label">Калибр иглы</div>
-											<div class="kinds-option__value">27 G</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина иглы</div>
-											<div class="kinds-option__value">40 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина нити</div>
-											<div class="kinds-option__value">190 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">UPS</div>
-											<div class="kinds-option__value">6-0</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">кол-во в упаковке</div>
-											<div class="kinds-option__value">10 ЕА</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Материал</div>
-											<div class="kinds-option__value">
-												PDO <span>(Полидиоксанон)</span>
-											</div>
-										</div>
-									</div>
-									<a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
-								</div>
-								<div class="kinds-content__item" data-element="item-2">
-									<div class="kinds-title">
-										<b>
-											SPRING EYE PDO
-										</b>
-									</div>
-									<div class="line">
-										<span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
-									</div>
-									<div class="kinds-options">
-										<div class="kinds-option">
-											<div class="kinds-option__label">Калибр иглы</div>
-											<div class="kinds-option__value">30 G</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина иглы</div>
-											<div class="kinds-option__value">40 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина нити</div>
-											<div class="kinds-option__value">60 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">UPS</div>
-											<div class="kinds-option__value">7-0</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">кол-во в упаковке</div>
-											<div class="kinds-option__value">10 ЕА</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Материал</div>
-											<div class="kinds-option__value">
-												PDO <span>(Полидиоксанон)</span>
-											</div>
-										</div>
-									</div>
-									<a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
-								</div>
-								<div class="kinds-content__item" data-element="item-3">
-									<div class="kinds-title">
-										<b>
-											SPRING EYE PDO
-										</b>
-									</div>
-									<div class="line">
-										<span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
-									</div>
-									<div class="kinds-options">
-										<div class="kinds-option">
-											<div class="kinds-option__label">Калибр иглы</div>
-											<div class="kinds-option__value">30 G</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина иглы</div>
-											<div class="kinds-option__value">40 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина нити</div>
-											<div class="kinds-option__value">60 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">UPS</div>
-											<div class="kinds-option__value">7-0</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">кол-во в упаковке</div>
-											<div class="kinds-option__value">10 ЕА</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Материал</div>
-											<div class="kinds-option__value">
-												PDO <span>(Полидиоксанон)</span>
-											</div>
-										</div>
-									</div>
-									<a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
-								</div>
-								<div class="kinds-content__item" data-element="item-4">
-									<div class="kinds-title">
-										<b>
-											SPRING EYE PDO
-										</b>
-									</div>
-									<div class="line">
-										<span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
-									</div>
-									<div class="kinds-options">
-										<div class="kinds-option">
-											<div class="kinds-option__label">Калибр иглы</div>
-											<div class="kinds-option__value">30 G</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина иглы</div>
-											<div class="kinds-option__value">40 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Длина нити</div>
-											<div class="kinds-option__value">60 мм</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">UPS</div>
-											<div class="kinds-option__value">7-0</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">кол-во в упаковке</div>
-											<div class="kinds-option__value">10 ЕА</div>
-										</div>
-										<div class="kinds-option">
-											<div class="kinds-option__label">Материал</div>
-											<div class="kinds-option__value">
-												PDO <span>(Полидиоксанон)</span>
-											</div>
-										</div>
-									</div>
-									<a href="#" class="button mt-20" data-popup-modal="#modal-callback2">Проконсультироваться</a>
-								</div>
-							</div>
-						</div>
-						<div class="swiper kinds-slider">
-							<div class="swiper-wrapper">
-								<div class="swiper-slide">
-									<div class="kind-slide">
-										<div class="kind-slide__circle">
-											<picture><source srcset="img/kind-1.webp" type="image/webp"><img src="img/kind-1.png" alt=""></picture>
-										</div>
-										<div class="kind-slide-mobile">
-											<div class="kinds-title">
-												<b>
-													DERMA SPRING CLASSIC
-												</b>
-												PDO
-											</div>
-											<div class="kinds-options">
-												<div class="kinds-option">
-													<div class="kinds-option__label">Калибр иглы</div>
-													<div class="kinds-option__value">30 G</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина иглы</div>
-													<div class="kinds-option__value">40 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина нити</div>
-													<div class="kinds-option__value">60 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">UPS</div>
-													<div class="kinds-option__value">7-0</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">кол-во в упаковке</div>
-													<div class="kinds-option__value">10 ЕА</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Материал</div>
-													<div class="kinds-option__value">
-														PDO <span>(Полидиоксанон)</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="kind-slide">
-										<div class="kind-slide__circle">
-											<picture><source srcset="img/kind-2.webp" type="image/webp"><img src="img/kind-2.png" alt=""></picture>
-											<div class="kind-slide__text">
-												SPRING EYE PDO
-											</div>
-										</div>
-										<div class="kind-slide-mobile">
-											<div class="kinds-title">
-												<b>
-													DERMA SPRING CLASSIC
-												</b>
-											</div>
-											<div class="kinds-options">
-												<div class="kinds-option">
-													<div class="kinds-option__label">Калибр иглы</div>
-													<div class="kinds-option__value">30 G</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина иглы</div>
-													<div class="kinds-option__value">40 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина нити</div>
-													<div class="kinds-option__value">60 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">UPS</div>
-													<div class="kinds-option__value">7-0</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">кол-во в упаковке</div>
-													<div class="kinds-option__value">10 ЕА</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Материал</div>
-													<div class="kinds-option__value">
-														PDO <span>(Полидиоксанон)</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="kind-slide">
-										<div class="kind-slide__circle">
-											<picture><source srcset="img/kind-2.webp" type="image/webp"><img src="img/kind-2.png" alt=""></picture>
-											<div class="kind-slide__text">
-												SPRING EYE PDO
-											</div>
-										</div>
-										<div class="kind-slide-mobile">
-											<div class="kinds-title">
-												<b>
-													DERMA SPRING CLASSIC
-												</b>
-											</div>
-											<div class="kinds-options">
-												<div class="kinds-option">
-													<div class="kinds-option__label">Калибр иглы</div>
-													<div class="kinds-option__value">30 G</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина иглы</div>
-													<div class="kinds-option__value">40 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина нити</div>
-													<div class="kinds-option__value">60 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">UPS</div>
-													<div class="kinds-option__value">7-0</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">кол-во в упаковке</div>
-													<div class="kinds-option__value">10 ЕА</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Материал</div>
-													<div class="kinds-option__value">
-														PDO <span>(Полидиоксанон)</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-									<div class="kind-slide">
-										<div class="kind-slide__circle">
-											<picture><source srcset="img/kind-2.webp" type="image/webp"><img src="img/kind-2.png" alt=""></picture>
-											<div class="kind-slide__text">
-												SPRING EYE PDO
-											</div>
-										</div>
-										<div class="kind-slide-mobile">
-											<div class="kinds-title">
-												<b>
-													DERMA SPRING CLASSIC
-												</b>
-											</div>
-											<div class="kinds-options">
-												<div class="kinds-option">
-													<div class="kinds-option__label">Калибр иглы</div>
-													<div class="kinds-option__value">30 G</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина иглы</div>
-													<div class="kinds-option__value">40 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Длина нити</div>
-													<div class="kinds-option__value">60 мм</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">UPS</div>
-													<div class="kinds-option__value">7-0</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">кол-во в упаковке</div>
-													<div class="kinds-option__value">10 ЕА</div>
-												</div>
-												<div class="kinds-option">
-													<div class="kinds-option__label">Материал</div>
-													<div class="kinds-option__value">
-														PDO <span>(Полидиоксанон)</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="swiper-slide">
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="art">
-				<div class="container">
-					<div class="art-container">
-						<h2 class="title-54">
-							Искусство <br> <span> нитевого лифтинга</span>
-						</h2>
-						<div class="art-flex">
-							<div class="line">
-								<span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
-							</div>
-							<div class="art-content">
-								<p>
-									<span class="line">
-										<span class="icon icon-plus" style="--icon: url('../img/icon/icon-plus.svg');"></span>
-									</span>
-									<span>
-										Превосходные результаты методики Luxeface & Luxebody возможны благодаря высококлассным
-										специалистам, применяющим авторскую технику введения и нашу эксклюзивную продукцию. Линия
-										нитей <b>Luxeface & Luxebody</b> предназначена только для сертифицированных врачей, освоивших
-										тонкости методики введения нитей. Именно поэтому репутация нашего бренда безупречна уже 10
-										лет.
-									</span>
-								</p>
-								<a href="#" data-popup-modal="#modal-get-production" class="button button-white">
-									Как получить нити?
-								</a>
-							</div>
-						</div>
-						<div class="art-pic">
-							<picture><source srcset="img/art-pic.webp" type="image/webp"><img src="img/art-pic.png" alt=""></picture>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="similar-products">
-				<div class="container">
-					<div class="similar-products__head">
-						<h2 class="title-54">Товары</h2>
-						<div class="swiper-arrow-container">
-							<div class="swiper-arrow arrow-left icon" style="--icon: url('../img/icon/icon-arrow-left.svg');">
-
-							</div>
-							<div class="swiper-arrow arrow-right icon" style="--icon: url('../img/icon/icon-arrow-right.svg');">
-
-							</div>
-						</div>
-					</div>
-					<div class="swiper similar-products-slider">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="similar-product-card">
-									<a href="#" class="similar-product-card__pic">
-										<picture><source srcset="img/kind-1.webp" type="image/webp"><img src="img/kind-1.png" alt=""></picture>
-									</a>
-									<div class="similar-product-card__content">
-										<a href="#" class="similar-product-card__title">DERMA SPRING CLASSIC PDO</a>
-										<a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="similar-product-card">
-									<a href="#" class="similar-product-card__pic">
-										<picture><source srcset="img/kind-2.webp" type="image/webp"><img src="img/kind-2.png" alt=""></picture>
-									</a>
-									<div class="similar-product-card__content">
-										<a href="#" class="similar-product-card__title">SPRING EYE PDO</a>
-										<a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="similar-product-card">
-									<a href="#" class="similar-product-card__pic">
-										<picture><source srcset="img/kind-1.webp" type="image/webp"><img src="img/kind-1.png" alt=""></picture>
-									</a>
-									<div class="similar-product-card__content">
-										<a href="#" class="similar-product-card__title">DERMA SPRING CLASSIC PDO</a>
-										<a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="similar-product-card">
-									<a href="#" class="similar-product-card__pic">
-										<picture><source srcset="img/kind-2.webp" type="image/webp"><img src="img/kind-2.png" alt=""></picture>
-									</a>
-									<div class="similar-product-card__content">
-										<a href="#" class="similar-product-card__title">SPRING EYE PDO</a>
-										<a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
-									</div>
-								</div>
-							</div>
-							<div class="swiper-slide">
-								<div class="similar-product-card">
-									<a href="#" class="similar-product-card__pic">
-										<picture><source srcset="img/kind-1.webp" type="image/webp"><img src="img/kind-1.png" alt=""></picture>
-									</a>
-									<div class="similar-product-card__content">
-										<a href="#" class="similar-product-card__title">DERMA SPRING CLASSIC PDO</a>
-										<a href="#" class="button" data-popup-modal="#modal-callback2">Подробнее</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</main>
 		<footer class="footer">
 			<div class="container">

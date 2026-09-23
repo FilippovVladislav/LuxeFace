@@ -4953,3 +4953,276 @@ gap: 14px;
     flex-shrink: 0;
   }
 }
+
+// Content pages / WYSIWYG editor output
+.content-page {
+  padding-top: rem(60);
+
+  @media(max-width: $tablet) {
+    padding-top: 30px;
+  }
+}
+
+.content {
+  max-width: rem(1120);
+  margin: 0 auto;
+  font-size: rem(18);
+  line-height: 1.55;
+
+  > *:first-child {
+    margin-top: 0;
+  }
+
+  > *:last-child {
+    margin-bottom: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: RFDewiExtended, sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    font-size: rem(54);
+    margin: 0 0 rem(40);
+  }
+
+  h2 {
+    font-size: rem(40);
+    margin: rem(80) 0 rem(30);
+  }
+
+  h3 {
+    font-size: rem(30);
+    margin: rem(60) 0 rem(24);
+  }
+
+  h4,
+  h5,
+  h6 {
+    font-size: rem(22);
+    margin: rem(40) 0 rem(20);
+  }
+
+  p {
+    margin: 0 0 rem(24);
+  }
+
+  .content-lead {
+    max-width: rem(900);
+    font-size: rem(24);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  a {
+    color: $red;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+
+    &:hover {
+      color: $mainColor;
+    }
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  ul,
+  ol {
+    margin: 0 0 rem(32);
+    padding-left: rem(28);
+
+    li {
+      position: relative;
+      padding-left: rem(12);
+      margin-bottom: rem(12);
+
+      &::marker {
+        color: $red;
+        font-weight: 700;
+      }
+    }
+
+    ul,
+    ol {
+      margin: rem(12) 0 0;
+    }
+  }
+
+  ul {
+    list-style: disc;
+
+    > li {
+      list-style: disc outside;
+    }
+
+    ul {
+      list-style: circle;
+
+      > li {
+        list-style: circle outside;
+      }
+    }
+  }
+
+  ol {
+    list-style: decimal;
+
+    > li {
+      list-style: decimal outside;
+    }
+
+    ol {
+      list-style: lower-alpha;
+
+      > li {
+        list-style: lower-alpha outside;
+      }
+    }
+  }
+
+  ul li::marker {
+    font-size: 1.2em;
+  }
+
+  blockquote {
+    position: relative;
+    margin: rem(60) 0;
+    padding: rem(36) rem(48);
+    background: #f7f7f7;
+    font-size: rem(24);
+    font-weight: 500;
+    line-height: 1.4;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: rem(24);
+      left: 0;
+      width: rem(4);
+      height: calc(100% - rem(48));
+      background: $red;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  hr {
+    height: 1px;
+    margin: rem(60) 0;
+    border: 0;
+    background: $mainColor;
+  }
+
+  figure {
+    margin: rem(40) 0;
+
+    img {
+      display: block;
+      width: 100%;
+    }
+
+    figcaption {
+      margin-top: rem(14);
+      color: rgba($mainColor, .6);
+      font-size: rem(14);
+      line-height: 1.4;
+    }
+  }
+
+  p > img {
+    display: block;
+    width: 100%;
+    margin: rem(40) 0;
+  }
+
+  .content-table-wrap {
+    width: 100%;
+    margin: rem(32) 0 rem(60);
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    min-width: rem(680);
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: rem(20) rem(24);
+    border: 1px solid rgba($mainColor, .2);
+    vertical-align: top;
+  }
+
+  th {
+    background: $mainColor;
+    color: $white;
+    font-size: rem(16);
+    font-weight: 700;
+    line-height: 1.35;
+    text-transform: uppercase;
+  }
+
+  tbody tr:nth-child(even) {
+    background: #f7f7f7;
+  }
+
+  @media(max-width: $tablet) {
+    font-size: rem(16);
+
+    h1 {
+      font-size: rem(32);
+      margin-bottom: rem(24);
+    }
+
+    h2 {
+      font-size: rem(28);
+      margin: rem(48) 0 rem(20);
+    }
+
+    h3 {
+      font-size: rem(22);
+      margin: rem(40) 0 rem(18);
+    }
+
+    h4,
+    h5,
+    h6 {
+      font-size: rem(18);
+      margin-top: rem(32);
+    }
+
+    .content-lead,
+    blockquote {
+      font-size: rem(18);
+    }
+
+    blockquote {
+      margin: rem(40) 0;
+      padding: rem(24) rem(28);
+    }
+
+    hr {
+      margin: rem(40) 0;
+    }
+
+    th,
+    td {
+      padding: rem(14) rem(16);
+    }
+  }
+}

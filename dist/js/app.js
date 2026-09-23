@@ -12888,6 +12888,15 @@
         apiKey: "",
         defaultCountry: "RU",
       });
+    });
+    document.querySelectorAll(".content table").forEach((e) => {
+      if (e.parentElement.classList.contains("content-table-wrap")) return;
+      const t = document.createElement("div");
+      (t.className = "content-table-wrap"),
+        t.setAttribute("tabindex", "0"),
+        t.setAttribute("aria-label", "Таблица с горизонтальной прокруткой"),
+        e.parentNode.insertBefore(t, e),
+        t.appendChild(e);
     }),
       document
         .querySelector(".header-burger")

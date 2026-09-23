@@ -6703,6 +6703,238 @@ body.popup-show::after {
   }
 }
 
+.content-page {
+  padding-top: 3.75rem;
+}
+@media (max-width: 61.99875em) {
+  .content-page {
+    padding-top: 30px;
+  }
+}
+
+.content {
+  max-width: 70rem;
+  margin: 0 auto;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+.content > *:first-child {
+  margin-top: 0;
+}
+.content > *:last-child {
+  margin-bottom: 0;
+}
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  font-family: RFDewiExtended, sans-serif;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.content h1 {
+  font-size: 3.375rem;
+  margin: 0 0 2.5rem;
+}
+.content h2 {
+  font-size: 2.5rem;
+  margin: 5rem 0 1.875rem;
+}
+.content h3 {
+  font-size: 1.875rem;
+  margin: 3.75rem 0 1.5rem;
+}
+.content h4,
+.content h5,
+.content h6 {
+  font-size: 1.375rem;
+  margin: 2.5rem 0 1.25rem;
+}
+.content p {
+  margin: 0 0 1.5rem;
+}
+.content .content-lead {
+  max-width: 56.25rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.content a {
+  color: #E5252D;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+.content a:hover {
+  color: #333333;
+}
+.content strong {
+  font-weight: 700;
+}
+.content ul,
+.content ol {
+  margin: 0 0 2rem;
+  padding-left: 1.75rem;
+}
+.content ul li,
+.content ol li {
+  position: relative;
+  padding-left: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.content ul li::marker,
+.content ol li::marker {
+  color: #E5252D;
+  font-weight: 700;
+}
+.content ul ul,
+.content ul ol,
+.content ol ul,
+.content ol ol {
+  margin: 0.75rem 0 0;
+}
+.content ul {
+  list-style: disc;
+}
+.content ul > li {
+  list-style: disc outside;
+}
+.content ul ul {
+  list-style: circle;
+}
+.content ul ul > li {
+  list-style: circle outside;
+}
+.content ol {
+  list-style: decimal;
+}
+.content ol > li {
+  list-style: decimal outside;
+}
+.content ol ol {
+  list-style: lower-alpha;
+}
+.content ol ol > li {
+  list-style: lower-alpha outside;
+}
+.content ul li::marker {
+  font-size: 1.2em;
+}
+.content blockquote {
+  position: relative;
+  margin: 3.75rem 0;
+  padding: 2.25rem 3rem;
+  background: #f7f7f7;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.content blockquote::before {
+  content: "";
+  position: absolute;
+  top: 1.5rem;
+  left: 0;
+  width: 0.25rem;
+  height: calc(100% - 3rem);
+  background: #E5252D;
+}
+.content blockquote p:last-child {
+  margin-bottom: 0;
+}
+.content hr {
+  height: 1px;
+  margin: 3.75rem 0;
+  border: 0;
+  background: #333333;
+}
+.content figure {
+  margin: 2.5rem 0;
+}
+.content figure img {
+  display: block;
+  width: 100%;
+}
+.content figure figcaption {
+  margin-top: 0.875rem;
+  color: rgba(51, 51, 51, 0.6);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+.content p > img {
+  display: block;
+  width: 100%;
+  margin: 2.5rem 0;
+}
+.content .content-table-wrap {
+  width: 100%;
+  margin: 2rem 0 3.75rem;
+  overflow-x: auto;
+}
+.content table {
+  width: 100%;
+  min-width: 42.5rem;
+  border-collapse: collapse;
+  text-align: left;
+}
+.content th,
+.content td {
+  padding: 1.25rem 1.5rem;
+  border: 1px solid rgba(51, 51, 51, 0.2);
+  vertical-align: top;
+}
+.content th {
+  background: #333333;
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+.content tbody tr:nth-child(even) {
+  background: #f7f7f7;
+}
+@media (max-width: 61.99875em) {
+  .content {
+    font-size: 1rem;
+  }
+  .content h1 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .content h2 {
+    font-size: 1.75rem;
+    margin: 3rem 0 1.25rem;
+  }
+  .content h3 {
+    font-size: 1.375rem;
+    margin: 2.5rem 0 1.125rem;
+  }
+  .content h4,
+  .content h5,
+  .content h6 {
+    font-size: 1.125rem;
+    margin-top: 2rem;
+  }
+  .content .content-lead,
+  .content blockquote {
+    font-size: 1.125rem;
+  }
+  .content blockquote {
+    margin: 2.5rem 0;
+    padding: 1.5rem 1.75rem;
+  }
+  .content hr {
+    margin: 2.5rem 0;
+  }
+  .content th,
+  .content td {
+    padding: 0.875rem 1rem;
+  }
+}
+
 .header-flex {
   padding: 3.75rem 0;
   display: flex;
