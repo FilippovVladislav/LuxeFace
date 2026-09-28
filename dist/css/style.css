@@ -6713,7 +6713,6 @@ body.popup-show::after {
 }
 
 .content {
-  max-width: 70rem;
   margin: 0 auto;
   font-size: 1.125rem;
   line-height: 1.55;
